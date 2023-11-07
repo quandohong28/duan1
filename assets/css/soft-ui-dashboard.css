@@ -223,6 +223,10 @@ address {
   line-height: inherit;
 }
 
+.no-bullets {
+  list-style: none;
+}
+
 ol,
 ul {
   padding-left: 2rem;

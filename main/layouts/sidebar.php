@@ -28,7 +28,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
-                        <i class="fa fa-user"></i>
+                        <i class="fa fa-calendar-check"></i>
                     </div>
                     <span class="nav-link-text ms-1">Chấm công</span>
                 </a>
@@ -36,7 +36,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
-                        <i class="fa fa-user"></i>
+                        <i class="fa fa-calendar"></i>
                     </div>
                     <span class="nav-link-text ms-1">Lịch</span>
                 </a>
@@ -44,29 +44,57 @@
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
-                        <i class="fa fa-user"></i>
+                        <i class="fa fa-sitemap"></i>
                     </div>
                     <span class="nav-link-text ms-1">Sơ đồ tổ chức</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
-                        <i class="fa fa-user"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Các bảng</span>
-                </a>
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Khác</h6>
             </li>
             <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+                <p>
+                    <a class="ps-3 pe-5 py-2 bg-white shadow ms-4 rounded text-sm" data-bs-toggle="collapse" href="#table" role="button" aria-expanded="false" aria-controls="table">
+                        <i class="fa fa-table me-3"></i>
+                        Các bảng
+                    </a>
+                </p>
+                <ul class="collapse no-bullets" id="table">
+                    <li class="nav-item text-sm mb-2">
+                        <a href="">Danh sách nhân sự</a>
+                    </li>
+                    <li class="nav-item text-sm mb-2">
+                        <a href="">Chức vụ</a>
+                    </li>
+                    <li class="nav-item text-sm mb-2">
+                        <a href="">Phòng ban</a>
+                    </li>
+                    <li class="nav-item text-sm mb-2">
+                        <a href="">Team</a>
+                    </li>
+                </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link  " href="">
-                    <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
-                        <i class="fa fa-user"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Profile</span>
-                </a>
+            <li class="nav-item mt-3">
+                <p>
+                    <a class="ps-3 pe-5 py-2 bg-white shadow ms-4 rounded text-sm" data-bs-toggle="collapse" href="#function" role="button" aria-expanded="false" aria-controls="function">
+                    <i class="fa fa-shapes me-3"></i>
+                        Chức năng
+                    </a>
+                </p>
+                <ul class="collapse no-bullets" id="function">
+                    <li class="nav-item text-sm mb-2">
+                        <a href="">Danh sách nhân sự</a>
+                    </li>
+                    <li class="nav-item text-sm mb-2">
+                        <a href="">Chức vụ</a>
+                    </li>
+                    <li class="nav-item text-sm mb-2">
+                        <a href="">Phòng ban</a>
+                    </li>
+                    <li class="nav-item text-sm mb-2">
+                        <a href="">Team</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
