@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main" style="height: 100vh;">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="">
+                <a class="nav-link active" href="?act=dashboard">
                     <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-user"></i>
                     </div>
@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="?act=approve">
                     <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-check"></i>
                     </div>
@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="?act=timekeeping">
                     <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-calendar-check"></i>
                     </div>
@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="?act=schedule">
                     <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-calendar"></i>
                     </div>
@@ -42,11 +42,19 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="?act=organizational">
                     <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-sitemap"></i>
                     </div>
                     <span class="nav-link-text ms-1">Sơ đồ tổ chức</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?act=communicate">
+                    <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
+                        <i class="fa-regular fa-comments"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Giao tiếp</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
@@ -61,38 +69,38 @@
                 </p>
                 <ul class="collapse no-bullets" id="table">
                     <li class="nav-item text-sm mb-2">
-                        <a href="">Danh sách nhân sự</a>
+                        <a href="?act=table&data=personnel">Danh sách nhân sự</a>
                     </li>
                     <li class="nav-item text-sm mb-2">
-                        <a href="">Chức vụ</a>
+                        <a href="?act=table&data=position">Chức vụ</a>
                     </li>
                     <li class="nav-item text-sm mb-2">
-                        <a href="">Phòng ban</a>
+                        <a href="?act=table&data=department">Phòng ban</a>
                     </li>
                     <li class="nav-item text-sm mb-2">
-                        <a href="">Team</a>
+                        <a href="?act=table&data=team">Team</a>
                     </li>
                 </ul>
             </li>
             <li class="nav-item mt-3">
                 <p>
                     <a class="ps-3 pe-5 py-2 bg-white shadow ms-4 rounded text-sm" data-bs-toggle="collapse" href="#function" role="button" aria-expanded="false" aria-controls="function">
-                    <i class="fa fa-shapes me-3"></i>
+                        <i class="fa fa-shapes me-3"></i>
                         Chức năng
                     </a>
                 </p>
                 <ul class="collapse no-bullets" id="function">
                     <li class="nav-item text-sm mb-2">
-                        <a href="">Danh sách nhân sự</a>
+                        <a href="?act=reward_discipline">Khen thưởng và kỷ luật</a>
                     </li>
                     <li class="nav-item text-sm mb-2">
-                        <a href="">Chức vụ</a>
+                        <a href="?act=personnel_mobilization">Điều động nhân sự</a>
                     </li>
                     <li class="nav-item text-sm mb-2">
-                        <a href="">Phòng ban</a>
+                        <a href="?act=benefits">Chế độ phúc lợi</a>
                     </li>
                     <li class="nav-item text-sm mb-2">
-                        <a href="">Team</a>
+                        <a href="?act=performance_evaluation">Đánh giá hiệu suất</a>
                     </li>
                 </ul>
             </li>

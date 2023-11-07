@@ -1,4 +1,4 @@
-<div class="col-sm-12">
+<div class="col-sm-12 bg-white rounded p-5">
     <div class="panel panel-default no-border">
         <div class="panel-heading no-border">
             Đổi mật khẩu
@@ -24,7 +24,7 @@
                         <input id="confpass" type="password" placeholder="••••••••••" class="form-control">
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-9">
                         <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>

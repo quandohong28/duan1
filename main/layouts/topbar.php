@@ -19,7 +19,7 @@
 					</a>
 				</li>
 				<li class="nav-item dropdown pe-2 d-flex align-items-center">
-					<a href="" class="nav-link text-body p-0" id="dropdownNotification" data-bs-toggle="dropdown" aria-expanded="false">
+					<a href="#" class="nav-link text-body p-0" id="dropdownNotification" data-bs-toggle="dropdown" aria-expanded="false">
 						<i class="fa fa-bell cursor-pointer"></i>
 					</a>
 					<ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownNotification">
@@ -92,51 +92,51 @@
 					</ul>
 				</li>
 				<li class="nav-item dropdown pe-3 d-flex align-items-center ms-3">
-					<a href="" class="nav-link text-body p-0" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+					<a href="#" class="nav-link text-body p-0" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
 						<img class="rounded-circle me-2" src="../assets/img/user.jpg" alt="" width="40px">
 						<span class="text-success">Đỗ Hồng Quân</span>
 					</a>
 					<ul class="dropdown-menu  dropdown-menu-end  px-2 me-sm-n4" aria-labelledby="dropdownUser">
 						<li class="mb-2">
-							<a class="dropdown-item border-radius-md" href="">
+							<a class="dropdown-item border-radius-md" href="?act=profile">
 								Hồ sơ cá nhân
 							</a>
 						</li>
 						<li class="mb-2">
-							<a class="dropdown-item border-radius-md" href="">
+							<a class="dropdown-item border-radius-md" href="?act=job_desc">
 								Mô tả công việc
 							</a>
 						</li>
 						<li class="mb-2">
-							<a class="dropdown-item border-radius-md" href="">
+							<a class="dropdown-item border-radius-md" href="?act=myteam">
 								Team của tôi
 							</a>
 						</li>
 						<li class="mb-2">
-							<a class="dropdown-item border-radius-md" href="">
+							<a class="dropdown-item border-radius-md" href="?act=salary">
 								Phiếu báo lương
 							</a>
 						</li>
 						<li class="mb-2">
-							<a class="dropdown-item border-radius-md" href="">
+							<a class="dropdown-item border-radius-md" href="?act=benefit">
 								Phúc lợi
 							</a>
 						</li>
 						<hr class="border-top border-dark">
 						<li class="mb-2">
-							<a class="dropdown-item border-radius-md" href="">
+							<a class="dropdown-item border-radius-md" href="?act=change_password">
 								<i class="fa fa-lock me-2"></i>
 								Đổi mật khẩu
 							</a>
 						</li>
 						<li class="mb-2">
-							<a class="dropdown-item border-radius-md" href="">
+							<a class="dropdown-item border-radius-md" href="setting">
 								<i class="fa fa-wrench me-2"></i>
 								Thiết lập
 							</a>
 						</li>
 						<li class="mb-2">
-							<a class="dropdown-item border-radius-md text-danger" href="">
+							<a class="dropdown-item border-radius-md text-danger" href="logout">
 								<i class="fa fa-right-from-bracket me-2"></i>
 								Đăng xuất
 							</a>
