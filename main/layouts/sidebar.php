@@ -11,15 +11,15 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link active" href="?act=dashboard">
-                    <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
-                        <i class="fa fa-user"></i>
+                    <div class="icon-sm shadow border-radius-md bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
+                        <i class="fa-solid fa-house-chimney-window"></i>
                     </div>
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=approve">
-                    <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-check"></i>
                     </div>
                     <span class="nav-link-text ms-1">Phê duyệt</span>
@@ -27,7 +27,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=timekeeping">
-                    <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-calendar-check"></i>
                     </div>
                     <span class="nav-link-text ms-1">Chấm công</span>
@@ -35,7 +35,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=schedule">
-                    <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-calendar"></i>
                     </div>
                     <span class="nav-link-text ms-1">Lịch</span>
@@ -43,7 +43,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=organizational">
-                    <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-sitemap"></i>
                     </div>
                     <span class="nav-link-text ms-1">Sơ đồ tổ chức</span>
@@ -51,7 +51,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=communicate">
-                    <div class="icon-sm shadow border-radius-md bg-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa-regular fa-comments"></i>
                     </div>
                     <span class="nav-link-text ms-1">Giao tiếp</span>
@@ -103,6 +103,14 @@
                         <a href="?act=performance_evaluation">Đánh giá hiệu suất</a>
                     </li>
                 </ul>
+            </li>
+            <li class="nav-item mt-3">
+                <p>
+                    <a class="ps-3 pe-5 py-2 bg-white shadow ms-4 rounded text-sm" href="?act=chart">
+                        <i class="fa-solid fa-chart-line me-3"></i>
+                        Thống kê
+                    </a>
+                </p>
             </li>
         </ul>
     </div>
