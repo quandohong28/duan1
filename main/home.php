@@ -107,117 +107,102 @@
 								<i class="fa fa-ellipsis-v text-secondary"></i>
 							</a>
 							<ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-								<li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-								<li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-								<li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
+								<li><a class="dropdown-item border-radius-md" href="javascript:;">Thêm mới</a></li>
+								<li><a class="dropdown-item border-radius-md" href="javascript:;">Chỉnh sửa</a></li>
+								<li><a class="dropdown-item border-radius-md" href="javascript:;">Chọn</a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="p-5 row gap-5 justify-content-center">
-				<?php
-				$bg = array('bg-gradient-primary', 'bg-gradient-danger', 'bg-gradient-info', 'bg-gradient-success', 'bg-gradient-warning', 'bg-gradient-dark', 'bg-gradient-secondary');
-				$features = [
-					[
-						'name' => 'Trang chủ',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Phê duyệt',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Chấm công',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Lịch',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Sơ đồ tổ chức',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Giao tiếp',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Danh sách nhân sự',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Chức vụ',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Phòng ban',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Team',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Team của tôi',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Khen thưởng và kỷ luật',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Điều động nhân sự',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Chế độ phúc lợi',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Đánh giá hiệu suất',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Thống kê',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Hồ sơ cá nhân',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Mô tả công việc',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Team của tôi',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Phiếu báo lương',
-						'icon' => 'fa fa-check'
-					],
-					[
-						'name' => 'Phúc lợi',
-						'icon' => 'fa fa-check'
-					]
+			<div class="p-5 row gap-5 justify-content-center align-items-start">
 
-				];
-				foreach ($features as $feature) :
-					$rand = rand(0, count($bg) - 1);
-				?>
-					<a href="" class="<?= $bg[$rand] ?> text-center col-3 p-3 gap-2 shadow rounded d-flex flex-column justify-content-center align-items-center">
-						<div class="icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center text-primary">
-							<i class="<?= $feature['icon']?>"></i>
-						</div>
-						<p class="card-text text-white"><?= $feature['name']?></p>
-					</a>
-				<?php endforech ?>
-				<a href="" class="text-center col-3 p-3 gap-2 shadow bg-gradient-light rounded d-flex flex-column justify-content-center align-items-center">
+				<span>Chức năng chung</span>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa fa-home fs-1 text-success"></i>
+					<p class="card-text">Dashboard</p>
+				</a>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa fa-check fs-1 text-primary"></i>
+					<p class="card-text text-primary">Phê duyệt</p>
+				</a>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa fa-calendar-check fs-1 text-secondary"></i>
+					<p class="card-text text-secondary">Chấm công</p>
+				</a>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa fa-calendar fs-1 text-primary"></i>
+					<p class="card-text text-primary">Lịch</p>
+				</a>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa fa-sitemap fs-1 text-danger"></i>
+					<p class="card-text text-danger">Sơ đồ tổ chức</p>
+				</a>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa fa-comments fs-1 text-warning"></i>
+					<p class="card-text text-warning">Giao tiếp</p>
+				</a>
+				<a href="" class="feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
 					<div class="icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center text-primary">
-						<i class="fa fa-check"></i>
+						<i class="fa-solid fa-plus"></i>
+					</div>
+					<p class="card-text text-dark">Thêm mới</p>
+				</a>
+				<span>Các bảng</span>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa fa-address-book fs-1"></i>
+					<p class="card-text">Danh sách nhân sự</p>
+				</a>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa fa-user-tag fs-1"></i>
+					<p class="card-text">Chức vụ</p>
+				</a>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa fa-user-group fs-1"></i>
+					<p class="card-text">Team</p>
+				</a>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa fa-house-user fs-1"></i>
+					<p class="card-text">Phòng ban</p>
+				</a>
+				<a href="" class="feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<div class="icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center text-primary">
+						<i class="fa-solid fa-plus"></i>
+					</div>
+					<p class="card-text text-dark">Thêm mới</p>
+				</a>
+				<span>Nâng cao</span>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa-regular fa-thumbs-up fs-1"></i>
+					<p class="card-text">Khen thưởng và kỷ luật</p>
+				</a>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa fa-people-arrows fs-1"></i>
+					<p class="card-text">Điều động nhân sự</p>
+				</a>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa-regular fa-heart fs-1"></i>
+					<p class="card-text">Chế độ phúc lợi</p>
+				</a>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa fa-square-poll-vertical fs-1"></i>
+					<p class="card-text">Đánh giá hiệu suất</p>
+				</a>
+				<a href="" class="feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<div class="icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center text-primary">
+						<i class="fa-solid fa-plus"></i>
+					</div>
+					<p class="card-text text-dark">Thêm mới</p>
+				</a>
+				<span>Thống kê</span>
+				<a href="" class=" feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<i class="fa fa-chart-pie fs-1"></i>
+					<p class="card-text">Thống kê</p>
+				</a>
+				<a href="" class="feature text-center col-3 p-3 gap-2 d-flex flex-column justify-content-center align-items-center">
+					<div class="icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center text-primary">
+						<i class="fa-solid fa-plus"></i>
+						
 					</div>
 					<p class="card-text text-dark">Thêm mới</p>
 				</a>
@@ -294,3 +279,16 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	const features = document.querySelectorAll('.feature');
+
+	features.forEach((feature) => {
+		feature.addEventListener('mouseover', () => {
+			feature.classList.add('bg-gradient-light', 'rounded');
+		});
+		feature.addEventListener('mouseout', () => {
+			feature.classList.remove('bg-gradient-light', 'rounded');
+		});
+	});
+</script>
