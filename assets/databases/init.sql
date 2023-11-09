@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS departments (
     name VARCHAR(255) NOT NULL,
     manager_id INTEGER NULL default 0,
     description TEXT NOT NULL,
-    PRIMARY KEY (id, manager_id)
+    PRIMARY KEY (id)
 );
 
 -- dang tao bang team
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS teams (
     department_id INTEGER NOT NULL,
     description TEXT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (department_id) REFERENCES departments(id) DELETE CASCADE
+    FOREIGN KEY (department_id) REFERENCES departments(id) ON DELETE CASCADE
 );
 
 -- dang tao bang cap bac
@@ -53,17 +53,17 @@ create TABLE IF NOT EXISTS employees (
     department_id INTEGER NULL,
     team_id INTEGER NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (rank_id) REFERENCES ranks(id) DELETE CASCADE,
-    FOREIGN KEY (department_id) REFERENCES departments(id) DELETE CASCADE,
-    FOREIGN KEY (team_id) REFERENCES teams(id) DELETE CASCADE
+    FOREIGN KEY (rank_id) REFERENCES ranks(id) ON DELETE CASCADE,
+    FOREIGN KEY (department_id) REFERENCES departments(id) ON DELETE CASCADE,
+    FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
 );
 
 
 -- dang lien ket bang phong ban voi bang nhan vien
-ALTER TABLE departments ADD FOREIGN KEY (manager_id) REFERENCES employees(id) DELETE CASCADE;
+-- ALTER TABLE departments ADD FOREIGN KEY (manager_id) REFERENCES employees(id) ON DELETE CASCADE;
 
 -- dang lien ket bang team voi bang nhan vien 
-ALTER TABLE teams ADD FOREIGN KEY (team_lead_id) REFERENCES employees(id) DELETE CASCADE;
+-- ALTER TABLE teams ADD FOREIGN KEY (team_lead_id) REFERENCES employees(id) ON DELETE CASCADE;
 
 -- dang tao bang cham cong (thoi gian lam viec trong ngay)
 CREATE TABLE IF NOT EXISTS attendance (
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS attendance (
     end_time TIME NULL default NULL,
     status VARCHAR(255) NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (employee_id) REFERENCES employees(id) DELETE CASCADE
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
 -- dang tao bang thoi gian lam viec trong thang
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS attendance_month (
     work_days INTEGER NOT NULL,
     work_hours INTEGER NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (employee_id) REFERENCES employees(id) DELETE CASCADE
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
 -- dang tao bang he so luong
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS salary_scales (
     value INTEGER NOT NULL,
     description TEXT NULL default NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (rank_id) REFERENCES ranks(id) DELETE CASCADE
+    FOREIGN KEY (rank_id) REFERENCES ranks(id) ON DELETE CASCADE
 );
 
 -- dang tao bang luong
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS salaries (
     employee_id INTEGER NOT NULL,
     work_days REAL NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (employee_id) REFERENCES employees(id) DELETE CASCADE
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
 -- dang tao bang luong chi tiet
@@ -116,8 +116,8 @@ CREATE TABLE IF NOT EXISTS salary_details (
     salary_scale_id INTEGER NOT NULL,
     salary INTEGER NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (salary_id) REFERENCES salaries(id) DELETE CASCADE,
-    FOREIGN KEY (salary_scale_id) REFERENCES salary_scales(id) DELETE CASCADE
+    FOREIGN KEY (salary_id) REFERENCES salaries(id) ON DELETE CASCADE,
+    FOREIGN KEY (salary_scale_id) REFERENCES salary_scales(id) ON DELETE CASCADE
 );
 
 -- dang tao bang hop dong
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS contracts (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (employee_id) REFERENCES employees(id) DELETE CASCADE
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
 
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS contact_infomation (
     email VARCHAR(255) NOT NULL,
     location TEXT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (employee_id) REFERENCES employees(id) DELETE CASCADE
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
 -- dang tao bang lich su cong tac 
@@ -154,8 +154,8 @@ CREATE TABLE IF NOT EXISTS employee_history (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (employee_id) REFERENCES employees(id) DELETE CASCADE,
-    FOREIGN KEY (department_id) REFERENCES departments(id) DELETE CASCADE
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE,
+    FOREIGN KEY (department_id) REFERENCES departments(id) ON DELETE CASCADE
 );
 
 -- dang tao bang dao tao
@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS training (
     end_time TIME NOT NULL,
     location TEXT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (employee_id) REFERENCES employees(id) DELETE CASCADE
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
 -- dang tao bang nghi phep
@@ -181,7 +181,7 @@ CREATE TABLE IF NOT EXISTS leave_requests (
     reason TEXT NOT NULL,
     status VARCHAR(255) NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (employee_id) REFERENCES employees(id) DELETE CASCADE
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
 
@@ -194,7 +194,7 @@ create TABLE IF NOT EXISTS notifications (
     date DATE NOT NULL default CURRENT_DATE,
     time TIME NOT NULL default CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
-    FOREIGN KEY (employee_id) REFERENCES employees(id) DELETE CASCADE
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
 -- dang tao bang danh gia nang luc nhan vien 
@@ -206,8 +206,8 @@ CREATE TABLE IF NOT EXISTS employee_reviews (
     review TEXT NOT NULL,
     score INTEGER NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (employee_id) REFERENCES employees(id) DELETE CASCADE,
-    FOREIGN KEY (reviewer_id) REFERENCES employees(id) DELETE CASCADE
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE,
+    FOREIGN KEY (reviewer_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
 -- dang tao bang danh gia nang luc phong ban
@@ -219,8 +219,8 @@ CREATE TABLE IF NOT EXISTS department_reviews (
     review TEXT NOT NULL,
     score INTEGER NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (department_id) REFERENCES departments(id) DELETE CASCADE,
-    FOREIGN KEY (reviewer_id) REFERENCES employees(id) DELETE CASCADE
+    FOREIGN KEY (department_id) REFERENCES departments(id) ON DELETE CASCADE,
+    FOREIGN KEY (reviewer_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
 -- dang tao bang danh gia nang luc cong ty
@@ -231,7 +231,7 @@ CREATE TABLE IF NOT EXISTS company_reviews (
     review TEXT NOT NULL,
     score INTEGER NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (reviewer_id) REFERENCES employees(id) DELETE CASCADE
+    FOREIGN KEY (reviewer_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
 -- dang tao bang thong tin dang nhap
@@ -241,7 +241,7 @@ CREATE TABLE IF NOT EXISTS login_infomation (
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (employee_id) REFERENCES employees(id) DELETE CASCADE
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
 -- dang nhap du lieu cho bang phong ban
@@ -284,7 +284,7 @@ VALUES
 ('Quản lý vấn đề pháp lý', 7, 'Đảm bảo công ty tuân thủ tất cả các quy định pháp lý và hợp đồng.'),
 ('Bảo mật thông tin và quản lý rủi ro', 7, 'Đảm bảo an toàn thông tin và dữ liệu của công ty, đồng thời đối phó với các rủi ro bảo mật.'),
 
-('Quản lý các dự án cụ thể', 8, 'Quản lý việc thực hiện và tiến độ các dự án cụ thể trong công ty, đảm bảo chúng được triển khai một cách hiệu quả và đúng hẹn.'),
+('Quản lý các dự án cụ thể', 8, 'Quản lý việc thực hiện và tiến độ các dự án cụ thể trong công ty, đảm bảo chúng được triển khai một cách hiệu quả và đúng hẹn.');
 
 -- dang nhap du lieu cho bang cap bac
 INSERT INTO ranks (name, description)
@@ -323,11 +323,11 @@ VALUES
 (4, 'Xăng xe', 2500000, 'Phụ cấp xăng xe của nhân viên, tính bằng Việt Nam Đồng'),
 (4, 'Bảo hiểm', 20, 'Bảo hiểm của nhân viên, trừ vào lương cơ bản, tính theo phần trăm lương cơ bản'),
 (4, 'Thưởng', 15, 'Thưởng của nhân viên, tính theo phần trăm lương cơ bản'),
-(4, 'Thâm niên', 10, 'Thâm niên của nhân viên, tính theo phần trăm lương cơ bản'),
+(4, 'Thâm niên', 10, 'Thâm niên của nhân viên, tính theo phần trăm lương cơ bản');
 
 
 -- dang nhap du lieu cho bang nhan vien
-INSERT INTO your_employee_table_name (name, birthdate, location, start_date, bio, job_title, rank_id, department_id, team_id)
+INSERT INTO employees (name, birthdate, location, start_date, bio, job_title, rank_id, department_id, team_id)
 WITH RECURSIVE fake_data AS (
   SELECT 1 AS n
   UNION ALL
@@ -346,8 +346,6 @@ SELECT
     ELSE 'Analyst'
   END AS job_title,
   FLOOR(1 + (RAND() * 4)) AS rank_id,
-  
-  F
 FLOOR(1 + (RAND() * 8)) AS department_id,
   1 AS team_id
 FROM fake_data;
@@ -374,7 +372,7 @@ FROM fake_data;
 
 
 -- dang nhap du lieu cho bang luong
-INSERT INTO salaries (employee_id, work_days, work_months)
+INSERT INTO salaries (employee_id, work_days)
 WITH RECURSIVE fake_data AS (
   
  
@@ -384,13 +382,8 @@ SELECT 1 AS n
 )
 SELECT
   FLOOR(1 + (RAND() * 99)) AS employee_id,
-  FLOOR(1 + (RAND() * 25)) AS work_days,
-  FLOOR(1 + (RAND() * 12)) AS work_months
-FROM fake_data
-WHERE
-  employee_id < 100
-  AND work_days < 26
-  AND work_months > 0;
+  FLOOR(1 + (RAND() * 25)) AS work_days
+FROM fake_data;
 
 -- dang nhap du lieu cho bang luong chi tiet
 INSERT INTO salary_details (salary_id, salary_scale_id, salary)
@@ -403,9 +396,7 @@ SELECT
   n,
   FLOOR(1 + (RAND() * 24)) AS salary_scale_id,
   FLOOR(1000000 + (RAND() * 10000000)) AS salary
-FROM fake_data
-WHERE
-  salary_scale_id < 25;
+FROM fake_data;
 
 
 -- dang nhap du lieu cho bang hop dong
@@ -426,8 +417,6 @@ SELECT
   DATE_ADD('2010-01-01', INTERVAL FLOOR(RAND() * 10) YEAR) AS start_date,
   DATE_ADD('2010-01-01', INTERVAL FLOOR(RAND() * 10) YEAR) AS end_date
 FROM fake_data;
-WHERE
-  employee_id < 100;
 
 -- dang nhap du lieu cho bang thong tin lien he
 INSERT INTO contact_infomation (employee_id, phone_number, email, location)
@@ -441,9 +430,7 @@ SELECT
   CONCAT('0', FLOOR(RAND() * 1000000000)) AS phone_number,
   CONCAT('employee', n, '@company.com') AS email,
   CONCAT('Location ', FLOOR(RAND() * 5) + 1) AS location
-FROM fake_data
-WHERE
-  employee_id < 100;
+FROM fake_data;
 
 -- dang nhap du lieu cho bang lich su cong tac
 INSERT INTO employee_history (employee_id, department_id, job_title, start_date, end_date)
@@ -463,10 +450,7 @@ SELECT
   END AS job_title,
   DATE_ADD('2010-01-01', INTERVAL FLOOR(RAND() * 10) YEAR) AS start_date,
   DATE_ADD('2010-01-01', INTERVAL FLOOR(RAND() * 10) YEAR) AS end_date
-FROM fake_data
-WHERE
-  employee_id < 100
-    AND department_id < 9;
+FROM fake_data;
 
 -- dang nhap du lieu cho bang dao tao
 INSERT INTO training (employee_id, name, start_date, end_date, start_time, end_time, location)
@@ -483,9 +467,7 @@ SELECT
   CONCAT(LPAD(FLOOR(RAND() * 24), 2, '0'), ':', LPAD(FLOOR(RAND() * 60), 2, '0'), ':00') AS start_time,
   CONCAT(LPAD(FLOOR(RAND() * 24), 2, '0'), ':', LPAD(FLOOR(RAND() * 60), 2, '0'), ':00') AS end_time,
   CONCAT('Location ', FLOOR(RAND() * 5) + 1) AS location
-FROM fake_data
-WHERE
-  employee_id < 100;
+FROM fake_data;
 
 -- dang nhap du lieu cho bang nghi phep
 INSERT INTO leave_requests (employee_id, start_date, end_date, reason, status)
@@ -504,9 +486,7 @@ SELECT
     WHEN RAND() < 0.95 THEN 'Rejected'
     ELSE 'Pending'
   END AS status
-FROM fake_data
-WHERE
-  employee_id < 100;
+FROM fake_data;
 
 -- dang nhap du lieu cho bang thong bao
 INSERT INTO notifications (employee_id, title, content, date, time)
@@ -521,9 +501,7 @@ SELECT
   'Notification content' AS content,
   '2023-11-09' AS date,
   CONCAT(LPAD(FLOOR(RAND() * 24), 2, '0'), ':', LPAD(FLOOR(RAND() * 60), 2, '0'), ':00') AS time
-FROM fake_data
-WHERE
-  employee_id < 100;
+FROM fake_data;
 
 -- dang nhap du lieu cho bang danh gia nang luc nhan vien
 INSERT INTO employee_reviews (employee_id, reviewer_id, review_date, review, score)
@@ -538,9 +516,7 @@ SELECT
   '2023-11-09' AS review_date,
   'Employee review' AS review,
   FLOOR(1 + (RAND() * 5)) AS score
-FROM fake_data
-WHERE
-  employee_id < 100;
+FROM fake_data;
 
 -- dang nhap du lieu cho bang danh gia nang luc phong ban
 INSERT INTO department_reviews (department_id, reviewer_id, review_date, review, score)
@@ -555,9 +531,7 @@ SELECT
   '2023-11-09' AS review_date,
   'Department review' AS review,
   FLOOR(1 + (RAND() * 5)) AS score
-FROM fake_data
-WHERE
-  department_id < 9;
+FROM fake_data;
 
 -- dang nhap du lieu cho bang danh gia nang luc cong ty
 INSERT INTO company_reviews (reviewer_id, review_date, review, score)
@@ -575,39 +549,59 @@ FROM fake_data;
 
 -- dang nhap du lieu cho bang thong tin dang nhap
 INSERT INTO login_infomation (employee_id, username, password)
-WITH RECURSIVE fake_data AS (
-  SELECT 1 AS n
-  UNION ALL
-  SELECT n + 1 FROM fake_data WHERE n < 1000
-)
-SELECT
-  n,
-  CONCAT('employee', n) AS username,
-  CONCAT('password', n) AS password
-FROM fake_data
-WHERE
-  employee_id < 100;
+VALUES
+    (1, 'user1', 'password1'),
+    (2, 'user2', 'password2'),
+    (3, 'user3', 'password3'),
+    (4, 'user4', 'password4'),
+    (5, 'user5', 'password5'),
+    (6, 'user6', 'password6'),
+    (7, 'user7', 'password7'),
+    (8, 'user8', 'password8'),
+    (9, 'user9', 'password9');
 
 -- dang nhap du lieu cho bang thoi gian lam viec trong thang
 INSERT INTO attendance_month (employee_id, month, year, work_days, work_hours)
-WITH RECURSIVE fake_data AS (
-  SELECT 1 AS n
-  UNION ALL
-  SELECT n + 1 FROM fake_data WHERE n < 1000
-)
 SELECT
-  n,
-  11 AS month,
-  2023 AS year,
-  FLOOR(1 + (RAND() * 25)) AS work_days,
-  FLOOR(1 + (RAND() * 200)) AS work_hours
-FROM fake_data
-WHERE
-  employee_id < 100;
-
-
-
-
-
-
-
+    FLOOR(1 + (RAND() * 100)) AS employee_id,
+    FLOOR(1 + (RAND() * 12)) AS month,
+    2023 AS year,
+    FLOOR(1 + (RAND() * 30)) AS work_days,
+    FLOOR(100 + (RAND() * 100)) AS work_hours
+FROM (
+    SELECT 1 UNION ALL
+    SELECT 2 UNION ALL
+    SELECT 3 UNION ALL
+    SELECT 4 UNION ALL
+    SELECT 5 UNION ALL
+    SELECT 6 UNION ALL
+    SELECT 7 UNION ALL
+    SELECT 8 UNION ALL
+    SELECT 9 UNION ALL
+    SELECT 10 UNION ALL
+    SELECT 11 UNION ALL
+    SELECT 12 UNION ALL
+    SELECT 13 UNION ALL
+    SELECT 14 UNION ALL
+    SELECT 15 UNION ALL
+    SELECT 16 UNION ALL
+    
+   
+SELECT 17 UNION ALL
+    SELECT 18 UNION ALL
+    SELECT 19 UNION ALL
+    SELECT 20 UNION ALL
+    SELECT 21 UNION ALL
+    SELECT 22 UNION ALL
+    
+   
+SELECT 23 UNION ALL
+    SELECT 24 UNION ALL
+    SELECT 25 UNION ALL
+    SELECT 26 UNION ALL
+    SELECT 27 UNION ALL
+    SELECT 28 UNION ALL
+    SELECT 29 UNION ALL
+    SELECT 30
+) AS numbers
+LIMIT 100;
