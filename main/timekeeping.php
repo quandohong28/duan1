@@ -16,7 +16,7 @@
                         <div class="mb-5">
                         </div>
                         <form class="mb-5 d-flex justify-content-center gap-5">
-                            <label class="form-check px-5 py-4 bg-success shadow rounded position-relative check">
+                            <label class="form-check px-5 py-4 bg-gradient-info shadow rounded position-relative check zoom-button text-light active">
                                 <input class="form-check-input" hidden type="radio" name="method_purchase" id="cash" value="0" checked>
                                 <span class="badge bg-info text-wrap position-absolute top-0 start-50 translate-middle">Vào</span>
                                 <i class="fa fa-fingerprint fs-1"></i>
@@ -49,10 +49,15 @@
     check.forEach((item) => {
         item.addEventListener('click', () => {
             check.forEach((item) => {
-                item.classList.remove('bg-success');
-                
+                item.classList.remove('bg-gradient-info');
+                item.classList.remove('zoom-button');
+                item.classList.remove('active');
+                item.classList.remove('text-light');
             })
-            item.classList.add('bg-success');
+            item.classList.add('bg-gradient-info');
+            item.classList.add('zoom-button');
+            item.classList.add('active');
+            item.classList.add('text-light');
         })
     })
 </script>

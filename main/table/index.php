@@ -5,7 +5,7 @@
                 <a class="nav-link active" href="?act=table&data=personnel">Danh sách nhân sự</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?act=table&data=position">Chức vụ</a>
+                <a class="nav-link" href="?act=table&data=rank">Chức vụ</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=table&data=department">Phòng ban</a>
@@ -16,13 +16,24 @@
         </ul>
 
         <?php
+        include '../model/pdo.php';
+        include '../model/employee.php';
+        include '../model/rank.php';
+        include '../model/department.php';
+        include '../model/team.php';
+
         if (isset($_GET['data'])) {
             switch ($_GET['data']) {
                 case 'personnel':
+                    $employees = getAllEmployees();
+                    $ranks = getAllRanks();
+                    $departments = getAllDepartments();
+                    $teams = getAllTeams();
                     include('personnel.php');
                     break;
-                case 'position':
-                    include('position.php');
+                case 'rank':
+                    $ranks = getAllRanks();
+                    include('rank.php');
                     break;
                 case 'department':
                     include('department.php');

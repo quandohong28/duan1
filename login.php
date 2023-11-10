@@ -31,7 +31,7 @@
 				<div class="col-md-6 col-xl-4">
 					<div class="card">
 						<div class="card-body text-center d-flex flex-column align-items-center">
-							<form method="post" data-bs-theme="light" action="./index.php?act=login">
+							<form method="post" data-bs-theme="light" action="account_controller.php?act=login">
 								<div class="mb-3">
 									<input class="form-control" type="text" name="username" placeholder="Tên đăng nhập">
 								</div>
