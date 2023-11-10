@@ -115,3 +115,22 @@
         </ul>
     </div>
 </aside>
+
+<script>
+    // Lấy tất cả các liên kết trong menu
+    var menuLinks = document.querySelectorAll('.nav-link');
+
+    // Lặp qua từng liên kết và kiểm tra URL hiện tại
+    for (var i = 0; i < menuLinks.length; i++) {
+        // Lấy href của liên kết
+        var href = menuLinks[i].getAttribute('href');
+        // Kiểm tra xem URL hiện tại có chứa href của liên kết hay không
+        if (window.location.href.indexOf(href) !== -1) {
+            // Nếu có, thêm lớp "active" vào liên kết
+            menuLinks[i].classList.add('active');
+        }
+        else {
+            menuLinks[i].classList.remove('active');
+        }
+    }
+</script>

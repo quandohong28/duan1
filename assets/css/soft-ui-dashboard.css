@@ -26699,4 +26699,15 @@ pre[class*="language-"] {
   }
 }
 
+.zoom-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.zoom-button.active {
+  transform: scale(1.2);
+}
+
 /*# sourceMappingURL=dashboard-free.css.map */
