@@ -55,7 +55,7 @@ function getEmployeeByRankId($rank_id)
 function getContactInfoByEmployeeId($id)
 {
     $sql = "SELECT * FROM contact_infomation WHERE id = $id";
-    return pdo_query_one($sql);
+    return pdo_query($sql);
 }
 
 function updateContactInfo($id, $employee_id, $phone_number, $email, $location)

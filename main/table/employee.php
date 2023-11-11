@@ -2,8 +2,9 @@
     <div class="col-lg-12">
         <div class="panel panel-default no-border">
             <div class="panel-body">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#modal">
-                    Thêm mới
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addemployeemodal">
+                    <i class="fa fa-square-plus fs-6 me-2"></i>
+                    <span>Thêm mới</span>
                 </button>
 
                 <form role="form" class="filter-panel">
@@ -41,13 +42,19 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 form-group text-right">
-                            <button type="submit" class="btn btn-info">
-                                <span class="glyphicon glyphicon-search"></span>
-                                Tìm kiếm
+                        <div class="col-md-10 form-group">
+                            <button type="submit" class="btn btn-sm btn-info me-3">
+                                <i class="fa fa-search fs-6 me-2"></i>
+                                <span>Tìm kiếm</span>
                             </button>
-                            <button type="reset" class="btn btn-default">
+                            <button type="reset" class="btn btn-sm btn-default">
                                 Mặc định
+                            </button>
+                        </div>
+                        <div class="col-md-2 form-group text-end">
+                            <button type="submit" class="btn btn-sm btn-success me-3">
+                                <i class="fa-regular fa-file-excel fs-6 me-2"></i>
+                                <span>Xuất</span>
                             </button>
                         </div>
                     </div>
@@ -56,44 +63,36 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>
-                                    <div class="checkbox">
-                                        <input class="styled select-all-checkboxes" type="checkbox">
-                                        <label></label>
-                                    </div>
-                                </th>
-                                <th>ID</th>
-                                <th>Họ và tên</th>
-                                <th>Ngày sinh</th>
-                                <th>Ngày vào công ty</th>
-                                <th>Số tháng làm việc</th>
-                                <th>Cấp bậc</th>
+                                <td>
+                                    <input class="select-all-checkboxes" type="checkbox">
+                                </td>
+                                <td class="fw-bold">ID</td>
+                                <td class="fw-bold">Họ và tên</td>
+                                <td class="fw-bold">Ngày sinh</td>
+                                <td class="fw-bold">Ngày vào công ty</td>
+                                <td class="fw-bold">Số tháng làm việc</td>
+                                <td class="fw-bold">Chức danh</td>
+                                <td class="fw-bold text-end">Hành động</td>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($employees as $employee) : extract($employee) ?>
+                            <?php foreach ($employees as $employee) :
+                                extract($employee);
+                                $employee_contactinfomation = getContactInfoByEmployeeId($id); ?>
                                 <tr>
                                     <td>
-                                        <div class="checkbox">
-                                            <input class="styled" name="selected[]" value="1" type="checkbox">
-                                            <label></label>
-                                        </div>
+                                        <input class="" name="checkbox" value="<?= $id ?>" type="checkbox">
                                     </td>
                                     <td><?= $id ?></td>
                                     <td><?= $name ?></td>
                                     <td><?= $birthdate ?></td>
                                     <td><?= $start_date ?></td>
                                     <td><?= $work_months ?></td>
-                                    <td>
+                                    <td><?= $job_title ?></td>
+                                    <td class="text-end">
                                         <!-- Xem chi tiết -->
-                                        <button class="btn bg-gradient-info btn-sm m-0 mx-1 px-4" data-bs-toggle="modal" data-bs-target="#employeesinfomodal">
+                                        <button class="btn bg-gradient-info btn-sm m-0 mx-1 px-4" data-bs-toggle="modal" data-bs-target="#employeesinfomodal" data-bs-data='<?= json_encode($employee_contactinfomation) ?>'>
                                             <i class="fa-solid fa-circle-info fs-6"></i>
-                                        </button>
-                                        <button class="btn bg-warning btn-sm m-0 mx-1 px-4" data-bs-toggle="modal" data-bs-target="#modal">
-                                            <i class="fa-regular fa-pen-to-square fs-6"></i>
-                                        </button>
-                                        <button class="btn btn-danger btn-sm m-0 mx-1 px-4">
-                                            <i class="fa-regular fa-trash-can fs-6"></i>
                                         </button>
                                     </td>
                                 </tr>
@@ -135,3 +134,4 @@
 
 <!-- Modal -->
 <?php include 'modals/employeesinfomodal.php' ?>
+<?php include 'modals/addemployeemodal.php' ?>

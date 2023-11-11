@@ -2,10 +2,10 @@
     <div class="container">
         <ul class="nav nav-tabs mb-5">
             <li class="nav-item">
-                <a class="nav-link active" href="?act=table&data=personnel">Danh sách nhân sự</a>
+                <a class="nav-link active" href="?act=table&data=employee">Danh sách nhân sự</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?act=table&data=rank">Chức vụ</a>
+                <a class="nav-link" href="?act=table&data=rank">Cấp bậc</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=table&data=department">Phòng ban</a>
@@ -24,30 +24,52 @@
 
         if (isset($_GET['data'])) {
             switch ($_GET['data']) {
-                case 'personnel':
+                case 'employee':
                     $employees = getAllEmployees();
                     $ranks = getAllRanks();
                     $departments = getAllDepartments();
                     $teams = getAllTeams();
-                    include('personnel.php');
+                    include('employee.php');
                     break;
                 case 'rank':
                     $ranks = getAllRanks();
                     include('rank.php');
                     break;
                 case 'department':
+                    $departments = getAllDepartments();
+                    $teams = getAllTeams();
+                    $employees = getAllEmployees();
                     include('department.php');
                     break;
                 case 'team':
+                    $teams = getAllTeams();
+                    $departments = getAllDepartments();
+                    $employees = getAllEmployees();
+                    // var_dump($teams);
                     include('team.php');
                     break;
                 default:
-                    include('personnel.php');
+                    include('employee.php');
                     break;
             }
         } else {
-            include('personnel.php');
+            include('employee.php');
         }
         ?>
     </div>
 </section>
+<script>
+    const selectAllCheckboxes = document.querySelector('.select-all-checkboxes');
+    const checkboxes = document.querySelectorAll('input[name="checkbox"]');
+    selectAllCheckboxes.addEventListener('change', function() {
+        if (this.checked) {
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = true;
+            })
+        } else {
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            })
+        }
+    })
+</script>

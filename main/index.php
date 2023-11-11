@@ -74,8 +74,8 @@
 					case 'approve':
 						include 'approve.php';
 						break;
-					case 'timekeeping':
-						include 'timekeeping.php';
+					case 'attendance':
+						include 'attendance.php';
 						break;
 					case 'schedule':
 						include 'schedule.php';
@@ -134,6 +134,23 @@
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 	<script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
+	<script>
+		// Lấy tất cả các liên kết trong menu
+		var menuLinks = document.querySelectorAll('.nav-link');
+
+		// Lặp qua từng liên kết và kiểm tra URL hiện tại
+		for (var i = 0; i < menuLinks.length; i++) {
+			// Lấy href của liên kết
+			var href = menuLinks[i].getAttribute('href');
+			// Kiểm tra xem URL hiện tại có chứa href của liên kết hay không
+			if (window.location.href.indexOf(href) !== -1) {
+				// Nếu có, thêm lớp "active" vào liên kết
+				menuLinks[i].classList.add('active');
+			} else {
+				menuLinks[i].classList.remove('active');
+			}
+		}
+	</script>
 </body>
 
 </html>

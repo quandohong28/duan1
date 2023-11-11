@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main" style="height: 100vh;">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="?act=dashboard">
+                <a class="nav-link" href="?act=dashboard">
                     <div class="icon-sm shadow border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa-solid fa-house-chimney-window"></i>
                     </div>
@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?act=timekeeping">
+                <a class="nav-link" href="?act=attendance">
                     <div class="icon-sm shadow border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-calendar-check"></i>
                     </div>
@@ -69,10 +69,10 @@
                 </p>
                 <ul class="collapse no-bullets" id="table">
                     <li class="nav-item text-sm mb-2">
-                        <a href="?act=table&data=personnel">Danh sách nhân sự</a>
+                        <a href="?act=table&data=employee">Danh sách nhân sự</a>
                     </li>
                     <li class="nav-item text-sm mb-2">
-                        <a href="?act=table&data=position">Chức vụ</a>
+                        <a href="?act=table&data=rank">Chức vụ</a>
                     </li>
                     <li class="nav-item text-sm mb-2">
                         <a href="?act=table&data=department">Phòng ban</a>
@@ -116,21 +116,3 @@
     </div>
 </aside>
 
-<script>
-    // Lấy tất cả các liên kết trong menu
-    var menuLinks = document.querySelectorAll('.nav-link');
-
-    // Lặp qua từng liên kết và kiểm tra URL hiện tại
-    for (var i = 0; i < menuLinks.length; i++) {
-        // Lấy href của liên kết
-        var href = menuLinks[i].getAttribute('href');
-        // Kiểm tra xem URL hiện tại có chứa href của liên kết hay không
-        if (window.location.href.indexOf(href) !== -1) {
-            // Nếu có, thêm lớp "active" vào liên kết
-            menuLinks[i].classList.add('active');
-        }
-        else {
-            menuLinks[i].classList.remove('active');
-        }
-    }
-</script>
