@@ -35,6 +35,28 @@
                     $ranks = getAllRanks();
                     include('rank.php');
                     break;
+                case 'add_rank':
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        $name = $_POST['name'];
+                        $description = $_POST['description'];
+                        addRank($name, $description);
+                    }
+                    echo '<meta http-equiv="refresh" content="0;url=?act=table&data=rank">';
+                    break;
+                case 'update_rank':
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        $id = $_GET['rank'];
+                        $name = $_POST['name'];
+                        $description = $_POST['description'];
+                        updateRank($id, $name, $description);
+                    }
+                    echo '<meta http-equiv="refresh" content="0;url=?act=table&data=rank">';
+                    break;
+                case 'delete_rank':
+                    $id = $_GET['id'];
+                    deleteRank($id);
+                    echo '<meta http-equiv="refresh" content="0;url=?act=table&data=rank">';
+                    break;
                 case 'department':
                     $departments = getAllDepartments();
                     $teams = getAllTeams();

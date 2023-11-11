@@ -51,7 +51,7 @@
                                 <td class="fw-bold">ID</td>
                                 <td class="fw-bold">Tên</td>
                                 <td class="fw-bold">Mô tả</td>
-                                <td class="fw-bold">Số lượng</td>
+                                <td class="fw-bold">Số lượng nhân sự</td>
                                 <td class="fw-bold text-end">Hành động</td>
                             </tr>
                         </thead>
@@ -77,10 +77,10 @@
                                             <i class="fa fa-pen-to-square fs-6"></i>
                                             <span>Sửa</span>
                                         </button>
-                                        <button class="btn bg-gradient-danger btn-sm m-0 mx-1 px-4" data-bs-toggle="modal" data-bs-target="#employeesinfomodal" data-bs-data='<?= json_encode($employee_contactinfomation) ?>'>
+                                        <a href="?act=table&data=delete_rank&id=<?= $id ?>" class="btn bg-gradient-danger btn-sm m-0 mx-1 px-4" onclick="return confirm('Bạn có thực sự muốn xóa? Các dữ liệu liên quan sẽ biển mất! Hãy cẩn trọng!')">
                                             <i class="fa fa-trash fs-6"></i>
                                             <span>Xoá</span>
-                                        </button>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

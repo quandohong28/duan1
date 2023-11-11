@@ -64,7 +64,7 @@
                                 <td class="fw-bold">Tên phòng ban</td>
                                 <td class="fw-bold">Quản lý</td>
                                 <td class="fw-bold">Số Team</td>
-                                <td class="fw-bold">Số nhân viên</td>
+                                <td class="fw-bold">Số lượng nhân sự</td>
                                 <td class="fw-bold text-end">Hành động</td>
                             </tr>
                         </thead>

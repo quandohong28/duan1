@@ -4,16 +4,16 @@
             <div class="modal-header">
                 <p class="modal-title">Chi tiết</p>
             </div>
-            <form role="form">
+            <form role="form" action="?act=table&data=add_rank" method="post">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="" class="form-label">Tên cấp bậc</label>
-                        <input type="text" name="" id="" class="form-control form-control-sm" placeholder="" aria-describedby="helpId">
+                        <label for="name" class="form-label">Tên cấp bậc</label>
+                        <input type="text" name="name" id="name" class="form-control form-control-sm" placeholder="" aria-describedby="helpId">
                         <small id="helpId" class="text-muted">Help text</small>
                     </div>
                     <div class="mb-3">
-                        <label for="" class="form-label">Mô tả</label>
-                        <textarea type="text" name="" id="" cols="30" rows="10" class="form-control form-control-sm" placeholder="" aria-describedby="helpId"></textarea>
+                        <label for="description" class="form-label">Mô tả</label>
+                        <textarea type="text" name="description" id="description" cols="30" rows="10" class="form-control form-control-sm" placeholder="" aria-describedby="helpId"></textarea>
                         <small id="helpId" class="text-muted">Help text</small>
                     </div>
                 </div>

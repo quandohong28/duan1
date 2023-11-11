@@ -129,13 +129,13 @@ function updateWorkMonths($id, $work_months)
     return pdo_execute($sql, $work_months, $id);
 }
 
-function updateRank($id, $rank_id)
+function updateEmployeeRank($id, $rank_id)
 {
     $sql = "UPDATE employees SET rank_id = ? WHERE id = ?";
     return pdo_execute($sql, $rank_id, $id);
 }
 
-function updateTeam($id, $team_id)
+function updateEmployeeTeam($id, $team_id)
 {
     $sql = "UPDATE employees SET team_id = ? WHERE id = ?";
     return pdo_execute($sql, $team_id, $id);
