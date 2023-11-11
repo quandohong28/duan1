@@ -119,14 +119,14 @@
                                     </tr>
                                     <tr class="">
                                         <th scope="col">Ngày kết thúc</th>
-                                        <td scope="row" id="history_start"></td>
+                                        <td scope="row" id="history_end"></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="col-md-7 form-group table-responsive p-3 border rounded">
                             <h6>Giới thiệu</h6>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, blanditiis facere reiciendis esse nobis inventore nihil eius ipsum corporis fugit doloremque quos sunt quae at placeat tenetur atque voluptate ullam?</p>
+                            <p id="bio"></p>
                         </div>
                     </div>
                 </div>
@@ -147,12 +147,34 @@
         // Extract info from data-bs-* attributes
         let recipient = JSON.parse(button.getAttribute('data-bs-data'));
         console.log(recipient);
+        const rank = document.getElementById('rank');
+        const department = document.getElementById('department');
+        const team = document.getElementById('team');
+        const job_title = document.getElementById('job_title');
         const contact_phone = document.getElementById('contact_phone');
         const contact_email = document.getElementById('contact_email');
         const contact_location = document.getElementById('contact_location');
-        contact_phone.innerHTML = recipient[0].phone_number;
-        contact_email.innerHTML = recipient[0].email;
-        contact_location.innerHTML = recipient[0].location;
+        const login_username = document.getElementById('login_username');
+        const login_status = document.getElementById('login_status');
+        const history_department = document.getElementById('history_department');
+        const history_job_title = document.getElementById('history_job_title');
+        const history_start = document.getElementById('history_start');
+        const history_end = document.getElementById('history_end');
+        const bio = document.getElementById('bio');
 
+        rank.innerHTML = recipient.rank_name;
+        department.innerHTML = recipient.department_name;
+        team.innerHTML = recipient.team_name;
+        job_title.innerHTML = recipient.employee_jobtitle;
+        contact_phone.innerHTML = recipient.contact_phone;
+        contact_email.innerHTML = recipient.contact_email;
+        contact_location.innerHTML = recipient.contact_location;
+        login_username.innerHTML = recipient.login_username;
+        // login_status.innerHTML = recipient.login_status;
+        history_department.innerHTML = recipient.employee_history_department;
+        history_job_title.innerHTML = recipient.employee_history_jobtitle;
+        history_start.innerHTML = recipient.employee_history_startdate;
+        history_end.innerHTML = recipient.employee_history_enddate;
+        bio.innerHTML = recipient.employee_bio;
     });
 </script>

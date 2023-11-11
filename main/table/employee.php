@@ -78,7 +78,8 @@
                         <tbody>
                             <?php foreach ($employees as $employee) :
                                 extract($employee);
-                                $employee_contactinfomation = getContactInfoByEmployeeId($id); ?>
+                                $employeeInfoDetail = getEmployeeInfoDetail($id);
+                            ?>
                                 <tr>
                                     <td>
                                         <input class="" name="checkbox" value="<?= $id ?>" type="checkbox">
@@ -91,7 +92,7 @@
                                     <td><?= $job_title ?></td>
                                     <td class="text-end">
                                         <!-- Xem chi tiết -->
-                                        <button class="btn bg-gradient-info btn-sm m-0 mx-1 px-4" data-bs-toggle="modal" data-bs-target="#employeesinfomodal" data-bs-data='<?= json_encode($employee_contactinfomation) ?>'>
+                                        <button class="btn bg-gradient-info btn-sm m-0 mx-1 px-4" data-bs-toggle="modal" data-bs-target="#employeesinfomodal" data-bs-data='<?= json_encode($employeeInfoDetail) ?>'>
                                             <i class="fa-solid fa-circle-info fs-6"></i>
                                         </button>
                                     </td>

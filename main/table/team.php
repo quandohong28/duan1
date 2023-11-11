@@ -38,7 +38,7 @@
                                 <option value="0">Tất cả</option>
                                 <?php foreach ($teams as $team) :
                                     extract($team);
-                                    $teamlead = getEmployeeById($team_lead_id);
+                                    $teamlead = getEmployeeById($id);
                                 ?>
                                     <option value="<?= $id ?>"><?= $teamlead['name'] ?></option>
                                 <?php endforeach ?>
@@ -80,7 +80,7 @@
                         <tbody>
                             <?php foreach ($teams as $team) :
                                 extract($team);
-                                $teamlead = getEmployeeById($team_lead_id);
+                                $teamlead = getEmployeeById($id);
                                 $employee_number = getNumberOfEmlpoyeesByTeamId($id);
                             ?>
                                 <tr>
@@ -89,7 +89,7 @@
                                     </td>
                                     <td><?= $id ?></td>
                                     <td><?= $name ?></td>
-                                    <td><?= $teamlead['teamlead'] ?></td>
+                                    <td><?= $teamlead['name'] ?></td>
                                     <td><?= $employee_number['employee_number'] ?></td>
                                     <td class="text-end">
                                         <!-- Xem chi tiết -->

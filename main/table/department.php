@@ -28,7 +28,7 @@
                                 <option value="0">Tất cả</option>
                                 <?php foreach ($departments as $department) :
                                     extract($department);
-                                    $manager = getEmployeeById($manager_id);
+                                    $manager = getEmployeeById($id);
                                 ?>
                                     <option value="<?= $id ?>"><?= $manager['name'] ?></option>
                                 <?php endforeach ?>
@@ -71,7 +71,7 @@
                         <tbody>
                             <?php foreach ($departments as $department) :
                                 extract($department);
-                                $manager = getEmployeeById($manager_id);
+                                $manager = getEmployeeById($id);
                                 $team_number = getNumberOfTeamsByDepartment($id);
                                 $employee_number = getNumberOfEmlpoyeesByDepartment($id);
                             ?>
