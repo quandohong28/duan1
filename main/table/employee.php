@@ -136,4 +136,4 @@
 <!-- Modal -->
 <?php include 'modals/employeesinfomodal.php' ?>
 <?php include 'modals/addemployeemodal.php' ?>
-<?php include 'modals/addcontactinfomodal.php' ?>
+<?php include 'modals/editcontactinfomodal.php' ?>

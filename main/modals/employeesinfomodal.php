@@ -33,7 +33,7 @@
                                     </tr>
                                     <tr class="">
                                         <td scope="row">
-                                            <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#addcontactinfomodal" data-bs-data='123' data-bs-dismiss="modal">Chỉnh sửa thông tin công việc</button>
+                                            <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#" data-bs-data='123' data-bs-dismiss="modal">Chỉnh sửa thông tin công việc</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -59,7 +59,7 @@
                                     </tr>
                                     <tr class="">
                                         <td scope="row">
-                                            <button type="button" class="btn btn-sm btn-info" data-bs-target="#addcontactinfomodal" data-bs-toggle="modal">Chỉnh sửa thông tin liên hệ</button>
+                                            <button type="button" class="btn btn-sm btn-info" data-bs-target="#editcontactinfomodal" data-bs-toggle="modal" data-bs-value="">Chỉnh sửa thông tin liên hệ</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -152,14 +152,15 @@
 </div>
 
 <script>
-    var modalId = document.getElementById('employeesinfomodal');
-
-    modalId.addEventListener('show.bs.modal', function(event) {
+    var employeesinfomodal = document.getElementById('employeesinfomodal');
+    var contactData = [];
+    employeesinfomodal.addEventListener('show.bs.modal', function(event) {
         // Button that triggered the modal
         let button = event.relatedTarget;
         // Extract info from data-bs-* attributes
         let recipient = JSON.parse(button.getAttribute('data-bs-data'));
-        console.log(recipient);
+        contactData = recipient;
+        // console.log(recipient);
         const rank = document.getElementById('rank');
         const department = document.getElementById('department');
         const team = document.getElementById('team');
