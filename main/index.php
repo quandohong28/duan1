@@ -42,25 +42,25 @@
 			if (isset($_GET['act'])) {
 				switch ($_GET['act']) {
 					case 'home':
-						include 'home.php';
+						include 'pages/home.php';
 						break;
 					case 'notification':
-						include 'notification.php';
+						include 'pages/notification.php';
 						break;
 					case 'profile':
-						include 'individual/profile.php';
+						include 'pages/individual/profile.php';
 						break;
 					case 'job_desc':
-						include 'individual/job_desc.php';
+						include 'pages/individual/job_desc.php';
 						break;
 					case 'myteam':
-						include 'individual/myteam.php';
+						include 'pages/individual/myteam.php';
 						break;
 					case 'salary':
-						include 'individual/salary.php';
+						include 'pages/individual/salary.php';
 						break;
 					case 'benefit':
-						include 'individual/benefit.php';
+						include 'pages/individual/benefit.php';
 						break;
 					case 'change_password':
 						include 'individual/change_password.php';
@@ -72,41 +72,41 @@
 						include 'individual/logout.php';
 						break;
 					case 'approve':
-						include 'approve.php';
+						include 'pages/approve.php';
 						break;
 					case 'attendance':
-						include 'attendance.php';
+						include 'pages/attendance.php';
 						break;
 					case 'schedule':
-						include 'schedule.php';
+						include 'pages/schedule.php';
 						break;
 					case 'organizational':
-						include 'organizational.php';
+						include 'pages/organizational.php';
 						break;
 					case 'communicate':
-						include 'communicate.php';
+						include 'pages/communicate.php';
 						break;
 					case 'table':
 						include 'table/index.php';
 						break;
 					case 'reward_discipline':
-						include 'reward_discipline.php';
+						include 'pages/reward_discipline.php';
 						break;
 					case 'personnel_mobilization':
-						include 'personnel_mobilization.php';
+						include 'pages/personnel_mobilization.php';
 						break;
 					case 'benefits':
-						include 'benefits.php';
+						include 'pages/benefits.php';
 						break;
 					case 'performance_evaluation':
-						include 'performance_evaluation.php';
+						include 'pages/performance_evaluation.php';
 						break;
 					default:
-						include 'home.php';
+						include 'pages/home.php';
 						break;
 				}
 			} else {
-				include 'home.php';
+				include 'pages/home.php';
 			}
 			?>
 			<footer class="footer p-3">

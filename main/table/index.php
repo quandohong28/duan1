@@ -29,7 +29,7 @@
                     $ranks = getAllRanks();
                     $departments = getAllDepartments();
                     $teams = getAllTeams();
-                    include('employee.php');
+                    include('employee/employee.php');
                     break;
                 case 'add_employee':
                     // echo 123;
@@ -44,18 +44,13 @@
                         $job_title = $_POST['job_title'];
                         $department_id = $_POST['department_id'];
                         $team_id = $_POST['team_id'];
-                        // addEmployee($employee_name, $employee_birthdate, $start_date, $employee_location, $employee_bio, $department_id, $team_id, $job_title);
-                        include 'modals/addcontactinfomodal.php';
-                        echo "<script>
-                                var myModal = new bootstrap.Modal(document.getElementById('addcontactinfomodal'));
-                                myModal.show();
-                            </script>";
+                        addEmployee($employee_name, $employee_birthdate, $start_date, $employee_bio, $department_id, $team_id, $job_title);
                     }
-                    // echo '<meta http-equiv="refresh" content="0;url=?act=table&data=employee">';
+                    echo '<meta http-equiv="refresh" content="0;url=?act=table&data=employee">';
                     break;
                 case 'rank':
                     $ranks = getAllRanks();
-                    include('rank.php');
+                    include('rank/rank.php');
                     break;
                 case 'add_rank':
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -83,7 +78,7 @@
                     $departments = getAllDepartments();
                     $teams = getAllTeams();
                     $employees = getAllEmployees();
-                    include('department.php');
+                    include('department/department.php');
                     break;
                 case 'add_department':
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -100,14 +95,22 @@
                     $departments = getAllDepartments();
                     $employees = getAllEmployees();
                     // var_dump($teams);
-                    include('team.php');
+                    include('team/team.php');
                     break;
                 default:
-                    include('employee.php');
+                    $employees = getAllEmployees();
+                    $ranks = getAllRanks();
+                    $departments = getAllDepartments();
+                    $teams = getAllTeams();
+                    include('employee/employee.php');
                     break;
             }
         } else {
-            include('employee.php');
+            $employees = getAllEmployees();
+            $ranks = getAllRanks();
+            $departments = getAllDepartments();
+            $teams = getAllTeams();
+            include('employee/employee.php');
         }
         ?>
     </div>
