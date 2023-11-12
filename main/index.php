@@ -1,17 +1,3 @@
-<!--
-=========================================================
-* Soft UI Dashboard - v1.0.7
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" href="../assets/img/favicon.png">
-	<title>Quản lý nhân sự</title>
+	<title>QHR Master</title>
 	<!--     Fonts and icons     -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 	<!-- Nucleo Icons -->
@@ -133,7 +119,7 @@
 	<!-- Github buttons -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-	<script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
+	<script src="../assets/js/soft-ui-dashboard.min.js"></script>
 	<script>
 		// Lấy tất cả các liên kết trong menu
 		var menuLinks = document.querySelectorAll('.nav-link');

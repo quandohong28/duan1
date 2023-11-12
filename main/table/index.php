@@ -98,6 +98,11 @@
                     }
                     echo '<meta http-equiv="refresh" content="0;url=?act=table&data=department">';
                     break;
+                case 'del_department':
+                    $id = $_GET['id'];
+                    deleteDepartment($id);
+                    echo '<meta http-equiv="refresh" content="0;url=?act=table&data=department">';
+                    break;
                 case 'team':
                     // var_dump($teams);
                     include('team/team.php');

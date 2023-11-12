@@ -74,6 +74,7 @@
                                 $manager = getEmployeeById($id);
                                 $team_number = getNumberOfTeamsByDepartment($id);
                                 $employee_number = getNumberOfEmlpoyeesByDepartment($id);
+                                $teams = getTeamByDepartmentId($id);
                             ?>
                                 <tr>
                                     <td>
@@ -86,15 +87,15 @@
                                     <td><?= $employee_number['employee_number'] ?></td>
                                     <td class="text-end">
                                         <!-- Xem chi tiết -->
-                                        <button class="btn bg-gradient-info btn-sm m-0 mx-1 px-4" data-bs-toggle="modal" data-bs-target="#employeesinfomodal" data-bs-data='<?= json_encode($employee_contactinfomation) ?>'>
+                                        <button class="btn bg-gradient-info btn-sm m-0 mx-1 px-4" data-bs-toggle="modal" data-bs-target="#infodepartmentmodal" data-bs-data='<?= json_encode($teams) ?>'>
                                             <i class="fa-solid fa-circle-info fs-6"></i>
                                         </button>
                                         <!-- Chức năng -->
-                                        <button class="btn bg-gradient-warning btn-sm m-0 mx-1 px-4" data-bs-toggle="modal" data-bs-target="#editrankmodal" data-bs-data='<?= json_encode($rank) ?>'>
+                                        <button class="btn bg-gradient-warning btn-sm m-0 mx-1 px-4" data-bs-toggle="modal" data-bs-target="#editdepartmentmodal" data-bs-data='<?= json_encode($rank) ?>'>
                                             <i class="fa fa-pen-to-square fs-6"></i>
                                             <span>Sửa</span>
                                         </button>
-                                        <a href="?act=del_department" onclick="return confirm('Các Team và Nhân sự liên quan sẽ bị xoá khỏi phòng ban. Bạn có chắc chắn muốn xoá?')" class="btn bg-gradient-danger btn-sm m-0 mx-1 px-4">
+                                        <a href="?act=table&data=del_department&id=<?= $id?>" onclick="return confirm('Các Team và Nhân sự liên quan sẽ bị xoá khỏi phòng ban. Bạn có chắc chắn muốn xoá?')" class="btn bg-gradient-danger btn-sm m-0 mx-1 px-4">
                                             <i class="fa fa-trash fs-6"></i>
                                             <span>Xoá</span>
                                         </a>
@@ -137,5 +138,6 @@
 </div>
 
 <!-- Modal -->
-<?php include 'infodepartmentmodal.php' ?>
 <?php include 'adddepartmentmodal.php' ?>
+<?php include 'infodepartmentmodal.php' ?>
+<?php include 'editdepartmentmodal.php' ?>

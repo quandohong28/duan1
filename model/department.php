@@ -37,8 +37,12 @@ function updateDepartment($id, $name, $manager_id, $start_date, $work_months)
 
 function deleteDepartment($id)
 {
-    $sql = "DELETE FROM departments WHERE id = ?;";
-    pdo_execute($sql, $id);
+    try {
+        $sql = "DELETE FROM departments WHERE id = '$id';";
+        return pdo_execute($sql);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
 
 function getDepartmentByTeamId($team_id)

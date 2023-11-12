@@ -69,7 +69,9 @@
                                     </td>
                                     <td><?= $id ?></td>
                                     <td><?= $name ?></td>
-                                    <td><?= $description ?></td>
+                                    <td>
+                                        <textarea class="form-control form-control-sm" name="" id="" cols="50" rows="3" readonly><?= $description ?></textarea>
+                                    </td>
                                     <td><?= $employee_number['employee_number'] ?></td>
                                     <td class="text-end">
                                         <!-- Chức năng -->
