@@ -33,7 +33,7 @@
                                     </tr>
                                     <tr class="">
                                         <td scope="row">
-                                            <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#" data-bs-data='123' data-bs-dismiss="modal">Chỉnh sửa thông tin công việc</button>
+                                            <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editemployeeinfomodal" data-bs-data='123' data-bs-dismiss="modal">Chỉnh sửa thông tin công việc</button>
                                         </td>
                                     </tr>
                                 </tbody>

@@ -3,7 +3,7 @@
 function getAllEmployees()
 {
     try {
-        $sql = "SELECT * FROM employees";
+        $sql = "SELECT * FROM employees LIMIT 10";
         return pdo_query($sql);
     } catch (Exception $e) {
         return "Error: " . $e->getMessage();

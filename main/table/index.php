@@ -21,21 +21,17 @@
         include '../model/rank.php';
         include '../model/department.php';
         include '../model/team.php';
+        $employees = getAllEmployees();
+        $ranks = getAllRanks();
+        $departments = getAllDepartments();
+        $teams = getAllTeams();
 
         if (isset($_GET['data'])) {
             switch ($_GET['data']) {
                 case 'employee':
-                    $employees = getAllEmployees();
-                    $ranks = getAllRanks();
-                    $departments = getAllDepartments();
-                    $teams = getAllTeams();
                     include('employee/employee.php');
                     break;
                 case 'add_employee':
-                    // echo 123;
-                    // die;
-                    $departments = getAllDepartments();
-                    $teams = getAllTeams();
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $employee_name = $_POST['employee_name'];
                         $employee_birthdate = $_POST['employee_birthdate'];
@@ -48,8 +44,23 @@
                     }
                     echo '<meta http-equiv="refresh" content="0;url=?act=table&data=employee">';
                     break;
+                case 'edit_employee_info':
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        $id = $_GET['id'];
+                        $name = $_POST['name'];
+                        $birthdate = $_POST['birthdate'];
+                        $start_date = $_POST['start_date'];
+                        $work_months = $_POST['work_months'];
+                        $bio = $_POST['bio'];
+                        $job_title = $_POST['job_title'];
+                        $rank_id = $_POST['rank_id'];
+                        $department_id = $_POST['department_id'];
+                        $team_id = $_POST['team_id'];
+                        updateEmployee($id, $name, $birthdate, $start_date, $work_months, $bio, $job_title, $rank_id, $department_id, $team_id);
+                    }
+                    echo '<meta http-equiv="refresh" content="0;url=?act=table&data=employee">';
+                    break;
                 case 'rank':
-                    $ranks = getAllRanks();
                     include('rank/rank.php');
                     break;
                 case 'add_rank':
@@ -75,9 +86,6 @@
                     echo '<meta http-equiv="refresh" content="0;url=?act=table&data=rank">';
                     break;
                 case 'department':
-                    $departments = getAllDepartments();
-                    $teams = getAllTeams();
-                    $employees = getAllEmployees();
                     include('department/department.php');
                     break;
                 case 'add_department':
@@ -91,25 +99,14 @@
                     echo '<meta http-equiv="refresh" content="0;url=?act=table&data=department">';
                     break;
                 case 'team':
-                    $teams = getAllTeams();
-                    $departments = getAllDepartments();
-                    $employees = getAllEmployees();
                     // var_dump($teams);
                     include('team/team.php');
                     break;
                 default:
-                    $employees = getAllEmployees();
-                    $ranks = getAllRanks();
-                    $departments = getAllDepartments();
-                    $teams = getAllTeams();
                     include('employee/employee.php');
                     break;
             }
         } else {
-            $employees = getAllEmployees();
-            $ranks = getAllRanks();
-            $departments = getAllDepartments();
-            $teams = getAllTeams();
             include('employee/employee.php');
         }
         ?>

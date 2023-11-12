@@ -137,3 +137,4 @@
 <?php include 'employeesinfomodal.php' ?>
 <?php include 'addemployeemodal.php' ?>
 <?php include 'editcontactinfomodal.php' ?>
+<?php include 'editemployeeinfomodal.php' ?>
