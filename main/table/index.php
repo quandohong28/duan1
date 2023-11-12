@@ -31,6 +31,28 @@
                     $teams = getAllTeams();
                     include('employee.php');
                     break;
+                case 'add_employee':
+                    // echo 123;
+                    // die;
+                    $departments = getAllDepartments();
+                    $teams = getAllTeams();
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        $employee_name = $_POST['employee_name'];
+                        $employee_birthdate = $_POST['employee_birthdate'];
+                        $start_date = $_POST['start_date'];
+                        $employee_bio = $_POST['employee_bio'];
+                        $job_title = $_POST['job_title'];
+                        $department_id = $_POST['department_id'];
+                        $team_id = $_POST['team_id'];
+                        // addEmployee($employee_name, $employee_birthdate, $start_date, $employee_location, $employee_bio, $department_id, $team_id, $job_title);
+                        include 'modals/addcontactinfomodal.php';
+                        echo "<script>
+                                var myModal = new bootstrap.Modal(document.getElementById('addcontactinfomodal'));
+                                myModal.show();
+                            </script>";
+                    }
+                    // echo '<meta http-equiv="refresh" content="0;url=?act=table&data=employee">';
+                    break;
                 case 'rank':
                     $ranks = getAllRanks();
                     include('rank.php');
@@ -43,11 +65,11 @@
                     }
                     echo '<meta http-equiv="refresh" content="0;url=?act=table&data=rank">';
                     break;
-                case 'update_rank':
+                case 'edit_rank':
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                        $id = $_GET['rank'];
-                        $name = $_POST['name'];
-                        $description = $_POST['description'];
+                        $id = $_GET['id'];
+                        $name = $_POST['rank_name'];
+                        $description = $_POST['rank_desc'];
                         updateRank($id, $name, $description);
                     }
                     echo '<meta http-equiv="refresh" content="0;url=?act=table&data=rank">';
@@ -62,6 +84,16 @@
                     $teams = getAllTeams();
                     $employees = getAllEmployees();
                     include('department.php');
+                    break;
+                case 'add_department':
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        $name = $_POST['department_name'];
+                        $manager_id = $_POST['manager_id'];
+                        $description = $_POST['department_desc'];
+                        echo $name . $manager_id . $description;
+                        addDepartment($name, $manager_id, $description);
+                    }
+                    echo '<meta http-equiv="refresh" content="0;url=?act=table&data=department">';
                     break;
                 case 'team':
                     $teams = getAllTeams();

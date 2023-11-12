@@ -6,14 +6,13 @@
             </div>
             <form role="form">
                 <div class="modal-body">
-                    <div class="row gap-3 justify-content-center">
+                    <!-- Thông tin công việc -->
 
-                    </div>
                     <div class="row gap-3 justify-content-center">
                         <div class="col-md-7 form-group table-responsive p-3 border rounded">
                             <table class="table table-hover mb-5">
                                 <thead>
-                                    <h6>Thông tin cơ bản</h6>
+                                    <h6>Thông tin công việc</h6>
                                 </thead>
                                 <tbody>
                                     <tr class="">
@@ -32,8 +31,15 @@
                                         <th scope="col">Chức danh công việc</th>
                                         <td scope="row" id="job_title"></td>
                                     </tr>
+                                    <tr class="">
+                                        <td scope="row">
+                                            <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#addcontactinfomodal" data-bs-data='123' data-bs-dismiss="modal">Chỉnh sửa thông tin công việc</button>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
+
+                            <!-- Thông tin liên hệ -->
                             <table class="table table-hover">
                                 <thead>
                                     <h6>Thông tin liên hệ</h6>
@@ -51,9 +57,16 @@
                                         <th scope="col">Địa chỉ</th>
                                         <td scope="row" id="contact_location"></td>
                                     </tr>
+                                    <tr class="">
+                                        <td scope="row">
+                                            <button type="button" class="btn btn-sm btn-info" data-bs-target="#addcontactinfomodal" data-bs-toggle="modal">Chỉnh sửa thông tin liên hệ</button>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
+
+                        <!-- Thông tin đăng nhập -->
                         <div class="col-md-4 form-group table-responsive p-3 border rounded">
                             <table class="table table-hover">
                                 <thead>
@@ -73,11 +86,11 @@
                                     <tr class="">
                                         <th scope="col">Hành động</th>
                                         <td scope="row">
-                                            <a class="btn btn-sm btn-success">
+                                            <a class="badge bg-success">
                                                 <i class="fa fa-reply fs-6 me-2"></i>
                                                 <span>Khôi phục</span>
                                             </a>
-                                            <a class="btn btn-sm btn-danger">
+                                            <a class="badge bg-danger">
                                                 <i class="fa fa-user-lock fs-6 me-2"></i>
                                                 <span>Khoá</span>
                                             </a>
@@ -98,36 +111,36 @@
                             </table>
                         </div>
                     </div>
+
+                    <!-- Lịch sử công việc -->
                     <div class="row gap-3 justify-content-center">
-                        <div class="col-md-4 form-group table-responsive p-3 border rounded">
+                        <div class="col-md-8 form-group table-responsive p-3 border rounded">
                             <table class="table table-hover">
                                 <thead>
                                     <h6>Lịch sử công việc</h6>
+                                    <tr>
+                                        <td class="fw-bold">Phòng ban</td>
+                                        <td class="fw-bold">Chức danh công việc</td>
+                                        <td class="fw-bold">Ngày bắt đầu</td>
+                                        <td class="fw-bold">Ngày kết thúc</td>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="">
-                                        <th scope="col">Phòng ban</th>
                                         <td scope="row" id="history_department"></td>
-                                    </tr>
-                                    <tr class="">
-                                        <th scope="col">Chức danh công việc</th>
                                         <td scope="row" id="history_job_title"></td>
-                                    </tr>
-                                    <tr class="">
-                                        <th scope="col">Ngày bắt đầu</th>
                                         <td scope="row" id="history_start"></td>
-                                    </tr>
-                                    <tr class="">
-                                        <th scope="col">Ngày kết thúc</th>
                                         <td scope="row" id="history_end"></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-md-7 form-group table-responsive p-3 border rounded">
+                        <div class="col-md-3 form-group table-responsive p-3 border rounded">
                             <h6>Giới thiệu</h6>
                             <p id="bio"></p>
                         </div>
+                    </div>
+                    <div class="row gap-3 justify-content-center">
                     </div>
                 </div>
                 <div class="modal-footer">

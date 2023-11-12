@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default no-border">
             <div class="panel-body">
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addemployeemodal">
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#adddepartmentmodal">
                     <i class="fa fa-square-plus fs-6 me-2"></i>
                     <span>Thêm mới</span>
                 </button>
@@ -137,5 +137,5 @@
 </div>
 
 <!-- Modal -->
-<?php include 'modals/employeesinfomodal.php' ?>
-<?php include 'modals/addemployeemodal.php' ?>
+<?php include 'modals/infodepartmentmodal.php' ?>
+<?php include 'modals/adddepartmentmodal.php' ?>

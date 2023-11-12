@@ -12,8 +12,12 @@ function getAllEmployees()
 
 function getEmployeeById($id)
 {
-    $sql = "SELECT * FROM employees WHERE id = $id";
-    return pdo_query_one($sql);
+    try {
+        $sql = "SELECT * FROM employees WHERE id = $id";
+        return pdo_query_one($sql);
+    } catch (Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
 }
 
 function getEmployeeInfoDetail($id)
@@ -75,34 +79,54 @@ function getEmployeeInfoDetail($id)
     return pdo_query_one($sql);
 }
 
-function addEmployee($name, $birthdate, $start_date, $work_months, $bio, $job_title, $rank_id, $department_id, $team_id)
+function addEmployee($name, $birthdate, $start_date, $bio, $job_title, $department_id, $team_id)
 {
-    $sql = "INSERT INTO employees (name, email, phone, address, salary, avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    return pdo_execute($sql, $name, $birthdate, $start_date, $work_months, $bio, $job_title, $rank_id, $department_id, $team_id);
+    try {
+        $sql = "INSERT INTO employees (name, birthdate, start_date, bio, job_title, department_id, team_id) VALUES ('$name', '$birthdate', '$start_date', '$bio', '$job_title', '$department_id', '$team_id')";
+        return pdo_execute($sql);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
 
 function updateEmployee($id, $name, $birthdate, $start_date, $work_months, $bio, $job_title, $rank_id, $department_id, $team_id)
 {
-    $sql = "UPDATE employees SET name = ?, email = ?, phone = ?, address = ?, salary = ?, avatar = ? WHERE id = ?";
-    return pdo_execute($sql, $name, $birthdate, $start_date, $work_months, $bio, $job_title, $rank_id, $department_id, $team_id, $id);
+    try {
+        $sql = "UPDATE employees SET name = ?, email = ?, phone = ?, address = ?, salary = ?, avatar = ? WHERE id = ?";
+        return pdo_execute($sql, $name, $birthdate, $start_date, $work_months, $bio, $job_title, $rank_id, $department_id, $team_id, $id);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
 
 function deleteEmployee($id)
 {
-    $sql = "DELETE FROM employees WHERE id = ?";
-    pdo_execute($sql, $id);
+    try {
+        $sql = "DELETE FROM employees WHERE id = ?";
+        pdo_execute($sql, $id);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
 
 function getEmployeeByDepartmentId($department_id)
 {
-    $sql = "SELECT * FROM employees WHERE department_id = $department_id";
-    return pdo_query($sql);
+    try {
+        $sql = "SELECT * FROM employees WHERE department_id = $department_id";
+        return pdo_query($sql);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
 
 function getEmployeeByTeamId($team_id)
 {
-    $sql = "SELECT * FROM employees WHERE team_id = $team_id";
-    return pdo_query($sql);
+    try {
+        $sql = "SELECT * FROM employees WHERE team_id = $team_id";
+        return pdo_query($sql);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
 
 function getEmployeeByRankId($rank_id)

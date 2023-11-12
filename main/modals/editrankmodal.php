@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <p class="modal-title">Chi tiết</p>
             </div>
-            <form role="form">
+            <form role="form" method="post" class="form-edit-rank">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="" class="form-label">Tên cấp bậc</label>
@@ -38,8 +38,12 @@
         const rankName = document.getElementById('rank_name');
         const rankDesc = document.getElementById('rank_desc');
 
+        
         rankName.value = recipient.name;
         rankDesc.value = recipient.description;
-
+        
+        const form = document.querySelector('.form-edit-rank');
+        form.action = '?act=table&data=edit_rank&id=' + recipient.id;
+        // ?controller=table&table-value=rank&action=edit&id=1
     });
 </script>

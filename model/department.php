@@ -18,10 +18,15 @@ function getDepartmentByMangerID($manager_id)
     return pdo_query_one($sql);
 }
 
-function addDepartment($name, $manager_id, $start_date, $work_months)
+function addDepartment($name, $manager_id, $description)
 {
-    $sql = "INSERT INTO departments (name, manager_id, start_date, work_months) VALUES (?, ?, ?, ?);";
-    return pdo_execute($sql, $name, $manager_id, $start_date, $work_months);
+    try {
+        $sql = "INSERT INTO departments (name, manager_id, description) VALUES ('$name', '$manager_id', '$description');";
+        echo $sql;
+        return pdo_execute($sql);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
 
 function updateDepartment($id, $name, $manager_id, $start_date, $work_months)

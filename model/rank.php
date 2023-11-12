@@ -64,7 +64,7 @@ function updateRank($id, $name, $description)
 {
     try {
         $sql = "UPDATE ranks SET name = '$name', description = '$description' WHERE id = $id";
-        pdo_execute($sql);
+        return pdo_execute($sql);
     } catch (Exception $e) {
         echo $e->getMessage();
     }
