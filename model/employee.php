@@ -22,12 +22,14 @@ function getEmployeeById($id)
 
 function getEmployeeInfoDetail($id)
 {
-    $sql = "SELECT
+    try {
+        $sql = "SELECT
     e.name as employee_name,
     e.birthdate as employee_birthdate,
     e.work_months as employee_workmonths,
     e.bio as employee_bio,
     e.job_title as employee_jobtitle,
+    e.avatar as employee_avatar,
     r.description as rank_name,
     t.name as team_name,
     d.name AS department_name,
@@ -56,6 +58,7 @@ function getEmployeeInfoDetail($id)
     e.work_months as employee_workmonths,
     e.bio as employee_bio,
     e.job_title as employee_jobtitle,
+    e.avatar as employee_avatar,
     r.description as rank_name,
     t.name as team_name,
     d.name AS department_name,
@@ -76,7 +79,10 @@ function getEmployeeInfoDetail($id)
     RIGHT OUTER JOIN ranks r ON r.id = e.rank_id
 
     WHERE e.id = '$id';";
-    return pdo_query_one($sql);
+        return pdo_query_one($sql);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
 
 function addEmployee($name, $birthdate, $start_date, $bio, $job_title, $department_id, $team_id)
@@ -122,7 +128,7 @@ function getEmployeeByDepartmentId($department_id)
 function getEmployeeByTeamId($team_id)
 {
     try {
-        $sql = "SELECT * FROM employees WHERE team_id = $team_id";
+        $sql = "SELECT * FROM employees WHERE team_id = $team_id LIMIT 8";
         return pdo_query($sql);
     } catch (Exception $e) {
         echo $e->getMessage();

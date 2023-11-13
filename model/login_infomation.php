@@ -34,3 +34,19 @@ function getAccountByRankId($rank_id)
     WHERE rank_id = $rank_id";
     return pdo_query($sql);
 }
+
+function updateAccount($id, $username, $password)
+{
+    $sql = "UPDATE login_infomation SET username = ?, password = ? WHERE id = $id";
+    return pdo_execute($sql, $username, $password);
+}
+
+function login($username, $password)
+{
+    try {
+        $sql = "SELECT * FROM login_infomation WHERE username = '$username' AND password = '$password'";
+        return pdo_query_one($sql);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}

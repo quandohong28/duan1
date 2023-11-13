@@ -93,8 +93,8 @@
 				</li>
 				<li class="nav-item dropdown pe-3 d-flex align-items-center ms-3">
 					<a href="#" class="nav-link text-body p-0" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-						<img class="rounded-circle me-2" src="../assets/img/user.jpg" alt="" width="40px">
-						<span class="text-success">Đỗ Hồng Quân</span>
+						<img class="rounded-circle me-2" src="<?= $avatar_path . $employee['employee_avatar']?>" alt="" width="40px">
+						<span class="text-success"><?= $employee['employee_name']?></span>
 					</a>
 					<ul class="dropdown-menu  dropdown-menu-end  px-2 me-sm-n4" aria-labelledby="dropdownUser">
 						<li class="mb-2">
@@ -136,10 +136,10 @@
 							</a>
 						</li>
 						<li class="mb-2">
-							<a class="dropdown-item border-radius-md text-danger" href="logout">
+							<button type="button" class="dropdown-item border-radius-md text-danger" data-bs-toggle="modal" data-bs-target="#logoutModal">
 								<i class="fa fa-right-from-bracket me-2"></i>
 								Đăng xuất
-							</a>
+							</button>
 						</li>
 					</ul>
 				</li>
@@ -147,3 +147,37 @@
 		</div>
 	</div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModal" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="logoutModal">Đăng xuất</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid my-3">
+					Nhấn nút đăng xuất để thoát khỏi phiên làm việc hiện tại
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+				<a href="?act=logout" class="btn btn-danger">Đăng xuất</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	var modalId = document.getElementById('modalId');
+
+	modalId.addEventListener('show.bs.modal', function(event) {
+		// Button that triggered the modal
+		let button = event.relatedTarget;
+		// Extract info from data-bs-* attributes
+		let recipient = button.getAttribute('data-bs-whatever');
+
+		// Use above variables to manipulate the DOM
+	});
+</script>

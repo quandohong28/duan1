@@ -20,3 +20,13 @@ function getTeamByDepartmentId($department_id)
         echo $e->getMessage();
     }
 }
+
+function getTeamByEmployeeId($employee_id)
+{
+    try {
+        $sql = "SELECT * FROM teams WHERE id = (SELECT team_id FROM employees WHERE id = $employee_id)";
+        return pdo_query_one($sql);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}

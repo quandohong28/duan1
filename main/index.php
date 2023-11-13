@@ -1,3 +1,22 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+	header('location: ../index.php');
+}
+
+include_once '../model/pdo.php';
+include_once '../model/employee.php';
+include_once '../model/team.php';
+
+
+$employee = getEmployeeInfoDetail($_SESSION['user']['id']);
+$team = getTeamByEmployeeId($_SESSION['user']['id']);
+
+$avatar_path = '../assets/img/';
+$image_path = '../assets/img/';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,40 +41,45 @@
 <body class="g-sidenav-show bg-gray-100 small">
 	<?php include 'layouts/sidebar.php' ?>
 	<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-		<?php include 'layouts/topbar.php' ?>
+		<?php
+		// include 'layouts/topbar.php'
+		include 'layouts/topbar.php'
+		?>
 		<div class="container-fluid py-4">
 			<?php
 			if (isset($_GET['act'])) {
 				switch ($_GET['act']) {
 					case 'home':
-						include 'pages/home.php';
+						include_once 'pages/home.php';
 						break;
 					case 'notification':
-						include 'pages/notification.php';
+						include_once 'pages/notification.php';
 						break;
 					case 'profile':
-						include 'pages/individual/profile.php';
+						include_once 'individual/profile.php';
 						break;
 					case 'job_desc':
-						include 'pages/individual/job_desc.php';
+						include_once 'individual/job_desc.php';
 						break;
 					case 'myteam':
-						include 'pages/individual/myteam.php';
+						$team_members = getEmployeeByTeamId($team['id']);
+						include_once 'individual/myteam.php';
 						break;
 					case 'salary':
-						include 'pages/individual/salary.php';
+						include_once 'individual/salary.php';
 						break;
 					case 'benefit':
-						include 'pages/individual/benefit.php';
+						include_once 'individual/benefit.php';
 						break;
 					case 'change_password':
-						include 'individual/change_password.php';
+						include_once 'individual/change_password.php';
 						break;
 					case 'setting':
-						include 'individual/setting.php';
+						include_once 'individual/setting.php';
 						break;
 					case 'logout':
-						include 'individual/logout.php';
+						unset($_SESSION['user']);
+						header('location: ../index.php');
 						break;
 					case 'approve':
 						include 'pages/approve.php';

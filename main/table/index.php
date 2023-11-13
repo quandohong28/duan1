@@ -16,11 +16,11 @@
         </ul>
 
         <?php
-        include '../model/pdo.php';
-        include '../model/employee.php';
-        include '../model/rank.php';
-        include '../model/department.php';
-        include '../model/team.php';
+        include_once '../model/pdo.php';
+        include_once '../model/employee.php';
+        include_once '../model/rank.php';
+        include_once '../model/department.php';
+        include_once '../model/team.php';
         $employees = getAllEmployees();
         $ranks = getAllRanks();
         $departments = getAllDepartments();
