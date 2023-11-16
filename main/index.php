@@ -148,7 +148,19 @@ $image_path = '../assets/img/';
 						include_once 'individual/salary/salary_scale.php';
 						break;
 					case 'benefit':
-						include_once 'individual/benefit/index.php';
+						include_once 'individual/benefit/benefit.php';
+						break;
+					case 'insurance':
+						include_once 'individual/benefit/insurance.php';
+						break;
+					case 'leave_request':
+						include_once 'individual/benefit/leave_request.php';
+						break;
+					case 'vacation':
+						include_once 'individual/benefit/vacation.php';
+						break;
+					case 'contract':
+						include_once 'individual/contract.php';
 						break;
 					case 'change_password':
 						include_once 'individual/change_password.php';
@@ -231,11 +243,39 @@ $image_path = '../assets/img/';
 					case 'benefits':
 						include 'utilities/benefits.php';
 						break;
-					case 'performance_evaluation':
-						include 'utilities/performance_evaluation.php';
+					case 'performance':
+						include 'performance/performance.php';
+						break;
+					case 'performance_employee':
+						include 'performance/performance_employee.php';
+						break;
+					case 'performance_team':
+						include 'performance/performance_team.php';
+						break;
+					case 'performance_department':
+						include 'performance/performance_department.php';
+						break;
+					case 'performance_company':
+						include 'performance/performance_company.php';
 						break;
 					case 'chart':
 						include 'chart/index.php';
+						break;
+					case 'download':
+						$data = $_GET['data'];
+						$file = $_GET['file'];
+						$filepath = '../assets/files/' . $data . '/' . $file;
+						if (file_exists($filepath)) {
+							header('Content-Description: File Transfer');
+							header('Content-Type: application/octet-stream');
+							header('Content-Disposition: attachment; filename="' . basename($filepath) . '"');
+							header('Expires: 0');
+							header('Cache-Control: must-revalidate');
+							header('Pragma: public');
+							header('Content-Length: ' . filesize($filepath));
+							readfile($filepath);
+							exit;
+						}
 						break;
 					default:
 						include 'pages/home.php';

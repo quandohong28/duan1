@@ -10,24 +10,11 @@
                     <i class="fa fa-landmark"></i>
                 </div>
                 <div class="col">
-                    <h6>Bảo hiểm xã hội</h6>
+                    <h6>Bảo hiểm</h6>
                 </div>
             </div>
             <div class="col text-end">
-                <a href="?act=&data=" class="btn btn-sm btn-outline-dark">Chi tiết</a>
-            </div>
-        </div>
-        <div class="col-md-6 p-3 rounded mb-5 row shadow">
-            <div class="col row">
-                <div class="col-sm-4 col-lg-3 fs-2 me-3 text-info text-gradient">
-                    <i class="fa fa-landmark"></i>
-                </div>
-                <div class="col">
-                    <h6>Bảo hiểm y tế</h6>
-                </div>
-            </div>
-            <div class="col text-end">
-                <a href="?act=&data=" class="btn btn-sm btn-outline-dark">Chi tiết</a>
+                <a href="?act=insurance" class="btn btn-sm btn-outline-dark">Chi tiết</a>
             </div>
         </div>
         <div class="col-md-6 p-3 rounded mb-5 row shadow">
@@ -40,7 +27,7 @@
                 </div>
             </div>
             <div class="col text-end">
-                <a href="?act=&data=" class="btn btn-sm btn-outline-dark">Chi tiết</a>
+                <a href="?act=leave_request" class="btn btn-sm btn-outline-dark">Chi tiết</a>
             </div>
         </div>
         <div class="col-md-6 p-3 rounded mb-5 row shadow">
@@ -53,7 +40,7 @@
                 </div>
             </div>
             <div class="col text-end">
-                <a href="?act=&data=" class="btn btn-sm btn-outline-dark">Chi tiết</a>
+                <a href="?act=vacation" class="btn btn-sm btn-outline-dark">Chi tiết</a>
             </div>
         </div>
         <div class="col-md-6 p-3 rounded mb-5 row shadow">

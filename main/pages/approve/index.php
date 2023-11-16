@@ -7,6 +7,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="?act=approve&data=leave_request">Phê duyệt nghỉ phép</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?act=approve&data=d">Phê duyệt điều động nhân sự</a>
+            </li>
         </ul>
 
         <?php

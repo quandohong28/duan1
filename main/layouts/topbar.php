@@ -1,6 +1,6 @@
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
 	<div class="container-fluid py-1 px-3">
-		<h6 class="font-weight-bolder mb-0">Dashboard</h6>
+		<h6 class="font-weight-bolder mb-0">Xin chào!</h6>
 		<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 			<div class="ms-md-auto pe-md-3 d-flex align-items-center">
 				<div class="input-group">
@@ -93,8 +93,8 @@
 				</li>
 				<li class="nav-item dropdown pe-3 d-flex align-items-center ms-3">
 					<a href="#" class="nav-link text-body p-0" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-						<img class="rounded-circle me-2" src="<?= $avatar_path . $employee['employee_avatar']?>" alt="" width="40px">
-						<span class="text-success"><?= $employee['employee_name']?></span>
+						<img class="rounded-circle me-2" src="<?= $avatar_path . $employee['employee_avatar'] ?>" alt="" width="40px">
+						<span class="text-success"><?= $employee['employee_name'] ?></span>
 					</a>
 					<ul class="dropdown-menu  dropdown-menu-end  px-2 me-sm-n4" aria-labelledby="dropdownUser">
 						<li class="mb-2">
@@ -115,6 +115,11 @@
 						<li class="mb-2">
 							<a class="dropdown-item border-radius-md" href="?act=benefit">
 								Phúc lợi
+							</a>
+						</li>
+						<li class="mb-2">
+							<a class="dropdown-item border-radius-md" href="?act=contract">
+								Hợp đồng
 							</a>
 						</li>
 						<hr class="border-top border-dark">

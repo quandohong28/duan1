@@ -1,0 +1,19 @@
+// đang làm dở đoạn này, mai làm nốt
+CREATE TABLE company_infomation(
+    id INT NOT NULL PRIMARY KEY,
+    NAME VARCHAR(255)
+);
+
+// xóa bảng attendance month
+
+// sửa bảng hợp đồng - thêm trường mã hợp đồng, tên hợp đồng
+
+// ưu tiên: tao phiếu nghỉ phép và phê duyệt nghỉ phép. Render ra số ngày được nghỉ lễ và số ngày được nghỉ phép
+
+// đoạn phê duyệt nghỉ phép, nếu số ngày nghỉ >= 3 thì người phê duyệt phải có trách nhiệm chọn người để làm thay công việc của người đưuọc nghỉ
+
+// ôi còn quá nhiều thứ để làm (03:06:2023) -> liệu 1 tháng có xong không
+
+// đặt ra tiêu chuẩn, mỗi ngày viết ít nhất 2 chức năng lớn (LỚN)
+
+// -> 15 ngày = 30 chức năng LỚN

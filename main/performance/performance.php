@@ -12,10 +12,16 @@
                     </div>
                     <div class="col">
                         <h6>Đánh giá hiệu suất nhân viên</h6>
+                        <small>Chu trình: Hàng ngày</small>
+                        <div class="col">
+                            <p class="badge text-start bg-success">Đã hoàn thành: 13</p>
+                            <br>
+                            <p class="badge text-start bg-danger">Chưa hoàn thành: 0</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col text-end">
-                    <a href="?act=&data=" class="btn btn-sm btn-outline-dark">Chi tiết</a>
+                    <a href="?act=performance_employee" class="btn btn-sm btn-outline-dark">Chi tiết</a>
                 </div>
             </div>
             <div class="col-md-6 p-3 rounded mb-5 row shadow">
@@ -25,10 +31,16 @@
                     </div>
                     <div class="col">
                         <h6>Đánh giá hiệu suất Team</h6>
+                        <small>Chu trình: Hàng ngày</small>
+                        <div class="col">
+                            <p class="badge text-start bg-success">Đã hoàn thành: 13</p>
+                            <br>
+                            <p class="badge text-start bg-danger">Chưa hoàn thành: 0</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col text-end">
-                    <a href="?act=&data=" class="btn btn-sm btn-outline-dark">Chi tiết</a>
+                    <a href="?act=performance_team" class="btn btn-sm btn-outline-dark">Chi tiết</a>
                 </div>
             </div>
             <div class="col-md-6 p-3 rounded mb-5 row shadow">
@@ -38,10 +50,16 @@
                     </div>
                     <div class="col">
                         <h6>Đáng giá hiệu suất Phòng ban</h6>
+                        <small>Chu trình: Hàng tuần</small>
+                        <div class="col">
+                            <p class="badge text-start bg-success">Đã hoàn thành: 13</p>
+                            <br>
+                            <p class="badge text-start bg-danger">Chưa hoàn thành: 0</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col text-end">
-                    <a href="?act=&data=" class="btn btn-sm btn-outline-dark">Chi tiết</a>
+                    <a href="?act=performance_department" class="btn btn-sm btn-outline-dark">Chi tiết</a>
                 </div>
             </div>
             <div class="col-md-6 p-3 rounded mb-5 row shadow">
@@ -51,10 +69,16 @@
                     </div>
                     <div class="col">
                         <h6>Đánh giá hiệu suất Công ty</h6>
+                        <small>Chu trình: Hàng tháng</small>
+                        <div class="col">
+                            <p class="badge text-start bg-success">Đã hoàn thành: 13</p>
+                            <br>
+                            <p class="badge text-start bg-danger">Chưa hoàn thành: 0</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col text-end">
-                    <a href="?act=&data=" class="btn btn-sm btn-outline-dark">Chi tiết</a>
+                    <a href="?act=performance_company" class="btn btn-sm btn-outline-dark">Chi tiết</a>
                 </div>
             </div>
         </div>

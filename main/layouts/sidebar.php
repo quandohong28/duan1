@@ -19,7 +19,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=approve">
-                    <div class="icon-sm shadow border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-success text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-check"></i>
                     </div>
                     <span class="nav-link-text ms-1">Phê duyệt</span>
@@ -27,7 +27,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=attendance">
-                    <div class="icon-sm shadow border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-danger text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-calendar-check"></i>
                     </div>
                     <span class="nav-link-text ms-1">Chấm công</span>
@@ -35,7 +35,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=schedule">
-                    <div class="icon-sm shadow border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-warning text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-calendar"></i>
                     </div>
                     <span class="nav-link-text ms-1">Lịch</span>
@@ -43,7 +43,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=organizational">
-                    <div class="icon-sm shadow border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-sitemap"></i>
                     </div>
                     <span class="nav-link-text ms-1">Sơ đồ tổ chức</span>
@@ -51,7 +51,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=communicate">
-                    <div class="icon-sm shadow border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-secondary text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa-regular fa-comments"></i>
                     </div>
                     <span class="nav-link-text ms-1">Giao tiếp</span>
@@ -63,7 +63,9 @@
             <li class="nav-item mt-3">
                 <p>
                     <a class="ps-3 pe-5 py-2 bg-white shadow ms-4 rounded text-sm" data-bs-toggle="collapse" href="#table" role="button" aria-expanded="false" aria-controls="table">
+                    <span class="text-warning">
                         <i class="fa fa-table me-3"></i>
+                    </span>    
                         Các bảng
                     </a>
                 </p>
@@ -85,7 +87,9 @@
             <li class="nav-item mt-3">
                 <p>
                     <a class="ps-3 pe-5 py-2 bg-white shadow ms-4 rounded text-sm" data-bs-toggle="collapse" href="#function" role="button" aria-expanded="false" aria-controls="function">
+                    <span class="text-info">
                         <i class="fa fa-shapes me-3"></i>
+                    </span>    
                         Chức năng
                     </a>
                 </p>
@@ -100,14 +104,16 @@
                         <a href="?act=benefits">Chế độ phúc lợi</a>
                     </li>
                     <li class="nav-item text-sm mb-2">
-                        <a href="?act=performance_evaluation">Đánh giá hiệu suất</a>
+                        <a href="?act=performance">Đánh giá hiệu suất</a>
                     </li>
                 </ul>
             </li>
             <li class="nav-item mt-3">
                 <p>
                     <a class="ps-3 pe-5 py-2 bg-white shadow ms-4 rounded text-sm" href="?act=chart">
+                    <span class="text-danger">
                         <i class="fa-solid fa-chart-line me-3"></i>
+                    </span>    
                         Thống kê
                     </a>
                 </p>

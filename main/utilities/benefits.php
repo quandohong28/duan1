@@ -11,7 +11,7 @@
                         <i class="fa fa-k"></i>
                     </div>
                     <div class="col">
-                        <h6>KPI</h6>
+                        <h6>Lương và Hệ số lương</h6>
                     </div>
                 </div>
                 <div class="col text-end">
