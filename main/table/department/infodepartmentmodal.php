@@ -14,6 +14,10 @@
                             </tr>
                         </thead>
                         <tbody class="team_data">
+                            <tr>
+                                <td id="team_id"></td>
+                                <td id="team_name"></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -34,9 +38,8 @@
         const button = event.relatedTarget;
         // Extract info from data-bs-* attributes
         const teams = JSON.parse(button.getAttribute('data-bs-data'));
-        console.log(teams);
         const table_body = document.querySelector(".team_data");
-
+        
         teams.forEach(team => {
             const row = document.createElement("tr");
 

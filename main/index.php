@@ -10,6 +10,7 @@ include_once '../model/team.php';
 include_once '../model/department.php';
 include_once '../model/time_regulations.php';
 include_once '../model/attendance.php';
+include_once '../model/salary.php';
 
 
 $employee = getEmployeeInfoDetail($_SESSION['user']['id']);
@@ -66,10 +67,23 @@ $image_path = '../assets/img/';
 						include_once 'individual/job_desc.php';
 						break;
 					case 'salary':
-						include_once 'individual/salary.php';
+						$salaries = getSalariesByEmployeeId($_SESSION['user']['id']);
+						include_once 'individual/salary/salary.php';
+						break;
+					case 'salary_detail':
+						include_once 'individual/salary/salary_detail.php';
+						break;
+					case 'salary_scale':
+						if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+							$rank_id = $_POST['rank_id'];
+							$salary_scale = getSalaryScaleByRank($rank_id);
+						} else {
+							$salary_scale = getSalaryScaleByRank(1);
+						}
+						include_once 'individual/salary/salary_scale.php';
 						break;
 					case 'benefit':
-						include_once 'individual/benefit.php';
+						include_once 'individual/benefit/index.php';
 						break;
 					case 'change_password':
 						include_once 'individual/change_password.php';
@@ -103,10 +117,10 @@ $image_path = '../assets/img/';
 								} else {
 									if ($currentFormattedTime >= $regulation['checkin_time']) {
 										$message = 'Bạn đã quá giờ làm việc! Chấm công thành công!';
-										$status = 'Muộn';
+										$status = 'late';
 										checkin($employee_id, $currentFormattedDate, $currentFormattedTime, $status);
 									} else {
-										$status = 'Đúng giờ';
+										$status = 'present';
 										$message = 'Chấm công thành công!';
 										checkin($employee_id, $currentFormattedDate, $currentFormattedTime, $status);
 									}
@@ -115,10 +129,10 @@ $image_path = '../assets/img/';
 							} else {
 								if ($currentFormattedTime <= $regulation['checkin_time']) {
 									$message = 'Bạn đã về sớm! Chấm công thành công!';
-									$status = 'Muộn';
+									$status = 'late';
 									checkout($currentFormattedTime);
 								} else {
-									$status = 'Đúng giờ';
+									$status = 'present';
 									$message = 'Chấm công thành công!';
 									checkout($currentFormattedTime);
 								}

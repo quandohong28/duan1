@@ -1,10 +1,3 @@
-<?php if (isset($message)) : ?>
-    <div class="alert alert-light" role="alert">
-        <h6 class="alert-heading">Thông báo</h6>
-        <p><?= $message ?></p>
-    </div>
-<?php endif ?>
-
 <section class="min-vh-100 bg-white p-3 rounded">
     <div class="container">
         <div class="">
@@ -12,16 +5,13 @@
                 <h6>Chấm công</h6>
             </div>
             <form action="" method="post" class="mb-5">
-                <div class="row align-items-center justify-content-center mb-5">
-                    <div class="col-md-6 text-center">
+                <div class="row align-items-end justify-content-center mb-5 gap-5">
+                    <div class="col-md-5 text-center">
                         <?php include 'components/clock.html' ?>
                     </div>
                     <div class="col-md-6">
-                        <div class="getting-started-info">
-                            <div class="mb-5">
-                            </div>
-
-                            <div class="mb-5 d-flex justify-content-md-center justify-content-lg-end gap-5">
+                        <div class="row">
+                            <div class="mb-5 d-flex justify-content-center gap-5">
                                 <label class="form-check px-5 py-4 bg-gradient-info shadow rounded position-relative check zoom-button text-light active">
                                     <input class="form-check-input" hidden type="radio" name="method" id="checkin" value="0" checked>
                                     <span class="badge bg-info text-wrap position-absolute top-0 start-50 translate-middle">Vào</span>
@@ -34,10 +24,20 @@
                                 </label>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="text-center">
+                                <button class="btn btn-success p-3 fw-bold fs-6" type="submit" name="submit">Xác nhận</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <button class="btn btn-success p-5 fw-bold fs-6" type="submit" name="submit">Xác nhận</button>
+                <div class="row px-2">
+                    <?php if (isset($message)) : ?>
+                        <div class="alert alert-light" role="alert">
+                            <h6 class="alert-heading">Thông báo</h6>
+                            <p><?= $message ?></p>
+                        </div>
+                    <?php endif ?>
                 </div>
             </form>
             <h6>Danh sách</h6>
@@ -116,7 +116,7 @@
                                 <td><?= $value['checkin_time'] ?></td>
                                 <td><?= $value['checkout_time'] ?></td>
                                 <td><?= $value['status'] ?></td>
-                                <td><?= $value['approve']?></td>
+                                <td><?= $value['approve'] ?></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
