@@ -1,3 +1,10 @@
+<?php if (isset($message)) : ?>
+    <div class="alert alert-success" role="alert">
+        <h6 class="alert-heading">Thông báo</h6>
+        <p><?= $message ?></p>
+    </div>
+<?php endif ?>
+
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default no-border">
@@ -62,35 +69,43 @@
                                 <td>
                                     <input class="select-all-checkboxes" type="checkbox">
                                 </td>
-                                <td class="fw-bold">ID</td>
-                                <td class="fw-bold">Họ và tên</td>
-                                <td class="fw-bold">Ngày sinh</td>
-                                <td class="fw-bold">Ngày vào công ty</td>
-                                <td class="fw-bold">Số tháng làm việc</td>
-                                <td class="fw-bold">Chức danh</td>
-                                <td class="fw-bold text-end">Hành động</td>
+                                <td class="fw-bold">Nhân viên</td>
+                                <td class="fw-bold">Ngày</td>
+                                <td class="fw-bold">Giờ vào</td>
+                                <td class="fw-bold">Giờ ra</td>
+                                <td class="fw-bold">Trạng thái</td>
+                                <td class="fw-bold">Phê duyệt</td>
+                                <td class="fw-bold col-2">Hành động</td>
                             </tr>
                         </thead>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <input class="select-all-checkboxes" type="checkbox">
+                                </td>
+                                <td class="fw-bold">Nhân viên</td>
+                                <td class="fw-bold">Ngày</td>
+                                <td class="fw-bold">Giờ vào</td>
+                                <td class="fw-bold">Giờ ra</td>
+                                <td class="fw-bold">Trạng thái</td>
+                                <td class="fw-bold col-2">Hành động</td>
+                            </tr>
+                        </tfoot>
                         <tbody>
-                            <?php foreach ($employees as $employee) :
-                                extract($employee);
-                                $employeeInfoDetail = getEmployeeInfoDetail($id);
-                            ?>
+                            <?php foreach ($attendance as $key => $value) : ?>
                                 <tr>
                                     <td>
-                                        <input class="" name="checkbox" value="<?= $id ?>" type="checkbox">
+                                        <input class="" name="checkbox" value="" type="checkbox">
                                     </td>
-                                    <td><?= $id ?></td>
-                                    <td><?= $name ?></td>
-                                    <td><?= $birthdate ?></td>
-                                    <td><?= $start_date ?></td>
-                                    <td><?= $work_months ?></td>
-                                    <td><?= $job_title ?></td>
-                                    <td class="text-end">
-                                        <!-- Xem chi tiết -->
-                                        <button class="btn bg-gradient-info btn-sm m-0 mx-1 px-4" data-bs-toggle="modal" data-bs-target="#employeesinfomodal" data-bs-data='<?= json_encode($employeeInfoDetail) ?>'>
-                                            <i class="fa-solid fa-circle-info fs-6"></i>
-                                        </button>
+                                    <td><?= $value['name'] ?></td>
+                                    <td><?= $value['date'] ?></td>
+                                    <td><?= $value['checkin_time'] ?></td>
+                                    <td><?= $value['checkout_time'] ?></td>
+                                    <td><?= $value['status'] ?></td>
+                                    <td><?= $value['approve'] ?></td>
+                                    <td class="text-end col-2">
+                                        <a class="btn btn-sm btn-success" href=" ?act=approve&data=attendance&employee_id=<?= $value['id'] ?>&approve=accept">Phê duyệt</a>
+                                        <a class="btn btn-sm btn-danger" href=" ?act=approve&data=attendance&employee_id=<?= $value['id'] ?>&approve=refuse">Từ chối</a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

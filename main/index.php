@@ -89,14 +89,16 @@ $image_path = '../assets/img/';
 						break;
 					case 'attendance':
 						$attendance = getAttendanceByEmployeeId($_SESSION['user']['id']);
-						$method = $_POST['method'];
 						$employee_id = $_SESSION['user']['id'];
 						$regulation = getTimeRegulation();
 						$timezone = new DateTimeZone('Asia/Ho_Chi_Minh'); // Múi giờ Việt Nam
 						$currentDateTime = new DateTime('now', $timezone);
 						$currentFormattedTime = $currentDateTime->format('H:i:s');
 						$currentFormattedDate = $currentDateTime->format('Y-m-d');
+						$currentFormattedMonth = $currentDateTime->format("m");
+						$currentFormattedYear = $currentDateTime->format("Y");
 						if (isset($_POST['submit'])) {
+							$method = $_POST['method'];
 							if ($method == 0) {
 								$checkin_date = getLatestCheckin()['date'];
 								if ($currentFormattedDate == $checkin_date) {
@@ -111,6 +113,7 @@ $image_path = '../assets/img/';
 										$message = 'Chấm công thành công!';
 										checkin($employee_id, $currentFormattedDate, $currentFormattedTime, $status);
 									}
+									setWorkDays($employee_id, $currentFormattedMonth, $currentFormattedYear, $work_days);
 								}
 							} else {
 								if ($currentFormattedTime <= $regulation['checkin_time']) {
@@ -140,16 +143,16 @@ $image_path = '../assets/img/';
 						include 'table/index.php';
 						break;
 					case 'reward_discipline':
-						include 'pages/reward_discipline.php';
+						include 'utilities/reward_discipline.php';
 						break;
 					case 'personnel_mobilization':
-						include 'pages/personnel_mobilization.php';
+						include 'utilities/personnel_mobilization.php';
 						break;
 					case 'benefits':
-						include 'pages/benefits.php';
+						include 'utilities/benefits.php';
 						break;
 					case 'performance_evaluation':
-						include 'pages/performance_evaluation.php';
+						include 'utilities/performance_evaluation.php';
 						break;
 					default:
 						include 'pages/home.php';

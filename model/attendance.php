@@ -3,7 +3,7 @@
 function getAllAttendance()
 {
     try {
-        $sql = "SELECT * FROM attendance";
+        $sql = "SELECT * FROM attendance INNER JOIN employees ON attendance.employee_id = employees.id";
         return pdo_query($sql);
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -61,20 +61,17 @@ function getAttendanceByEmployeeId($employee_id)
     }
 }
 
-function calTime($time_in, $time_out)
+function approveAttendance($employee_id, $approve)
 {
     try {
-        $time_in = strtotime($time_in);
-        $time_out = strtotime($time_out);
-        $time = $time_out - $time_in;
-        $hour = floor($time / 3600);
-        $minute = floor(($time - $hour * 3600) / 60);
-        $second = $time - $hour * 3600 - $minute * 60;
-        return $hour . ":" . $minute . ":" . $second;
+        $sql = "UPDATE attendance SET approve = '$approve' WHERE employee_id = '$employee_id'";
+        pdo_execute($sql);
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
 }
+
+
 
 function getAttendanceByEmployeeIdAndDate($employee_id, $date)
 {
@@ -101,6 +98,21 @@ function getAttendanceMonthById($id)
     try {
         $sql = "SELECT * FROM attendance_month WHERE id = $id";
         return pdo_query_one($sql);
+    } catch (\Exception $e) {
+        echo $e->getMessage();
+    }
+}
+
+function calTime($time_in, $time_out)
+{
+    try {
+        $time_in = strtotime($time_in);
+        $time_out = strtotime($time_out);
+        $time = $time_out - $time_in;
+        $hour = floor($time / 3600);
+        $minute = floor(($time - $hour * 3600) / 60);
+        $second = $time - $hour * 3600 - $minute * 60;
+        return $hour . ":" . $minute . ":" . $second;
     } catch (\Exception $e) {
         echo $e->getMessage();
     }

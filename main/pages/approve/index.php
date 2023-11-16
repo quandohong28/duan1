@@ -17,6 +17,13 @@
                     include('approve.php');
                     break;
                 case 'attendance':
+                    $attendance = getAllAttendance();
+                    if (isset($_GET['employee_id']) && isset($_GET['approve'])) {
+                        $employee_id = $_GET['employee_id'];
+                        $approve = $_GET['approve'];
+                        approveAttendance($employee_id, $approve);
+                        $message = ($approve == 'accept') ? 'Đã phê duyệt thành công!' : 'Đã từ chối phê duyệt thành công!';
+                    }
                     include('attendance.php');
                     break;
                 case 'leave_request':

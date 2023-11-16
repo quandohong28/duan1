@@ -7,7 +7,7 @@
         <div class="row justify-content-between px-5">
             <div class="col-md-6 p-3 rounded mb-5 row shadow">
                 <div class="col row">
-                    <div class="col-2 fs-1">
+                    <div class="col-3 fs-2">
                         <i class="fa fa-fingerprint"></i>
                     </div>
                     <div class="col">
@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-6 p-3 rounded mb-5 row shadow">
                 <div class="col row">
-                    <div class="col-2 fs-1">
+                    <div class="col-3 fs-2">
                         <i class="fa-regular fa-file-lines"></i>
                     </div>
                     <div class="col">
@@ -43,7 +43,7 @@
             </div>
             <div class="col-md-6 p-3 rounded mb-5 row shadow">
                 <div class="col row">
-                    <div class="col-2 fs-1">
+                    <div class="col-3 fs-2">
                         <i class="fa-regular fa-file-lines"></i>
                     </div>
                     <div class="col">

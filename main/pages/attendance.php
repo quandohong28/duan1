@@ -91,6 +91,7 @@
                             <td class="fw-bold">Giờ vào</td>
                             <td class="fw-bold">Giờ ra</td>
                             <td class="fw-bold">Trạng thái</td>
+                            <td class="fw-bold">Phê duyệt</td>
                         </tr>
                     </thead>
                     <tfoot>
@@ -102,6 +103,7 @@
                             <td class="fw-bold">Giờ vào</td>
                             <td class="fw-bold">Giờ ra</td>
                             <td class="fw-bold">Trạng thái</td>
+                            <td class="fw-bold">Phê duyệt</td>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -114,6 +116,7 @@
                                 <td><?= $value['checkin_time'] ?></td>
                                 <td><?= $value['checkout_time'] ?></td>
                                 <td><?= $value['status'] ?></td>
+                                <td><?= $value['approve']?></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>

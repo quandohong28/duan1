@@ -130,7 +130,7 @@
 							</a>
 						</li>
 						<li class="mb-2">
-							<a class="dropdown-item border-radius-md" href="setting">
+							<a class="dropdown-item border-radius-md" href="?act=setting">
 								<i class="fa fa-wrench me-2"></i>
 								Thiết lập
 							</a>
