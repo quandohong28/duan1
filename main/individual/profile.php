@@ -54,13 +54,31 @@
                         </tr>
                     </tbody>
                 </table>
-                <a href="#" class="btn btn-block btn-primary" data-bs-toggle="modal" data-bs-target="#editmyinfo">Chỉnh sửa</a>
+                <a href="#" class="btn btn-sm btn-warning text-dark" data-bs-toggle="modal" data-bs-target="#editmyinfo">Chỉnh sửa</a>
             </div>
         </div>
     </div>
     <div class="col-md-7">
         <div class="bg-white rounded p-3">
-            chèn nội dung gì đó ở đây, chưa nghĩ ra
+            <div class="bg-white rounded p-3">
+                <h6>Team của tôi</h6>
+                <div class="row justify-content-center align-items-center gx-2 gy-5">
+                    <?php foreach ($team_members as $member) : ?>
+                        <div class="col-md-4 col-sm-6">
+                            <a href="#" class="card text-start">
+                                <div class="p-3" style="width: 100%;">
+                                    <img class="card-img-top rounded-circle" src="<?= $image_path . $member['avatar'] ?>">
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-title"><?= $member['name'] ?></h6>
+                                    <small class="card-text"><?= $member['bio'] ?></small>
+                                </div>
+                                <span class="badge bg-gradient-dark"><?= $member['job_title'] ?></span>
+                            </a>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>

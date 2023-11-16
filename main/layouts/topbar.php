@@ -108,11 +108,6 @@
 							</a>
 						</li>
 						<li class="mb-2">
-							<a class="dropdown-item border-radius-md" href="?act=myteam">
-								Team của tôi
-							</a>
-						</li>
-						<li class="mb-2">
 							<a class="dropdown-item border-radius-md" href="?act=salary">
 								Phiếu báo lương
 							</a>

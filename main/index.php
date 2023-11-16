@@ -59,14 +59,11 @@ $image_path = '../assets/img/';
 						include_once 'pages/notification.php';
 						break;
 					case 'profile':
+						$team_members = getEmployeeByTeamId($team['id']);
 						include_once 'individual/profile.php';
 						break;
 					case 'job_desc':
 						include_once 'individual/job_desc.php';
-						break;
-					case 'myteam':
-						$team_members = getEmployeeByTeamId($team['id']);
-						include_once 'individual/myteam.php';
 						break;
 					case 'salary':
 						include_once 'individual/salary.php';
