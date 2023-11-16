@@ -14,7 +14,7 @@
                     <div class="icon-sm shadow border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa-solid fa-house-chimney-window"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1">Trang chủ</span>
                 </a>
             </li>
             <li class="nav-item">

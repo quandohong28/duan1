@@ -109,6 +109,16 @@
                                     </tr>
                                 </tbody>
                             </table>
+
+                            <!-- Hồ sơ nhân viên -->
+                            <div>
+                                <h6>Hồ sơ</h6>
+                                <button class="btn btn-sm btn-info">Tải lên hồ sơ nhân viên</button>
+                                <button class="btn btn-sm btn-success">Tải xuống hồ sơ nhân viên</button>
+                                <div>
+                                    <small>Nhấn nút tải xuống để lấy toàn bộ thông tin hồ sơ của nhân viên (file .zip)</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

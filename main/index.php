@@ -7,6 +7,9 @@ if (!isset($_SESSION['user'])) {
 include_once '../model/pdo.php';
 include_once '../model/employee.php';
 include_once '../model/team.php';
+include_once '../model/department.php';
+include_once '../model/time_regulations.php';
+include_once '../model/attendance.php';
 
 
 $employee = getEmployeeInfoDetail($_SESSION['user']['id']);
@@ -82,15 +85,52 @@ $image_path = '../assets/img/';
 						header('location: ../index.php');
 						break;
 					case 'approve':
-						include 'pages/approve.php';
+						include 'pages/approve/index.php';
 						break;
 					case 'attendance':
+						$attendance = getAttendanceByEmployeeId($_SESSION['user']['id']);
+						$method = $_POST['method'];
+						$employee_id = $_SESSION['user']['id'];
+						$regulation = getTimeRegulation();
+						$timezone = new DateTimeZone('Asia/Ho_Chi_Minh'); // Múi giờ Việt Nam
+						$currentDateTime = new DateTime('now', $timezone);
+						$currentFormattedTime = $currentDateTime->format('H:i:s');
+						$currentFormattedDate = $currentDateTime->format('Y-m-d');
+						if (isset($_POST['submit'])) {
+							if ($method == 0) {
+								$checkin_date = getLatestCheckin()['date'];
+								if ($currentFormattedDate == $checkin_date) {
+									$message = 'Hôm nay bạn đã chấm công rồi!';
+								} else {
+									if ($currentFormattedTime >= $regulation['checkin_time']) {
+										$message = 'Bạn đã quá giờ làm việc! Chấm công thành công!';
+										$status = 'Muộn';
+										checkin($employee_id, $currentFormattedDate, $currentFormattedTime, $status);
+									} else {
+										$status = 'Đúng giờ';
+										$message = 'Chấm công thành công!';
+										checkin($employee_id, $currentFormattedDate, $currentFormattedTime, $status);
+									}
+								}
+							} else {
+								if ($currentFormattedTime <= $regulation['checkin_time']) {
+									$message = 'Bạn đã về sớm! Chấm công thành công!';
+									$status = 'Muộn';
+									checkout($currentFormattedTime);
+								} else {
+									$status = 'Đúng giờ';
+									$message = 'Chấm công thành công!';
+									checkout($currentFormattedTime);
+								}
+							}
+						}
 						include 'pages/attendance.php';
 						break;
 					case 'schedule':
 						include 'pages/schedule.php';
 						break;
 					case 'organizational':
+						$departments = getAllDepartments();
 						include 'pages/organizational.php';
 						break;
 					case 'communicate':
@@ -144,6 +184,8 @@ $image_path = '../assets/img/';
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 	<script src="../assets/js/soft-ui-dashboard.min.js"></script>
+	<!-- Moment.js -->
+	<script src="../assets/js/moment.js"></script>
 	<script>
 		// Lấy tất cả các liên kết trong menu
 		var menuLinks = document.querySelectorAll('.nav-link');

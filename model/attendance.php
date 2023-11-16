@@ -20,31 +20,32 @@ function getAttendanceById($id)
     }
 }
 
-function addAttendance($employee_id, $date, $time_in, $time_out, $status)
+function checkin($employee_id, $date, $time_in, $status)
 {
     try {
-        $sql = "INSERT INTO attendance (employee_id, date, time_in, time_out, status) VALUES (?, ?, ?, ?, ?)";
-        return pdo_execute($sql, $employee_id, $date, $time_in, $time_out, $status);
+        $sql = "INSERT INTO attendance (employee_id, date, checkin_time, status) VALUES ('$employee_id', '$date', '$time_in', '$status')";
+        return pdo_execute($sql);
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
 }
 
-function updateAttendance($id, $employee_id, $date, $time_in, $time_out, $status)
+function getLatestCheckin()
 {
     try {
-        $sql = "UPDATE attendance SET employee_id = ?, date = ?, time_in = ?, time_out = ?, status = ? WHERE id = ?";
-        return pdo_execute($sql, $employee_id, $date, $time_in, $time_out, $status, $id);
+        $sql = "SELECT * FROM attendance ORDER BY id DESC LIMIT 1";
+        return pdo_query_one($sql);
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
 }
 
-function deleteAttendance($id)
+function checkout($checkout_time)
 {
     try {
-        $sql = "DELETE FROM attendance WHERE id = ?";
-        pdo_execute($sql, $id);
+        $id = getLatestCheckin()['id'];
+        $sql = "UPDATE attendance SET checkout_time = '$checkout_time' WHERE id = '$id'";
+        return pdo_execute($sql);
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
