@@ -45,19 +45,27 @@
                 <form role="form" class="filter-panel">
                     <div class="row">
                         <div class="col-md-3 form-group">
-                            <label>Tên phòng ban</label>
-                            <input type="text" class="form-control form-control-sm">
-                        </div>
-                        <div class="col-md-3 form-group">
-                            <label>ID phòng ban</label>
+                            <label>Sắp xếp theo</label>
                             <select class="form-control form-control-sm">
-                                <option value="0">Tất cả</option>
+                                <option value="0">Gần đây nhất</option>
+                                <option value="1">Xa nhất</option>
                             </select>
                         </div>
                         <div class="col-md-3 form-group">
-                            <label>Người quản lý</label>
+                            <label>Trạng thái</label>
                             <select class="form-control form-control-sm">
                                 <option value="0">Tất cả</option>
+                                <option value="1">Muộn</option>
+                                <option value="0">Đúng giờ</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label>Phê duyệt</label>
+                            <select class="form-control form-control-sm">
+                                <option value="0">Tất cả</option>
+                                <option value="1">Đang chờ duyệt</option>
+                                <option value="2">Đã duyệt</option>
+                                <option value="3">Từ chối</option>
                             </select>
                         </div>
                     </div>
@@ -92,6 +100,7 @@
                             <td class="fw-bold">Giờ ra</td>
                             <td class="fw-bold">Trạng thái</td>
                             <td class="fw-bold">Phê duyệt</td>
+                            <td class="fw-bold">Người duyệt</td>
                         </tr>
                     </thead>
                     <tfoot>
@@ -104,6 +113,7 @@
                             <td class="fw-bold">Giờ ra</td>
                             <td class="fw-bold">Trạng thái</td>
                             <td class="fw-bold">Phê duyệt</td>
+                            <td class="fw-bold">Người duyệt</td>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -117,6 +127,7 @@
                                 <td><?= $value['checkout_time'] ?></td>
                                 <td><?= $value['status'] ?></td>
                                 <td><?= $value['approve'] ?></td>
+                                <td></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>

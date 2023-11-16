@@ -89,7 +89,7 @@
                             <td><?= $value['work_hours']  . ' giờ' ?></td>
                             <td class="text-end">
                                 <!-- Chức năng - xem chi tiết -->
-                                <a href="?act=salary_detail&id=<?= $value['id']?>" class="btn bg-gradient-info btn-sm m-0 mx-1 px-4">
+                                <a href="?act=salary_detail&salary_id=<?= $value['id']?>" class="btn bg-gradient-info btn-sm m-0 mx-1 px-4">
                                     <i class="fa-solid fa-circle-info fs-6"></i>
                                 </a>
                             </td>

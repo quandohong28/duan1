@@ -17,16 +17,16 @@
                     <small class="col text-end">CÔNG CHUẨN: 26 Ngày</small>
                 </p>
                 <p class="row justify-content-between">
-                    <small class="col">THÁNG:<?= '' ?> NĂM: <?= '' ?></small>
-                    <small class="col text-end">SỐ NGÀY LÀM VIỆC: </small>
+                    <small class="col">THÁNG:<?= $salary['month'] ?> NĂM: <?= $salary['year'] ?></small>
+                    <small class="col text-end">SỐ NGÀY LÀM VIỆC: <?= $salary['work_days'] ?></small>
                 </p>
                 <p class="row justify-content-between">
                     <small class="col"></small>
-                    <small class="col text-end">SỐ GIỜ LÀM VIỆC: </small>
+                    <small class="col text-end">SỐ GIỜ LÀM VIỆC: <?= $salary['work_hours'] ?></small>
                 </p>
                 <p class="row justify-content-between">
                     <small class="col"></small>
-                    <small class="col text-end">OVERTIME: </small>
+                    <small class="col text-end">OVERTIME: 0</small>
                 </p>
             </div>
             <div class="row">
@@ -36,31 +36,49 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Các khoản thu nhập</th>
+                                <th>Hệ số</th>
                             </tr>
                             <tr>
                                 <th>1</th>
-                                <th>Nhà ở</th>
-                                <td>10000000</td>
+                                <th>Lương cơ bản</th>
+                                <td></td>
+                                <td><?= number_format($salary_scale[0]['value']) . ' đ' ?></td>
                             </tr>
                             <tr>
                                 <th>2</th>
-                                <th>Xăng xe</th>
-                                <td>10000000</td>
+                                <th>Lương trên số ngày làm việc thực tế</th>
+                                <td><?= number_format($salary['work_days'] / 26 * 100, 1) . ' %'?></td>
+                                <td><?= number_format($real_salary) . ' đ' ?></td>
                             </tr>
                             <tr>
                                 <th>3</th>
-                                <th>Thâm niên</th>
-                                <td>10000000</td>
+                                <th>Nhà ở</th>
+                                <td><?= $salary_scale[1]['value'] . ' %'?></td>
+                                <td><?= number_format($salary_scale[1]['value'] * $real_salary / 100) . ' đ' ?></td>
                             </tr>
                             <tr>
                                 <th>4</th>
-                                <th>Lương cơ bản</th>
-                                <td>10000000</td>
+                                <th>Xăng xe</th>
+                                <td><?= $salary_scale[2]['value'] . ' %'?></td>
+                                <td><?= number_format($salary_scale[2]['value'] * $real_salary / 100) . ' đ' ?></td>
                             </tr>
+                            <tr>
+                                <th>5</th>
+                                <th>Thưởng</th>
+                                <td><?= $salary_scale[4]['value'] . ' %'?></td>
+                                <td><?= number_format($salary_scale[4]['value'] * $real_salary / 100) . ' đ' ?></td>
+                            </tr>
+                            <tr>
+                                <th>6</th>
+                                <th>Thâm niên</th>
+                                <td><?= $salary_scale[5]['value'] . ' %'?></td>
+                                <td><?= number_format($salary_scale[5]['value'] * $real_salary / 100) . ' đ' ?></td>
+                            </tr>
+
                             <tr>
                                 <th></th>
                                 <th>Tổng thu nhập</th>
-                                <td>10000000</td>
+                                <td><?= number_format($total_income) . ' đ' ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -75,7 +93,7 @@
                             <tr>
                                 <th>1</th>
                                 <th>Bảo hiểm xã hội</th>
-                                <td>10000000</td>
+                                <td><?= number_format($salary_scale[3]['value'] * $real_salary / 100) . ' đ' ?></td>
                             </tr>
                             <tr>
                                 <th>2</th>
@@ -85,7 +103,7 @@
                             <tr>
                                 <th></th>
                                 <th>Tổng trừ</th>
-                                <td>10000000</td>
+                                <td><?= number_format($salary_scale[3]['value'] * $real_salary / 100) . ' đ' ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -93,13 +111,17 @@
             </div>
             <div class="row mb-5">
                 <p class="">
-                    <small class="col">TỔNG SỐ TIỀN LƯƠNG THỰC NHẬN: </small>
+                    <small class="col fw-bold">TỔNG SỐ TIỀN LƯƠNG THỰC NHẬN: <?= number_format($total_income - $salary_scale[3]['value'] * $real_salary / 100) . ' đ' ?></small>
                 </p>
                 <p class="">
-                    <small class="col">BẰNG CHỮ: </small>
+                    <small class="col fw-bold text-uppercase">BẰNG CHỮ: <?= numberToWords($total_income - $salary_scale[3]['value'] * $real_salary / 100) . ' ĐỒNG' ?></small>
                 </p>
                 <div class="row mb-5">
-                    <div class="col text-center">Xác nhận của Công ty</div>
+                    <div class="col text-center">
+                        <p>Xác nhận của Công ty</p>
+                        <p>QHR Master</p>
+                        <img src="../assets/img/stamp.png" alt="" width="160px">
+                    </div>
                     <div class="col text-center">Chữ ký nhân viên</div>
                 </div>
             </div>

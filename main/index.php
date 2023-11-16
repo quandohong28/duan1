@@ -11,9 +11,11 @@ include_once '../model/department.php';
 include_once '../model/time_regulations.php';
 include_once '../model/attendance.php';
 include_once '../model/salary.php';
+include_once '../model/rank.php';
 
 
 $employee = getEmployeeInfoDetail($_SESSION['user']['id']);
+// var_dump($employee);
 $team = getTeamByEmployeeId($_SESSION['user']['id']);
 
 $avatar_path = '../assets/img/';
@@ -71,6 +73,69 @@ $image_path = '../assets/img/';
 						include_once 'individual/salary/salary.php';
 						break;
 					case 'salary_detail':
+						$salary_scale = getSalaryScaleValueByRank($employee['rank_id']);
+						$salary = getSalaryById($_GET['salary_id']);
+
+						function numberToWords($number)
+						{
+							$ones = array(
+								0 => 'không',
+								1 => 'một',
+								2 => 'hai',
+								3 => 'ba',
+								4 => 'bốn',
+								5 => 'năm',
+								6 => 'sáu',
+								7 => 'bảy',
+								8 => 'tám',
+								9 => 'chín'
+							);
+
+							$number = abs(intval($number));
+
+							if ($number == 0) {
+								return $ones[0];
+							}
+
+							$result = '';
+
+							// Đọc hàng triệu
+							if ($number >= 1000000) {
+								$result .= numberToWords(floor($number / 1000000)) . ' triệu ';
+								$number %= 1000000;
+							}
+
+							// Đọc hàng nghìn
+							if ($number >= 1000) {
+								$result .= numberToWords(floor($number / 1000)) . ' nghìn ';
+								$number %= 1000;
+							}
+
+							// Đọc hàng trăm
+							if ($number >= 100) {
+								$result .= $ones[floor($number / 100)] . ' trăm ';
+								$number %= 100;
+							}
+
+							// Đọc hàng chục
+							if ($number >= 10 && $number <= 19) {
+								$result .= 'mười ';
+								$number %= 10;
+							} elseif ($number >= 20) {
+								$result .= $ones[floor($number / 10)] . ' mươi ';
+								$number %= 10;
+							}
+
+							// Đọc hàng đơn vị
+							if ($number > 0) {
+								$result .= $ones[$number];
+							}
+
+							return $result;
+						}
+
+						$real_salary = $salary_scale[0]['value'] / 26 * $salary['work_days'];
+						$total_income = $real_salary + $salary_scale[1]['value'] * $real_salary / 100 + $salary_scale[2]['value'] * $real_salary / 100 + $salary_scale[4]['value'] * $real_salary / 100 + $salary_scale[5]['value'] * $real_salary / 100;
 						include_once 'individual/salary/salary_detail.php';
 						break;
 					case 'salary_scale':
@@ -157,6 +222,10 @@ $image_path = '../assets/img/';
 						include 'utilities/reward_discipline.php';
 						break;
 					case 'personnel_mobilization':
+						$employees = getAllEmployees();
+						$teams = getAllTeams();
+						$departments = getAllDepartments();
+						$ranks = getAllRanks();
 						include 'utilities/personnel_mobilization.php';
 						break;
 					case 'benefits':
@@ -164,6 +233,9 @@ $image_path = '../assets/img/';
 						break;
 					case 'performance_evaluation':
 						include 'utilities/performance_evaluation.php';
+						break;
+					case 'chart':
+						include 'chart/index.php';
 						break;
 					default:
 						include 'pages/home.php';
