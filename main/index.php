@@ -12,11 +12,13 @@ include_once '../model/time_regulations.php';
 include_once '../model/attendance.php';
 include_once '../model/salary.php';
 include_once '../model/rank.php';
+include_once '../model/notification.php';
 
 
 $employee = getEmployeeInfoDetail($_SESSION['user']['id']);
 // var_dump($employee);
 $team = getTeamByEmployeeId($_SESSION['user']['id']);
+
 
 $avatar_path = '../assets/img/';
 $image_path = '../assets/img/';
@@ -48,7 +50,7 @@ $image_path = '../assets/img/';
 	<?php include 'layouts/sidebar.php' ?>
 	<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 		<?php
-		// include 'layouts/topbar.php'
+		$notifications = getNotificationByEmployeeIdAndStatus($_SESSION['user']['id'], 'unread');
 		include 'layouts/topbar.php'
 		?>
 		<div class="container-fluid py-4">
@@ -59,6 +61,7 @@ $image_path = '../assets/img/';
 						include_once 'pages/home.php';
 						break;
 					case 'notification':
+						$notifications = getNotificationByEmployeeId($_SESSION['user']['id']);
 						include_once 'pages/notification.php';
 						break;
 					case 'profile':

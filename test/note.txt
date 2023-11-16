@@ -17,3 +17,5 @@ CREATE TABLE company_infomation(
 // đặt ra tiêu chuẩn, mỗi ngày viết ít nhất 2 chức năng lớn (LỚN)
 
 // -> 15 ngày = 30 chức năng LỚN
+
+// sửa bảng thông báo, thêm 1 dòng status
