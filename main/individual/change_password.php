@@ -1,7 +1,9 @@
 <div class="col-sm-12 bg-white rounded p-5">
     <div class="panel panel-default no-border">
         <div class="panel-heading no-border">
-            Đổi mật khẩu
+            <h6>
+                Đổi mật khẩu
+            </h6>
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
@@ -15,7 +17,7 @@
                 <div class="form-group">
                     <label for="newpassword" class="col-sm-3 control-label">Mật khẩu mới</label>
                     <div class="col-sm-9">
-                        <input id="newpassword" type="password" placeholder="••••••••••" class="form-control">
+                        <input id="newpassword" type="password" placeholder="•••••••••" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
@@ -27,7 +29,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-9">
-                        <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
+                        <button type="submit" class="btn btn-success">Đổi mật khẩu</button>
                     </div>
                 </div>
             </form>

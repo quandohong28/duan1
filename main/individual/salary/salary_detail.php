@@ -30,7 +30,7 @@
                 </p>
             </div>
             <div class="row">
-                <div class="table-responsive col">
+                <div class="table-responsive col-7">
                     <table class="table table-hover">
                         <tbody>
                             <tr>
@@ -42,7 +42,7 @@
                                 <th>1</th>
                                 <th>Lương cơ bản</th>
                                 <td></td>
-                                <td><?= number_format($salary_scale[0]['value']) . ' đ' ?></td>
+                                <td><?= number_format($salary_scale[0]['value'], 0, '.', ',') . ' đ' ?></td>
                             </tr>
                             <tr>
                                 <th>2</th>
@@ -78,6 +78,7 @@
                             <tr>
                                 <th></th>
                                 <th>Tổng thu nhập</th>
+                                <td></td>
                                 <td><?= number_format($total_income) . ' đ' ?></td>
                             </tr>
                         </tbody>

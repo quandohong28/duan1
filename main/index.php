@@ -44,6 +44,10 @@ $image_path = '../assets/img/';
 	<link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
 	<!-- CSS Files -->
 	<link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
+	<!-- Quill -->
+	<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+	
 </head>
 
 <body class="g-sidenav-show bg-gray-100 small">
@@ -78,67 +82,8 @@ $image_path = '../assets/img/';
 					case 'salary_detail':
 						$salary_scale = getSalaryScaleValueByRank($employee['rank_id']);
 						$salary = getSalaryById($_GET['salary_id']);
-
-						function numberToWords($number)
-						{
-							$ones = array(
-								0 => 'không',
-								1 => 'một',
-								2 => 'hai',
-								3 => 'ba',
-								4 => 'bốn',
-								5 => 'năm',
-								6 => 'sáu',
-								7 => 'bảy',
-								8 => 'tám',
-								9 => 'chín'
-							);
-
-							$number = abs(intval($number));
-
-							if ($number == 0) {
-								return $ones[0];
-							}
-
-							$result = '';
-
-							// Đọc hàng triệu
-							if ($number >= 1000000) {
-								$result .= numberToWords(floor($number / 1000000)) . ' triệu ';
-								$number %= 1000000;
-							}
-
-							// Đọc hàng nghìn
-							if ($number >= 1000) {
-								$result .= numberToWords(floor($number / 1000)) . ' nghìn ';
-								$number %= 1000;
-							}
-
-							// Đọc hàng trăm
-							if ($number >= 100) {
-								$result .= $ones[floor($number / 100)] . ' trăm ';
-								$number %= 100;
-							}
-
-							// Đọc hàng chục
-							if ($number >= 10 && $number <= 19) {
-								$result .= 'mười ';
-								$number %= 10;
-							} elseif ($number >= 20) {
-								$result .= $ones[floor($number / 10)] . ' mươi ';
-								$number %= 10;
-							}
-
-							// Đọc hàng đơn vị
-							if ($number > 0) {
-								$result .= $ones[$number];
-							}
-
-							return $result;
-						}
-
 						$real_salary = $salary_scale[0]['value'] / 26 * $salary['work_days'];
-						$total_income = $real_salary + $salary_scale[1]['value'] * $real_salary / 100 + $salary_scale[2]['value'] * $real_salary / 100 + $salary_scale[4]['value'] * $real_salary / 100 + $salary_scale[5]['value'] * $real_salary / 100;
+						$total_income = $real_salary + ($salary_scale[1]['value'] * $real_salary / 100) + ($salary_scale[2]['value'] * $real_salary / 100) + ($salary_scale[4]['value'] * $real_salary / 100) + ($salary_scale[5]['value'] * $real_salary / 100);
 						include_once 'individual/salary/salary_detail.php';
 						break;
 					case 'salary_scale':
@@ -315,6 +260,7 @@ $image_path = '../assets/img/';
 	<script src="../assets/js/soft-ui-dashboard.min.js"></script>
 	<!-- Moment.js -->
 	<script src="../assets/js/moment.js"></script>
+	<!-- Quill -->
 	<script>
 		// Lấy tất cả các liên kết trong menu
 		var menuLinks = document.querySelectorAll('.nav-link');

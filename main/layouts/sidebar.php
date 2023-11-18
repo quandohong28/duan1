@@ -19,7 +19,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=approve">
-                    <div class="icon-sm shadow border-radius-md bg-gradient-success text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-check"></i>
                     </div>
                     <span class="nav-link-text ms-1">Phê duyệt</span>
@@ -27,7 +27,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=attendance">
-                    <div class="icon-sm shadow border-radius-md bg-gradient-danger text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-calendar-check"></i>
                     </div>
                     <span class="nav-link-text ms-1">Chấm công</span>
@@ -35,7 +35,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=schedule">
-                    <div class="icon-sm shadow border-radius-md bg-gradient-warning text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-calendar"></i>
                     </div>
                     <span class="nav-link-text ms-1">Lịch</span>
@@ -43,7 +43,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=organizational">
-                    <div class="icon-sm shadow border-radius-md bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa fa-sitemap"></i>
                     </div>
                     <span class="nav-link-text ms-1">Sơ đồ tổ chức</span>
@@ -51,7 +51,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?act=communicate">
-                    <div class="icon-sm shadow border-radius-md bg-gradient-secondary text-center me-2 d-flex align-items-center justify-content-center text-light">
+                    <div class="icon-sm shadow border-radius-md bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center text-light">
                         <i class="fa-regular fa-comments"></i>
                     </div>
                     <span class="nav-link-text ms-1">Giao tiếp</span>
