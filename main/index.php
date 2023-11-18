@@ -47,7 +47,7 @@ $image_path = '../assets/img/';
 	<!-- Quill -->
 	<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-	
+
 </head>
 
 <body class="g-sidenav-show bg-gray-100 small">
@@ -135,8 +135,8 @@ $image_path = '../assets/img/';
 						$currentFormattedYear = $currentDateTime->format("Y");
 						if (isset($_POST['submit'])) {
 							$method = $_POST['method'];
+							$checkin_date = getLatestCheckin()['date'];
 							if ($method == 0) {
-								$checkin_date = getLatestCheckin()['date'];
 								if ($currentFormattedDate == $checkin_date) {
 									$message = 'Hôm nay bạn đã chấm công rồi!';
 								} else {
@@ -149,17 +149,23 @@ $image_path = '../assets/img/';
 										$message = 'Chấm công thành công!';
 										checkin($employee_id, $currentFormattedDate, $currentFormattedTime, $status);
 									}
-									setWorkDays($employee_id, $currentFormattedMonth, $currentFormattedYear, $work_days);
 								}
 							} else {
-								if ($currentFormattedTime <= $regulation['checkin_time']) {
-									$message = 'Bạn đã về sớm! Chấm công thành công!';
-									$status = 'late';
-									checkout($currentFormattedTime);
+								if (getLatestCheckin()) {
+									if ($currentFormattedTime <= $regulation['checkin_time']) {
+										$message = 'Bạn đã về sớm! Chấm công thành công!';
+										$status = 'late';
+										checkout($currentFormattedTime);
+									} else {
+										$status = 'present';
+										$message = 'Chấm công thành công!';
+										checkout($currentFormattedTime);
+									}
+									addSalary($employee_id, $currentFormattedMonth, $currentFormattedYear);
+									setWorkHours($employee_id, $currentFormattedMonth, $currentFormattedYear, calWorkHours(getCurrentCheckinTime($employee_id, $currentFormattedDate)['checkin_time'], $currentFormattedTime));
+									setWorkDays($employee_id, $currentFormattedMonth, $currentFormattedYear);
 								} else {
-									$status = 'present';
-									$message = 'Chấm công thành công!';
-									checkout($currentFormattedTime);
+									$message = 'Bạn chưa chấm công vào hôm nay!';
 								}
 							}
 						}

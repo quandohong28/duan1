@@ -103,67 +103,26 @@ function getAttendanceMonthById($id)
     }
 }
 
-function calTime($time_in, $time_out)
+function getCurrentCheckinTime($employee_id, $date)
 {
     try {
-        $time_in = strtotime($time_in);
-        $time_out = strtotime($time_out);
-        $time = $time_out - $time_in;
-        $hour = floor($time / 3600);
-        $minute = floor(($time - $hour * 3600) / 60);
-        $second = $time - $hour * 3600 - $minute * 60;
-        return $hour . ":" . $minute . ":" . $second;
+        
+        $sql = "SELECT checkin_time FROM attendance WHERE employee_id = $employee_id AND date = '$date'";
+        return pdo_query_one($sql);
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
 }
 
-function addAttendanceMonth($employee_id, $month, $year, $total_time)
+function calWorkHours($checkin, $checkout)
 {
-    try {
-        $sql = "INSERT INTO attendance_month (employee_id, month, year, total_time) VALUES (?, ?, ?, ?)";
-        return pdo_execute($sql, $employee_id, $month, $year, $total_time);
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
-}
+    // chỉ lấy giờ và phút
+    $checkin = new DateTime("1970-01-01 " . $checkin);
+    $checkout = new DateTime("1970-01-01 " . $checkout);
 
-function setWorkDays($employee_id, $month, $year, $work_days)
-{
-    try {
-        $sql = "UPDATE attendance_month SET work_days = ? WHERE employee_id = ? AND month = ? AND year = ?";
-        return pdo_execute($sql, $work_days, $employee_id, $month, $year);
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
-}
+    // tính khoảng cách giữa 2 thời gian
+    $difference = $checkin->diff($checkout);
 
-function setWorkHours($employee_id, $month, $year, $work_hours)
-{
-    try {
-        $sql = "UPDATE attendance_month SET work_hours = ? WHERE employee_id = ? AND month = ? AND year = ?";
-        return pdo_execute($sql, $work_hours, $employee_id, $month, $year);
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
-}
-
-function setOvertimeHours($employee_id, $month, $year, $overtime_hours)
-{
-    try {
-        $sql = "UPDATE attendance_month SET overtime_hours = ? WHERE employee_id = ? AND month = ? AND year = ?";
-        return pdo_execute($sql, $overtime_hours, $employee_id, $month, $year);
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
-}
-
-function setLeaveHours($employee_id, $month, $year, $leave_hours)
-{
-    try {
-        $sql = "UPDATE attendance_month SET leave_hours = ? WHERE employee_id = ? AND month = ? AND year = ?";
-        return pdo_execute($sql, $leave_hours, $employee_id, $month, $year);
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
+    // chuyển đổi sang số thực
+    return (float)$difference->format('%s.%F');
 }
