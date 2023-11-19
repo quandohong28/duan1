@@ -4,6 +4,7 @@ if (!isset($_SESSION['user'])) {
 	header('location: ../index.php');
 }
 
+
 include_once '../model/pdo.php';
 include_once '../model/employee.php';
 include_once '../model/team.php';
@@ -13,6 +14,10 @@ include_once '../model/attendance.php';
 include_once '../model/salary.php';
 include_once '../model/rank.php';
 include_once '../model/notification.php';
+
+include_once 'permission.php';
+
+
 
 
 $employee = getEmployeeInfoDetail($_SESSION['user']['id']);
@@ -62,11 +67,20 @@ $image_path = '../assets/img/';
 			if (isset($_GET['act'])) {
 				switch ($_GET['act']) {
 					case 'home':
-						include_once 'pages/home.php';
+						if(hasPermission($_SESSION['user']['id'], $_GET['act'])) {
+							include_once 'pages/home.php';
+						}else {
+							include_once 'pages/permission_denied.php';
+						}
 						break;
 					case 'notification':
-						$notifications = getNotificationByEmployeeId($_SESSION['user']['id']);
-						include_once 'pages/notification.php';
+						if(hasPermission($_SESSION['user']['id'], $_GET['act'])) {
+							$notifications = getNotificationByEmployeeId($_SESSION['user']['id']);
+							include_once 'pages/notification.php';
+						}
+						else {
+							include_once 'pages/permission_denied.php';
+						}
 						break;
 					case 'profile':
 						$team_members = getEmployeeByTeamId($team['id']);
@@ -118,10 +132,15 @@ $image_path = '../assets/img/';
 						break;
 					case 'logout':
 						unset($_SESSION['user']);
-						header('location: ../index.php');
+						echo '<meta http-equiv="refresh" content="0;url=../index.php">';
 						break;
 					case 'approve':
-						include 'pages/approve/index.php';
+						if(hasPermission($_SESSION['user']['id'], $_GET['act'])) {
+							include 'pages/approve/index.php';
+						}
+						else {
+							include_once 'pages/permission_denied.php';	
+						}
 						break;
 					case 'attendance':
 						$attendance = getAttendanceByEmployeeId($_SESSION['user']['id']);
@@ -182,7 +201,12 @@ $image_path = '../assets/img/';
 						include 'pages/communicate.php';
 						break;
 					case 'table':
-						include 'table/index.php';
+						if(hasPermission($_SESSION['user']['id'], $_GET['act'])) {
+							include 'table/index.php';
+						}
+						else {
+							include_once 'pages/permission_denied.php';
+						}
 						break;
 					case 'reward_discipline':
 						include 'utilities/reward_discipline.php';
@@ -287,3 +311,5 @@ $image_path = '../assets/img/';
 </body>
 
 </html>
+
+modal

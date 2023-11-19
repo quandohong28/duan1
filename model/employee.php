@@ -20,6 +20,15 @@ function getEmployeeById($id)
     }
 }
 
+function getEmployeeRankById($id) {
+    try {
+        $sql = "SELECT r.name as rank FROM employees e LEFT OUTER JOIN ranks r ON e.rank_id = r.id WHERE e.id = $id";
+        return pdo_query_one($sql);
+    } catch (Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+}
+
 function getEmployeeInfoDetail($id)
 {
     try {
