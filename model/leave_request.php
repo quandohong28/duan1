@@ -22,16 +22,16 @@ function addRequest($employee_id, $start_date, $end_date, $reason, $status)
     }
 }
 
-function updateRequest($id, $employee_id, $start_date, $end_date, $reason, $status)
-{
-    $sql = 'UPDATE leave_request SET employee_id = ?, start_date = ?, end_date = ?, reason = ?, status = ? WHERE id = ?';
-    return pdo_execute($sql, $employee_id, $start_date, $end_date, $reason, $status, $id);
+function editRequest($request_id, $time_start, $time_end, $reason) {
+    $sql = "UPDATE leave_requests SET time_start = '$time_start', time_end = '$time_end', reason = '$reason', status = 'Pending' WHERE id = '$request_id'";
+    echo $sql;die;
+    return pdo_execute($sql);
 }
 
-function deleteRequest($id)
+function cancelRequest($id)
 {
-    $sql = 'DELETE FROM leave_request WHERE id = ?';
-    pdo_execute($sql, $id);
+    $sql = "UPDATE leave_requests SET status = 'Cancelled' WHERE id = '$id'";
+    return pdo_execute($sql);
 }
 
 function getRequestByEmployeeId($employee_id)

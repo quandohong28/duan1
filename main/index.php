@@ -41,9 +41,7 @@ $image_path = '../assets/img/';
     <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
@@ -142,22 +140,39 @@ $image_path = '../assets/img/';
                         break;
                     case 'leave_request':
                         if (hasPermission($_SESSION['user']['id'], $_GET['act'])) {
-							$employee_id = $_SESSION['user']['id'];
+                            $employee_id = $_SESSION['user']['id'];
                             $leave_requests = getRequestByEmployeeId($employee_id);
-							
-							include_once 'individual/benefit/leave_request.php';
 
-                            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-								$time_start = $_POST['time_start'];
+                            include_once 'individual/benefit/leave_request.php';
+
+                            // xử lý thêm một request mới
+                            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_submit'])) {
+                                $time_start = $_POST['time_start'];
                                 $time_end = $_POST['time_end'];
                                 $reason = $_POST['reason'];
-								
                                 addRequest($employee_id, $time_start, $time_end, $reason, $status = 'Chờ duyệt');
+                                echo '<meta http-equiv="refresh" content="0;url=?act=leave_request">';
+                            }
+
+                            // xử lý sửa một request
+                            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_submit'])) {
+                                $request_id = $_POST['request_id'];
+                                $time_start = $_POST['time_start'];
+                                $time_end = $_POST['time_end'];
+                                $reason = $_POST['reason'];
+                                editRequest($request_id, $time_start, $time_end, $reason);
+                                // echo '<meta http-equiv="refresh" content="0;url=?act=leave_request">';
+                            }
+
+                            // xử lý hủy một request
+                            if (isset($_GET['controller']) && $_GET['controller'] == 'cancel') {
+                                $request_id = $_GET['request_id'];
+                                cancelRequest($request_id);
+                                echo '<meta http-equiv="refresh" content="0;url=?act=leave_request">';
                             }
                         } else {
                             include_once 'pages/permission_denied.php';
                         }
-            
                         break;
                     case 'vacation':
                         if (hasPermission($_SESSION['user']['id'], $_GET['act'])) {

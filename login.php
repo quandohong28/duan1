@@ -31,18 +31,21 @@
 				<div class="col-md-6 col-xl-4">
 					<div class="card">
 						<div class="card-body text-center d-flex flex-column align-items-center">
-							<form method="post" data-bs-theme="light" action="account_controller.php?act=login">
+							<form method="post" data-bs-theme="light" action="account_controller.php?act=login" name="loginForm" onsubmit="return validateForm()">
 								<div class="mb-3">
-									<input class="form-control" type="text" name="username" placeholder="Tên đăng nhập">
+									<input class="form-control" type="text" name="username" id="username" placeholder="Tên đăng nhập" onfocus="hideError('usernameError')">
+									<div id="usernameError" class="text-danger"></div>
 								</div>
 								<div class="mb-3">
-									<input class="form-control" type="password" name="password" placeholder="Mật khẩu">
+									<input class="form-control" type="password" name="password" id="password" placeholder="Mật khẩu" onfocus="hideError('passwordError')">
+									<div id="passwordError" class="text-danger"></div>
 								</div>
 								<div class="mb-3">
 									<button class="btn btn-outline-primary shadow d-block w-100" name="login_submit" type="submit">Đăng nhập</button>
 								</div>
 							</form>
-							<p class="text-muted small">Bạn chưa có tài khoản? <a href="./signup.php">Đăng ký</a></p>
+
+
 							<p class="text-muted small">Bạn quên mật khẩu? <a href="./forgot_password.php">Quên mật khẩu</a></p>
 						</div>
 					</div>
@@ -50,6 +53,38 @@
 			</div>
 		</div>
 	</main>
+
+	<script>
+		function hideError(elementId) {
+			var errorElement = document.getElementById(elementId);
+			if (errorElement) {
+				errorElement.innerHTML = ""; // Ẩn thông báo lỗi
+			}
+		}
+
+		function validateForm() {
+			var username = document.getElementById('username').value;
+			var password = document.getElementById('password').value;
+			var usernameError = document.getElementById('usernameError');
+			var passwordError = document.getElementById('passwordError');
+			var isValid = true;
+
+			usernameError.innerHTML = ""; // Reset error message
+			passwordError.innerHTML = ""; // Reset error message
+
+			if (username.trim() === "") {
+				usernameError.innerHTML = "Vui lòng nhập tên đăng nhập.";
+				isValid = false;
+			}
+
+			if (password.trim() === "") {
+				passwordError.innerHTML = "Vui lòng nhập mật khẩu.";
+				isValid = false;
+			}
+
+			return isValid;
+		}
+	</script>
 </body>
 
 </html>

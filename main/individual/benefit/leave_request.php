@@ -15,16 +15,15 @@
                 <div class="col-3">
                     <div class="mb-3">
                         <label for="time_start" class="form-label">Thời gian bắt đầu</label>
-                        <input type="date" name="time_start" id="todayDate" class="form-control form-control-sm"
-                            placeholder="" aria-describedby="helpId">
+                        <input type="date" name="time_start" id="todayDate" class="form-control form-control-sm" placeholder="" aria-describedby="helpId">
                     </div>
                     <div class="mb-3">
                         <label for="time_end" class="form-label">Thời gian kết thúc</label>
-                        <input type="date" name="time_end" id="time_end" class="form-control form-control-sm"
-                            placeholder="" aria-describedby="helpId">
+                        <input type="date" name="time_end" id="time_end" class="form-control form-control-sm" placeholder="" aria-describedby="helpId">
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-sm btn-success" type="submit">Gửi duyệt</button>
+                        <input type="hidden" name="add_submit">
                     </div>
                 </div>
                 <div class="col">
@@ -104,27 +103,28 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <?php foreach ($leave_requests as $key => $value) :?>
-                                <tr>
-                                    <td>
-                                        <input class="select-row-checkboxes" type="checkbox">
-                                    </td>
-                                    <td>
-                                        <a
-                                            href="?act=leave_request&request_id=<?= $value['id'] ?>"><?= $value['id'] ?></a>
-                                    </td>
-                                    <td><?= $value['create_at'] ?></td>
-                                    <td><?= $value['start_date'] ?></td>
-                                    <td><?= $value['end_date'] ?></td>
-                                    <td><?= $value['status'] ?></td>
-                                    <td><?= $value['approve_at'] ?></td>
-                                    <td>
-                                        <button data-bs-toggle="modal" data-bs-target="#requestDetailModal" data-bs-value="<?= $value['reason'] ?>" type="button"
-                                            class="btn btn-sm btn-info">
-                                            Chi tiết
-                                        </button>
-                                    </td>
-                                    <?php endforeach?>
+                                <?php foreach ($leave_requests as $key => $value) : ?>
+                                    <tr>
+                                        <td>
+                                            <input class="select-row-checkboxes" type="checkbox">
+                                        </td>
+                                        <td>
+                                            <a href="?act=leave_request&request_id=<?= $value['id'] ?>"><?= $value['id'] ?></a>
+                                        </td>
+                                        <td><?= $value['create_at'] ?></td>
+                                        <td><?= $value['start_date'] ?></td>
+                                        <td><?= $value['end_date'] ?></td>
+                                        <td><?= $value['status'] ?></td>
+                                        <td><?= $value['approve_at'] ?></td>
+                                        <td>
+                                            <button data-bs-toggle="modal" data-bs-target="#requestDetailModal" data-bs-value="<?= $value['reason'] ?>" type="button" class="btn btn-sm btn-info">
+                                                Chi tiết
+                                            </button>
+                                            <button data-bs-toggle="modal" data-bs-target="#editRequestModal" data-bs-value="<?= $value['reason'] ?>" type="button" class="btn btn-sm btn-warning">Sửa</button>
+                                            <a onclick="return confirm('Bạn c
+                                            ó thực sự muốn hủy phiếu yêu cầu này?')" href="?act=leave_request&controller=cancel&request_id=<?= $value['id'] ?>" class="btn btn-sm btn-danger">Hủy phiếu</a>
+                                        </td>
+                                    <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>
@@ -158,8 +158,8 @@
     </div>
 </section>
 
-<div class="modal fade modal-lg" id="requestDetailModal" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
-    aria-hidden="true">
+<!-- Modal chi tiết một leave_request -->
+<div class="modal fade modal-lg" id="requestDetailModal" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -174,6 +174,47 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal sửa một leave_request -->
+
+<div class="modal fade modal-lg" id="editRequestModal" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="modalTitleId">Lý do</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post">
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="time_start" class="form-label">Ngày bắt đầu</label>
+                                <input type="date" name="time_start" id="time_start" class="form-control" placeholder="" aria-describedby="helpId">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="time_end" class="form-label">Ngày kết thúc</label>
+                                <input type="date" name="time_end" id="time_end" class="form-control" placeholder="" aria-describedby="helpId">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label for="" class="form-label">Lý do</label>
+                                <textarea class="form-control" name="reason" id="reason" cols="" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <input type="hidden" name="edit_request">
+                        <input type="hidden" name="request_id">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-success btn-sm" data-bs-dismiss="modal">Xác nhận</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -200,6 +241,20 @@
 
         let modalBody = requestDetailModal.querySelector('.reasonModal');
         modalBody.textContent = recipient;
-        
+
+    });
+
+
+    var editRequestModal = document.getElementById('editRequestModal');
+
+    editRequestModal.addEventListener('show.bs.modal', function(event) {
+        // Button that triggered the modal
+        let button = event.relatedTarget;
+        // Extract info from data-bs-* attributes
+        let recipient = button.getAttribute('data-bs-value');
+
+        let modalBody = editRequestModal.querySelector('.reasonModal');
+        modalBody.textContent = recipient;
+
     });
 </script>
