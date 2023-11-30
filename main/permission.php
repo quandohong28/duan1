@@ -86,7 +86,6 @@ $permissions = [
         'organizational',
         'communicate',
         'reward_discipline',
-        'benefits',
         'performance',
         'chart',
         'download'

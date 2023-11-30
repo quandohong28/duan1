@@ -11,25 +11,25 @@
             <small>Tính năng đang phát triển</small>
         </div>
         <div class="mb-4">
-            <form action="" class="row mb-3 rounded shadow p-5 min-vh-100" method="post">
+            <form action="?act=leave_request" class="row mb-3 rounded shadow p-5 min-vh-100" method="post">
                 <div class="col-3">
                     <div class="mb-3">
-                        <label for="" class="form-label">Thời gian bắt đầu</label>
-                        <input type="date" name="" id="todayDate" class="form-control form-control-sm" placeholder="" aria-describedby="helpId">
+                        <label for="time_start" class="form-label">Thời gian bắt đầu</label>
+                        <input type="date" name="time_start" id="todayDate" class="form-control form-control-sm"
+                            placeholder="" aria-describedby="helpId">
                     </div>
                     <div class="mb-3">
-                        <label for="" class="form-label">Thời gian kết thúc</label>
-                        <input type="date" name="" id="" class="form-control form-control-sm" placeholder="" aria-describedby="helpId">
+                        <label for="time_end" class="form-label">Thời gian kết thúc</label>
+                        <input type="date" name="time_end" id="time_end" class="form-control form-control-sm"
+                            placeholder="" aria-describedby="helpId">
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-sm btn-success" type="submit">Gửi duyệt</button>
                     </div>
                 </div>
-                <div class="col max-vh-50">
-                    <label for="" class="form-label">Nội dung đơn nghỉ phép</label>
-                    <div id="editor">
-                        <input type="hidden" id="quillContent" name="quillContent">
-                    </div>
+                <div class="col">
+                    <label for="" class="form-label">Lý do</label>
+                    <textarea class="form-control form-control-sm" name="reason" id="" cols="" rows="30"></textarea>
                 </div>
             </form>
 
@@ -86,6 +86,7 @@
                                     <td class="fw-bold">Thời gian kết thúc</td>
                                     <td class="fw-bold">Trạng thái</td>
                                     <td class="fw-bold">Thời gian phê duyệt</td>
+                                    <td class="fw-bold">Hành động</td>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -99,10 +100,31 @@
                                     <td class="fw-bold">Thời gian kết thúc</td>
                                     <td class="fw-bold">Trạng thái</td>
                                     <td class="fw-bold">Thời gian phê duyệt</td>
+                                    <td class="fw-bold">Hành động</td>
                                 </tr>
                             </tfoot>
                             <tbody>
-
+                                <?php foreach ($leave_requests as $key => $value) :?>
+                                <tr>
+                                    <td>
+                                        <input class="select-row-checkboxes" type="checkbox">
+                                    </td>
+                                    <td>
+                                        <a
+                                            href="?act=leave_request&request_id=<?= $value['id'] ?>"><?= $value['id'] ?></a>
+                                    </td>
+                                    <td><?= $value['create_at'] ?></td>
+                                    <td><?= $value['start_date'] ?></td>
+                                    <td><?= $value['end_date'] ?></td>
+                                    <td><?= $value['status'] ?></td>
+                                    <td><?= $value['approve_at'] ?></td>
+                                    <td>
+                                        <button data-bs-toggle="modal" data-bs-target="#requestDetailModal" data-bs-value="<?= $value['reason'] ?>" type="button"
+                                            class="btn btn-sm btn-info">
+                                            Chi tiết
+                                        </button>
+                                    </td>
+                                    <?php endforeach?>
                             </tbody>
                         </table>
                     </div>
@@ -136,6 +158,26 @@
     </div>
 </section>
 
+<div class="modal fade modal-lg" id="requestDetailModal" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="modalTitleId">Lý do</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <p class="reasonModal"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     // Khởi tạo Quill Editor
     var quill = new Quill('#editor', {
@@ -148,12 +190,16 @@
     // Đặt giá trị placeholder cho trường input date
     document.getElementById('todayDate').setAttribute('value', today);
 
-    // Lấy nội dung dưới dạng HTML
-    quill.on('text-change', function(delta, oldDelta, source) {
-        if (source === 'user') {
-            // Đây là sự kiện được kích hoạt bởi người dùng nhập nội dung
-            var content = quill.root.innerHTML;
-            console.log(content);
-        }
+    var requestDetailModal = document.getElementById('requestDetailModal');
+
+    requestDetailModal.addEventListener('show.bs.modal', function(event) {
+        // Button that triggered the modal
+        let button = event.relatedTarget;
+        // Extract info from data-bs-* attributes
+        let recipient = button.getAttribute('data-bs-value');
+
+        let modalBody = requestDetailModal.querySelector('.reasonModal');
+        modalBody.textContent = recipient;
+        
     });
 </script>

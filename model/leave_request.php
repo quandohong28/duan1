@@ -1,9 +1,9 @@
 <?php
 
-function getRequests()
+function getAllRequests()
 {
-    $sql = "SELECT * FROM leave_request";
-    return pdo_execute($sql);
+    $sql = 'SELECT * FROM leave_requests';
+    return pdo_query($sql);
 }
 
 function getRequestById($id)
@@ -12,28 +12,30 @@ function getRequestById($id)
     return pdo_query_one($sql);
 }
 
-function addRequest($employee_id, $start_date, $end_date, $type, $reason, $status)
+function addRequest($employee_id, $start_date, $end_date, $reason, $status)
 {
-    $sql = "INSERT INTO leave_request (employee_id, start_date, end_date, type, reason, status) VALUES (?, ?, ?, ?, ?, ?)";
-    return pdo_execute($sql, $employee_id, $start_date, $end_date, $type, $reason, $status);
+    try {
+        $sql = "INSERT INTO leave_requests (employee_id, start_date, end_date, reason, status) VALUES ('$employee_id', '$start_date', '$end_date', '$reason', '$status')";
+        return pdo_execute($sql);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
 
-function updateRequest($id, $employee_id, $start_date, $end_date, $type, $reason, $status)
+function updateRequest($id, $employee_id, $start_date, $end_date, $reason, $status)
 {
-    $sql = "UPDATE leave_request SET employee_id = ?, start_date = ?, end_date = ?, type = ?, reason = ?, status = ? WHERE id = ?";
-    return pdo_execute($sql, $employee_id, $start_date, $end_date, $type, $reason, $status, $id);
+    $sql = 'UPDATE leave_request SET employee_id = ?, start_date = ?, end_date = ?, reason = ?, status = ? WHERE id = ?';
+    return pdo_execute($sql, $employee_id, $start_date, $end_date, $reason, $status, $id);
 }
 
 function deleteRequest($id)
 {
-    $sql = "DELETE FROM leave_request WHERE id = ?";
+    $sql = 'DELETE FROM leave_request WHERE id = ?';
     pdo_execute($sql, $id);
 }
 
 function getRequestByEmployeeId($employee_id)
 {
-    $sql = "SELECT * FROM leave_request WHERE employee_id = $employee_id";
+    $sql = "SELECT * FROM leave_requests WHERE employee_id = $employee_id";
     return pdo_query($sql);
 }
-
-

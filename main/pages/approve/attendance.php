@@ -1,5 +1,5 @@
-<?php if (isset($message)) : ?>
-    <div class="alert alert-success" role="alert">
+<?php if (isset($alert)) : ?>
+    <div class="alert alert-<?= $class?> text-light" role="alert">
         <h6 class="alert-heading">Thông báo</h6>
         <p><?= $message ?></p>
     </div>
@@ -88,11 +88,12 @@
                                 <td class="fw-bold">Giờ vào</td>
                                 <td class="fw-bold">Giờ ra</td>
                                 <td class="fw-bold">Trạng thái</td>
+                                <td class="fw-bold">Phê duyệt</td>
                                 <td class="fw-bold col-2">Hành động</td>
                             </tr>
                         </tfoot>
                         <tbody>
-                            <?php foreach ($attendance as $key => $value) : ?>
+                            <?php foreach ($attendances as $key => $value) : ?>
                                 <tr>
                                     <td>
                                         <input class="" name="checkbox" value="" type="checkbox">
@@ -104,8 +105,8 @@
                                     <td><?= $value['status'] ?></td>
                                     <td><?= $value['approve'] ?></td>
                                     <td class="text-end col-2">
-                                        <a class="btn btn-sm btn-success" href=" ?act=approve&data=attendance&employee_id=<?= $value['id'] ?>&approve=accept">Phê duyệt</a>
-                                        <a class="btn btn-sm btn-danger" href=" ?act=approve&data=attendance&employee_id=<?= $value['id'] ?>&approve=refuse">Từ chối</a>
+                                        <a class="btn btn-sm btn-success" href="?act=approve&data=attendance&attendance_id=<?= $value['id'] ?>&approve=accept">Phê duyệt</a>
+                                        <a class="btn btn-sm btn-danger" href="?act=approve&data=attendance&attendance_id=<?= $value['id'] ?>&approve=reject">Từ chối</a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

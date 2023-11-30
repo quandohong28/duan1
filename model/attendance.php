@@ -3,7 +3,19 @@
 function getAllAttendance()
 {
     try {
-        $sql = "SELECT * FROM attendance INNER JOIN employees ON attendance.employee_id = employees.id";
+        $sql = "SELECT
+        e.name as name,
+        a.id as id,
+        a.date as date,
+        a.checkin_time as checkin_time,
+        a.checkout_time as checkout_time,
+        a.status as status,
+        a.approve as approve
+        FROM attendance a
+        INNER JOIN
+        employees e
+        ON
+        a.employee_id = e.id";
         return pdo_query($sql);
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -13,7 +25,7 @@ function getAllAttendance()
 function getAttendanceById($id)
 {
     try {
-        $sql = "SELECT * FROM attendance WHERE id = $id";
+        $sql = "SELECT * FROM attendance WHERE id = '$id'";
         return pdo_query_one($sql);
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -61,68 +73,27 @@ function getAttendanceByEmployeeId($employee_id)
     }
 }
 
-function approveAttendance($employee_id, $approve)
+function approveAttendance($attendance_id, $approve)
 {
     try {
-        $sql = "UPDATE attendance SET approve = '$approve' WHERE employee_id = '$employee_id'";
+        $sql = "UPDATE attendance SET approve = '$approve' WHERE id = '$attendance_id'";
         pdo_execute($sql);
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
 }
 
-
-
-function getAttendanceByEmployeeIdAndDate($employee_id, $date)
+function calWorkHours($start_time, $end_time)
 {
-    try {
-        $sql = "SELECT * FROM attendance WHERE employee_id = $employee_id AND date = '$date'";
-        return pdo_query_one($sql);
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
-}
+    // Tạo đối tượng DateTime cho hai mốc thời gian
+    $start = new DateTime("1970-01-01 $start_time");
+    $end = new DateTime("1970-01-01 $end_time");
 
-function getAllAttendanceMonth()
-{
-    try {
-        $sql = "SELECT * FROM attendance_month";
-        return pdo_execute($sql);
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
-}
+    // Tính toán khoảng cách giữa hai mốc thời gian (trong giây)
+    $difference = $end->getTimestamp() - $start->getTimestamp();
 
-function getAttendanceMonthById($id)
-{
-    try {
-        $sql = "SELECT * FROM attendance_month WHERE id = $id";
-        return pdo_query_one($sql);
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
-}
+    // Chuyển đổi khoảng cách từ giây sang giờ (số thực)
+    $hours = round($difference / 3600, 1);
 
-function getCurrentCheckinTime($employee_id, $date)
-{
-    try {
-        
-        $sql = "SELECT checkin_time FROM attendance WHERE employee_id = $employee_id AND date = '$date'";
-        return pdo_query_one($sql);
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
-}
-
-function calWorkHours($checkin, $checkout)
-{
-    // chỉ lấy giờ và phút
-    $checkin = new DateTime("1970-01-01 " . $checkin);
-    $checkout = new DateTime("1970-01-01 " . $checkout);
-
-    // tính khoảng cách giữa 2 thời gian
-    $difference = $checkin->diff($checkout);
-
-    // chuyển đổi sang số thực
-    return (float)$difference->format('%s.%F');
+    return $hours;
 }

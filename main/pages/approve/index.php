@@ -20,12 +20,27 @@
                     include('approve.php');
                     break;
                 case 'attendance':
-                    $attendance = getAllAttendance();
-                    if (isset($_GET['employee_id']) && isset($_GET['approve'])) {
-                        $employee_id = $_GET['employee_id'];
+                    $attendances = getAllAttendance();
+                    if (isset($_GET['approve'])) {
                         $approve = $_GET['approve'];
-                        approveAttendance($employee_id, $approve);
-                        $message = ($approve == 'accept') ? 'Đã phê duyệt thành công!' : 'Đã từ chối phê duyệt thành công!';
+                        $attendance_id = $_GET['attendance_id'];
+                        $attendance = getAttendanceById($attendance_id);
+                        $date = $attendance['date'];
+                        echo $date;
+                        $workHours = calWorkHours($attendance['checkin_time'], $attendance['checkout_time']);
+                        $workDays = 1;
+                        if ($approve == 'accept') {
+                            $alert = [
+                                $message = 'Đã phê duyệt thành công!',
+                                $class = 'success'
+                            ];
+                        } else {
+                            $alert = [
+                                $message = 'Đã từ chối phê duyệt!',
+                                $class = 'danger'
+                            ];
+                        }
+                        approveAttendance($attendance_id, $approve);
                     }
                     include('attendance.php');
                     break;
