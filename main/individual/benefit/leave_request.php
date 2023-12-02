@@ -15,11 +15,13 @@
                 <div class="col-3">
                     <div class="mb-3">
                         <label for="time_start" class="form-label">Thời gian bắt đầu</label>
-                        <input type="date" name="time_start" id="todayDate" class="form-control form-control-sm" placeholder="" aria-describedby="helpId">
+                        <input type="date" name="time_start" id="todayDate" class="form-control form-control-sm"
+                            placeholder="" aria-describedby="helpId">
                     </div>
                     <div class="mb-3">
                         <label for="time_end" class="form-label">Thời gian kết thúc</label>
-                        <input type="date" name="time_end" id="time_end" class="form-control form-control-sm" placeholder="" aria-describedby="helpId">
+                        <input type="date" name="time_end" id="time_end" class="form-control form-control-sm"
+                            placeholder="" aria-describedby="helpId">
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-sm btn-success" type="submit">Gửi duyệt</button>
@@ -103,28 +105,37 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <?php foreach ($leave_requests as $key => $value) : ?>
-                                    <tr>
-                                        <td>
-                                            <input class="select-row-checkboxes" type="checkbox">
-                                        </td>
-                                        <td>
-                                            <a href="?act=leave_request&request_id=<?= $value['id'] ?>"><?= $value['id'] ?></a>
-                                        </td>
-                                        <td><?= $value['create_at'] ?></td>
-                                        <td><?= $value['start_date'] ?></td>
-                                        <td><?= $value['end_date'] ?></td>
-                                        <td><?= $value['status'] ?></td>
-                                        <td><?= $value['approve_at'] ?></td>
-                                        <td>
-                                            <button data-bs-toggle="modal" data-bs-target="#requestDetailModal" data-bs-value="<?= $value['reason'] ?>" type="button" class="btn btn-sm btn-info">
-                                                Chi tiết
-                                            </button>
-                                            <button data-bs-toggle="modal" data-bs-target="#editRequestModal" data-bs-value="<?= $value['reason'] ?>" type="button" class="btn btn-sm btn-warning">Sửa</button>
-                                            <a onclick="return confirm('Bạn c
-                                            ó thực sự muốn hủy phiếu yêu cầu này?')" href="?act=leave_request&controller=cancel&request_id=<?= $value['id'] ?>" class="btn btn-sm btn-danger">Hủy phiếu</a>
-                                        </td>
-                                    <?php endforeach ?>
+                                <?php foreach ($leave_requests as $key => $value) :
+                                $request = json_encode(getRequestById($value['id']));
+                                ?>
+                                <tr>
+                                    <td>
+                                        <input class="select-row-checkboxes" type="checkbox">
+                                    </td>
+                                    <td>
+                                        <a
+                                            href="?act=leave_request&request_id=<?= $value['id'] ?>"><?= $value['id'] ?></a>
+                                    </td>
+                                    <td><?= $value['create_at'] ?></td>
+                                    <td><?= $value['start_date'] ?></td>
+                                    <td><?= $value['end_date'] ?></td>
+                                    <td><?= $value['status'] ?></td>
+                                    <td><?= $value['approve_at'] ?></td>
+                                    <td>
+                                        <button data-bs-toggle="modal" data-bs-target="#requestDetailModal"
+                                            data-bs-value="<?= $value['reason'] ?>" type="button"
+                                            class="btn btn-sm btn-info">
+                                            Chi tiết
+                                        </button>
+                                        <button data-bs-toggle="modal" data-bs-target="#editRequestModal"
+                                            data-bs-value='<?= $request ?>' type="button"
+                                            class="btn btn-sm btn-warning">Sửa</button>
+                                        <a onclick="return confirm('Bạn có thực sự muốn hủy phiếu yêu cầu này?')"
+                                            href="?act=leave_request&controller=cancel&request_id=<?= $value['id'] ?>"
+                                            class="btn btn-sm btn-danger">Hủy phiếu</a>
+                                    </td>
+                                    <?php
+                                     endforeach ?>
                             </tbody>
                         </table>
                     </div>
@@ -159,7 +170,8 @@
 </section>
 
 <!-- Modal chi tiết một leave_request -->
-<div class="modal fade modal-lg" id="requestDetailModal" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+<div class="modal fade modal-lg" id="requestDetailModal" tabindex="-1" role="dialog"
+    aria-labelledby="modalTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -180,7 +192,8 @@
 
 <!-- Modal sửa một leave_request -->
 
-<div class="modal fade modal-lg" id="editRequestModal" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+<div class="modal fade modal-lg" id="editRequestModal" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -193,21 +206,23 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="time_start" class="form-label">Ngày bắt đầu</label>
-                                <input type="date" name="time_start" id="time_start" class="form-control" placeholder="" aria-describedby="helpId">
+                                <input type="date" name="time_start" id="time_start_edit" class="form-control"
+                                    placeholder="" aria-describedby="helpId">
                             </div>
                             <div class="col-md-6">
                                 <label for="time_end" class="form-label">Ngày kết thúc</label>
-                                <input type="date" name="time_end" id="time_end" class="form-control" placeholder="" aria-describedby="helpId">
+                                <input type="date" name="time_end" id="time_end_edit" class="form-control"
+                                    placeholder="" aria-describedby="helpId">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 <label for="" class="form-label">Lý do</label>
-                                <textarea class="form-control" name="reason" id="reason" cols="" rows="10"></textarea>
+                                <textarea class="form-control" name="reason" id="reason_edit" cols="" rows="10"></textarea>
                             </div>
                         </div>
                         <input type="hidden" name="edit_request">
-                        <input type="hidden" name="request_id">
+                        <input type="hidden" name="request_id" id="request_id">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -220,41 +235,35 @@
 </div>
 
 <script>
-    // Khởi tạo Quill Editor
-    var quill = new Quill('#editor', {
-        theme: 'snow' // Bạn có thể thay đổi theme tại đây
-    });
-
-
-    const today = new Date().toISOString().split('T')[0];
-
     // Đặt giá trị placeholder cho trường input date
+    const today = new Date().toISOString().split('T')[0];
     document.getElementById('todayDate').setAttribute('value', today);
 
+    // Hiển thị chi tiết một leave_request
     var requestDetailModal = document.getElementById('requestDetailModal');
-
     requestDetailModal.addEventListener('show.bs.modal', function(event) {
         // Button that triggered the modal
         let button = event.relatedTarget;
         // Extract info from data-bs-* attributes
-        let recipient = button.getAttribute('data-bs-value');
+        let reason = button.getAttribute('data-bs-value');
 
         let modalBody = requestDetailModal.querySelector('.reasonModal');
-        modalBody.textContent = recipient;
+        modalBody.textContent = reason;
 
     });
 
-
+    // Sửa một leave_request
     var editRequestModal = document.getElementById('editRequestModal');
-
     editRequestModal.addEventListener('show.bs.modal', function(event) {
         // Button that triggered the modal
         let button = event.relatedTarget;
-        // Extract info from data-bs-* attributes
-        let recipient = button.getAttribute('data-bs-value');
-
-        let modalBody = editRequestModal.querySelector('.reasonModal');
-        modalBody.textContent = recipient;
-
+        // Extract info from data-bs-value attributes
+        let request = button.getAttribute('data-bs-value');
+        let requestData = JSON.parse(request);
+        console.log(requestData);
+        document.getElementById('time_start_edit').value = requestData.start_date;
+        document.getElementById('time_end_edit').value = requestData.end_date;
+        document.getElementById('reason_edit').value = requestData.reason;
+        document.getElementById('request_id').value = requestData.id;
     });
 </script>

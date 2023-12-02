@@ -32,7 +32,6 @@ $image_path = '../assets/img/';
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>QHR Master</title>
     <!--     Fonts and icons     -->
@@ -45,9 +44,6 @@ $image_path = '../assets/img/';
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
-    <!-- Quill -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 </head>
 
@@ -161,6 +157,7 @@ $image_path = '../assets/img/';
                                 $time_end = $_POST['time_end'];
                                 $reason = $_POST['reason'];
                                 editRequest($request_id, $time_start, $time_end, $reason);
+                                die;
                                 // echo '<meta http-equiv="refresh" content="0;url=?act=leave_request">';
                             }
 
@@ -410,10 +407,8 @@ $image_path = '../assets/img/';
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/soft-ui-dashboard.min.js"></script>
-    <!-- Moment.js -->
+    <script src="../assets/js/soft-ui-dashboard.js"></script>
     <script src="../assets/js/moment.js"></script>
-    <!-- Quill -->
     <script>
         // Lấy tất cả các liên kết trong menu
         var menuLinks = document.querySelectorAll('.nav-link');

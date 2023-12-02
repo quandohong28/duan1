@@ -1,18 +1,3 @@
-<div class="row gap-3 justify-content-start mb-4 mx-1">
-	<a href="#" class="col-xl-3 col-sm-6 mb-xl-0 mb-4 shadow rounded p-3">
-		<div class="row justify-content-center align-items-center">
-			<div class="col-8">
-				<h6>Cái gì đấy</h6>
-			</div>
-			<div class="col-4 text-end">
-				<div class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
-					<i class="fa fa-shuffle"></i>
-				</div>
-			</div>
-		</div>
-	</a>
-</div>
-
 <div class="row my-4">
 	<div class="col-lg-12 col-md-12 mb-md-0 mb-4">
 		<div class="card">

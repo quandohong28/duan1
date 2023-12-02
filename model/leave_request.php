@@ -8,8 +8,12 @@ function getAllRequests()
 
 function getRequestById($id)
 {
-    $sql = "SELECT * FROM leave_request WHERE id = '$id';";
-    return pdo_query_one($sql);
+    try {
+        $sql = "SELECT * FROM leave_requests WHERE id = '$id';";
+        return pdo_query_one($sql);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
 
 function addRequest($employee_id, $start_date, $end_date, $reason, $status)
@@ -23,8 +27,7 @@ function addRequest($employee_id, $start_date, $end_date, $reason, $status)
 }
 
 function editRequest($request_id, $time_start, $time_end, $reason) {
-    $sql = "UPDATE leave_requests SET time_start = '$time_start', time_end = '$time_end', reason = '$reason', status = 'Pending' WHERE id = '$request_id'";
-    echo $sql;die;
+    $sql = "UPDATE leave_requests SET start_date = '$time_start', end_date = '$time_end', reason = '$reason', status = 'Pending' WHERE id = '$request_id'";
     return pdo_execute($sql);
 }
 

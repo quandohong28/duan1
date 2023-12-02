@@ -52,7 +52,7 @@ function numberToWords($number)
         6 => 'sáu',
         7 => 'bảy',
         8 => 'tám',
-        9 => 'chín'
+        9 => 'chín',
     ];
 
     $number = abs(intval($number));
@@ -98,10 +98,19 @@ function numberToWords($number)
     return $result;
 }
 
+function addSalary($employee_id, $workHours, $workDays, $month, $year)
+{
+    try {
+        $slq = "insert into salaries(employee_id, work_hours, work_days, month, year) values ('$employee_id', '$workHours', '$workDays', '$month', '$year')";
+        return pdo_execute($slq);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}
+
 function updateSalary($date)
 {
     $currentDate = date('m');
-    if($month == $currentMonth) {
-
+    if ($month == $currentMonth) {
     }
 }

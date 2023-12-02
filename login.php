@@ -1,7 +1,6 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" href="assets/img/favicon.png">
 	<title>
 		Soft UI Dashboard by Creative Tim
@@ -34,11 +33,11 @@
 							<form method="post" data-bs-theme="light" action="account_controller.php?act=login" name="loginForm" onsubmit="return validateForm()">
 								<div class="mb-3">
 									<input class="form-control" type="text" name="username" id="username" placeholder="Tên đăng nhập" onfocus="hideError('usernameError')">
-									<div id="usernameError" class="text-danger"></div>
+									<small id="usernameError" class="text-danger"></small>
 								</div>
 								<div class="mb-3">
 									<input class="form-control" type="password" name="password" id="password" placeholder="Mật khẩu" onfocus="hideError('passwordError')">
-									<div id="passwordError" class="text-danger"></div>
+									<small id="passwordError" class="text-danger"></small>
 								</div>
 								<div class="mb-3">
 									<button class="btn btn-outline-primary shadow d-block w-100" name="login_submit" type="submit">Đăng nhập</button>
@@ -67,22 +66,17 @@
 			var password = document.getElementById('password').value;
 			var usernameError = document.getElementById('usernameError');
 			var passwordError = document.getElementById('passwordError');
-			var isValid = true;
 
 			usernameError.innerHTML = ""; // Reset error message
 			passwordError.innerHTML = ""; // Reset error message
 
 			if (username.trim() === "") {
 				usernameError.innerHTML = "Vui lòng nhập tên đăng nhập.";
-				isValid = false;
 			}
 
 			if (password.trim() === "") {
 				passwordError.innerHTML = "Vui lòng nhập mật khẩu.";
-				isValid = false;
 			}
-
-			return isValid;
 		}
 	</script>
 </body>

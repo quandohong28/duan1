@@ -8,16 +8,16 @@
                 <a class="nav-link" href="?act=approve&data=leave_request">Phê duyệt nghỉ phép</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?act=approve&data=d">Phê duyệt điều động nhân sự</a>
+                <a class="nav-link" href="?act=approve&data=personnel_mobilization">Phê duyệt điều động nhân sự</a>
             </li>
         </ul>
 
         <?php
-
+        
         if (isset($_GET['data'])) {
             switch ($_GET['data']) {
                 case 'approve':
-                    include('approve.php');
+                    include 'approve.php';
                     break;
                 case 'attendance':
                     $attendances = getAllAttendance();
@@ -26,33 +26,31 @@
                         $attendance_id = $_GET['attendance_id'];
                         $attendance = getAttendanceById($attendance_id);
                         $date = $attendance['date'];
-                        echo $date;
                         $workHours = calWorkHours($attendance['checkin_time'], $attendance['checkout_time']);
                         $workDays = 1;
-                        if ($approve == 'accept') {
-                            $alert = [
-                                $message = 'Đã phê duyệt thành công!',
-                                $class = 'success'
-                            ];
+                        if ($approve == 'Accept') {
+                            $alert = [($message = 'Đã phê duyệt thành công!'), ($class = 'success')];
                         } else {
-                            $alert = [
-                                $message = 'Đã từ chối phê duyệt!',
-                                $class = 'danger'
-                            ];
+                            $alert = [($message = 'Đã từ chối phê duyệt!'), ($class = 'danger')];
                         }
                         approveAttendance($attendance_id, $approve);
+                        echo "<script>setTimeout(() => {window.location.href = '?act=approve&data=attendance'}, 2000)</script>";
                     }
-                    include('attendance.php');
+                    include 'attendance.php';
                     break;
                 case 'leave_request':
-                    include('leave_request.php');
+                    $requests = getAllRequests();
+                    include 'leave_request.php';
+                    break;
+                case 'personnel_mobilization':
+                    include 'personnel_mobilization.php';
                     break;
                 default:
-                    include('approve.php');
+                    include 'approve.php';
                     break;
             }
         } else {
-            include('approve.php');
+            include 'approve.php';
         }
         ?>
     </div>

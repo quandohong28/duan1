@@ -14,7 +14,7 @@
                             <select class="form-control">
                                 <option value="0">Tất cả</option>
                                 <?php foreach ($ranks as $rank) : extract($rank) ?>
-                                    <option value="<?= $id ?>"><?= $description ?></option>
+                                <option value="<?= $id ?>"><?= $description ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -23,7 +23,7 @@
                             <select class="form-control">
                                 <option value="0">Tất cả</option>
                                 <?php foreach ($departments as $department) : extract($department) ?>
-                                    <option value="<?= $id ?>"><?= $name ?></option>
+                                <option value="<?= $id ?>"><?= $name ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -32,7 +32,7 @@
                             <select class="form-control">
                                 <option value="0">Tất cả</option>
                                 <?php foreach ($teams as $team) : extract($team) ?>
-                                    <option value="<?= $id ?>"><?= $name ?></option>
+                                <option value="<?= $id ?>"><?= $name ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -63,15 +63,32 @@
                                     <input class="select-all-checkboxes" type="checkbox">
                                 </td>
                                 <td class="fw-bold">ID</td>
-                                <td class="fw-bold">Họ và tên</td>
-                                <td class="fw-bold">Ngày sinh</td>
-                                <td class="fw-bold">Ngày vào công ty</td>
-                                <td class="fw-bold">Số tháng làm việc</td>
-                                <td class="fw-bold">Chức danh</td>
-                                <td class="fw-bold text-end">Hành động</td>
+                                <td class="fw-bold">Ngày tạo</td>
+                                <td class="fw-bold">Thời gian bắt đầu</td>
+                                <td class="fw-bold">Thời gian kết thúc</td>
+                                <td class="fw-bold">Trạng thái</td>
+                                <td class="fw-bold">Thời gian phê duyệt</td>
+                                <td class="fw-bold">Hành động</td>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($requests as $key => $value) :?>
+                            <tr>
+                                <td>
+                                    <input class="select-row-checkboxes" type="checkbox">
+                                </td>
+                                <td><?= $value['id'] ?></td>
+                                <td><?= $value['create_at'] ?></td>
+                                <td><?= $value['start_date'] ?></td>
+                                <td><?= $value['end_date'] ?></td>
+                                <td><?= $value['status'] ?></td>
+                                <td><?= $value['approve_at'] ?></td>
+                                <td>
+                                    <button class="btn btn-sm btn-success">Phê duyệt</button>
+                                    <button class="btn btn-sm btn-danger">Huỷ duyệt</button>
+                                </td>
+                            </tr>
+                            <?php endforeach?>
                         </tbody>
                     </table>
                 </div>

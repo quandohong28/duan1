@@ -2,7 +2,7 @@
 
 function getAllAccounts()
 {
-    $sql = "SELECT * FROM login_infomation";
+    $sql = 'SELECT * FROM login_infomation';
     return pdo_execute($sql);
 }
 
@@ -14,7 +14,7 @@ function getAccountById($id)
 
 function addAccount($username, $password)
 {
-    $sql = "INSERT INTO login_infomation (username, password) VALUES (?, ?)";
+    $sql = 'INSERT INTO login_infomation (username, password) VALUES (?, ?)';
     return pdo_execute($sql, $username, $password);
 }
 
@@ -41,12 +41,32 @@ function updateAccount($id, $username, $password)
     return pdo_execute($sql, $username, $password);
 }
 
+// function login($username, $password)
+// {
+//     try {
+//         $sql = "SELECT * FROM login_infomation WHERE username = '$username' AND password = '$password'";
+//         return pdo_query_one($sql);
+//     } catch (Exception $e) {
+//         echo $e->getMessage();
+//     }
+// }
+
+function hashPassword($password)
+{
+    return password_hash($password, PASSWORD_DEFAULT);
+}
+
+function verifyPassword($password, $hash)
+{
+    return password_verify($password, $hash);
+}
+
 function login($username, $password)
 {
-    try {
-        $sql = "SELECT * FROM login_infomation WHERE username = '$username' AND password = '$password'";
-        return pdo_query_one($sql);
-    } catch (Exception $e) {
-        echo $e->getMessage();
+    $sql = "SELECT * FROM login_infomation WHERE username = '$username'";
+    $account = pdo_query_one($sql);
+    if ($account && verifyPassword($password, $account['password'])) {
+        return $account;
     }
+    return false;
 }

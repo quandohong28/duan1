@@ -105,8 +105,8 @@
                                     <td><?= $value['status'] ?></td>
                                     <td><?= $value['approve'] ?></td>
                                     <td class="text-end col-2">
-                                        <a class="btn btn-sm btn-success" href="?act=approve&data=attendance&attendance_id=<?= $value['id'] ?>&approve=accept">Phê duyệt</a>
-                                        <a class="btn btn-sm btn-danger" href="?act=approve&data=attendance&attendance_id=<?= $value['id'] ?>&approve=reject">Từ chối</a>
+                                        <a class="btn btn-sm btn-success" href="?act=approve&data=attendance&attendance_id=<?= $value['id'] ?>&approve=Accept">Phê duyệt</a>
+                                        <a class="btn btn-sm btn-danger" href="?act=approve&data=attendance&attendance_id=<?= $value['id'] ?>&approve=Reject">Từ chối</a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
