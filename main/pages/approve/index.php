@@ -33,13 +33,38 @@
                         } else {
                             $alert = [($message = 'Đã từ chối phê duyệt!'), ($class = 'danger')];
                         }
-                        approveAttendance($attendance_id, $approve);
+                        // Kiểm tra một ngày chỉ được phê duyệt một lần
+                        if (checkApproved($attendance['employee_id'], date('m', strtotime($date)), date('Y', strtotime($date)))) {
+                            $alert = [($message = 'Đã phê duyệt rồi!'), ($class = 'danger')];
+                        } else {
+                            approveAttendance($attendance_id, $approve);
+                        }
+                        // Kiểm tra nếu hôm nay đã phê duyệt rồi thì tính lương, chưa thì không tính
+                        if (checkApproved($attendance['employee_id'], date('m', strtotime($date)), date('Y', strtotime($date)))) {
+                            $alert = [($message = 'Đã phê duyệt rồi!'), ($class = 'danger')];
+                        } else {
+                            addSalary($attendance['employee_id'], $workHours, $workDays, date('m', strtotime($date)), date('Y', strtotime($date)));
+                        }
                         echo "<script>setTimeout(() => {window.location.href = '?act=approve&data=attendance'}, 2000)</script>";
                     }
                     include 'attendance.php';
                     break;
                 case 'leave_request':
                     $requests = getAllRequests();
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        $request_id = $_POST['request_id'];
+                        if (isset($_POST['approve'])) {
+                            $status = "Approved";
+                            $alert = [($message = 'Đã phê duyệt thành công!'), ($class = 'success')];
+                        } elseif (isset($_POST['reject'])) {
+                            $status = "Rejected";
+                            $alert = [($message = 'Đã từ chối phê duyệt!'), ($class = 'danger')];
+                        } else {
+                            $alert = [($message = 'Không hợp lệ!'), ($class = 'danger')];
+                        }
+                        approveRequest($request_id, $status);
+                        echo "<script>setTimeout(() => {window.location.href = '?act=approve&data=leave_request'}, 2000)</script>";
+                    }
                     include 'leave_request.php';
                     break;
                 case 'personnel_mobilization':

@@ -2,7 +2,13 @@
 
 function getAllRequests()
 {
-    $sql = 'SELECT * FROM leave_requests';
+    $sql = "SELECT
+    leave_requests.*,
+    employees.name AS employee_name
+FROM
+    leave_requests
+INNER JOIN employees ON employees.id = leave_requests.employee_id
+WHERE leave_requests.status <> 'Cancelled';";
     return pdo_query($sql);
 }
 
@@ -31,9 +37,15 @@ function editRequest($request_id, $time_start, $time_end, $reason) {
     return pdo_execute($sql);
 }
 
-function cancelRequest($id)
+function approveRequest($id, $status)
 {
-    $sql = "UPDATE leave_requests SET status = 'Cancelled' WHERE id = '$id'";
+    $sql = "UPDATE leave_requests SET status = '$status' WHERE id = '$id'";
+    return pdo_execute($sql);
+}
+
+function cancelRequest($id, $status)
+{
+    $sql = "UPDATE leave_requests SET status = '$status' WHERE id = '$id'";
     return pdo_execute($sql);
 }
 

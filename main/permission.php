@@ -128,7 +128,7 @@ function hasPermission($userId, $action)
     if (isset($userPermissions) && is_array($userPermissions) && in_array($action, $userPermissions)) {
         return true;
     }
-
+    
     return false;
 }
 

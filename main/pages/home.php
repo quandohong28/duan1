@@ -28,65 +28,65 @@
 
 				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa fa-home fs-1 text-info text-gradient"></i>
-					<span class="card-text">Dashboard</span>
+					<span class="card-text">Trang chủ</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=approve" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa fa-check fs-1 text-info text-gradient"></i>
 					<span class="card-text">Phê duyệt</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=attendance" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa fa-calendar-check fs-1 text-info text-gradient"></i>
 					<span class="card-text">Chấm công</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=schedule" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa fa-calendar fs-1 text-info text-gradient"></i>
 					<span class="card-text">Lịch</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=organizational" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa fa-sitemap fs-1 text-info text-gradient"></i>
 					<span class="card-text">Sơ đồ tổ chức</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=communicate" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa fa-comments fs-1 text-info text-gradient"></i>
 					<span class="card-text">Giao tiếp</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=table&data=employee" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa fa-address-book fs-1 text-info text-gradient"></i>
 					<span class="card-text">Danh sách nhân sự</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=table&data=rank" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa fa-user-tag fs-1 text-info text-gradient"></i>
 					<span class="card-text">Chức vụ</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=table&data=team" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa fa-user-group fs-1 text-info text-gradient"></i>
 					<span class="card-text">Team</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=table&data=department" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa fa-house-user fs-1 text-info text-gradient"></i>
 					<span class="card-text">Phòng ban</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=reward_discipline" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa-regular fa-thumbs-up fs-1 text-info text-gradient"></i>
 					<span class="card-text">Khen thưởng và kỷ luật</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=personnel_mobilization" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa fa-people-arrows fs-1 text-info text-gradient"></i>
 					<span class="card-text">Điều động nhân sự</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=benefits" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa-regular fa-heart fs-1 text-info text-gradient"></i>
 					<span class="card-text">Chế độ phúc lợi</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=performance" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa fa-square-poll-vertical fs-1 text-info text-gradient"></i>
 					<span class="card-text">Đánh giá hiệu suất</span>
 				</a>
-				<a href="" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=chart" class=" feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<i class="fa fa-chart-pie fs-1 text-info text-gradient"></i>
 					<span class="card-text">Thống kê</span>
 				</a>
-				<a href="" class="feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
+				<a href="?act=" class="feature text-center col-sm-5 col-lg-2 p-3 gap-1 d-flex flex-column justify-content-center align-items-center">
 					<div class="icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center text-primary">
 						<i class="fa-solid fa-plus"></i>
 

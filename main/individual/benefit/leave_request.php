@@ -180,7 +180,7 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <p class="reasonModal"></p>
+                    <textarea class="reasonModal form-control form-control-sm" name="" id="" cols="30" rows="10" readonly></textarea>
                 </div>
             </div>
             <div class="modal-footer">
@@ -200,7 +200,7 @@
                 <h6 class="modal-title" id="modalTitleId">Lý do</h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="post">
+            <form action="?act=leave_request" method="post">
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row mb-3">
@@ -221,7 +221,7 @@
                                 <textarea class="form-control" name="reason" id="reason_edit" cols="" rows="10"></textarea>
                             </div>
                         </div>
-                        <input type="hidden" name="edit_request">
+                        <input type="hidden" name="edit_submit">
                         <input type="hidden" name="request_id" id="request_id">
                     </div>
                 </div>

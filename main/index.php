@@ -146,7 +146,7 @@ $image_path = '../assets/img/';
                                 $time_start = $_POST['time_start'];
                                 $time_end = $_POST['time_end'];
                                 $reason = $_POST['reason'];
-                                addRequest($employee_id, $time_start, $time_end, $reason, $status = 'Chờ duyệt');
+                                addRequest($employee_id, $time_start, $time_end, $reason, $status = 'Pending');
                                 echo '<meta http-equiv="refresh" content="0;url=?act=leave_request">';
                             }
 
@@ -157,14 +157,14 @@ $image_path = '../assets/img/';
                                 $time_end = $_POST['time_end'];
                                 $reason = $_POST['reason'];
                                 editRequest($request_id, $time_start, $time_end, $reason);
-                                die;
-                                // echo '<meta http-equiv="refresh" content="0;url=?act=leave_request">';
+                                echo '<meta http-equiv="refresh" content="0;url=?act=leave_request">';
                             }
 
                             // xử lý hủy một request
                             if (isset($_GET['controller']) && $_GET['controller'] == 'cancel') {
                                 $request_id = $_GET['request_id'];
-                                cancelRequest($request_id);
+                                $status = 'Cancelled';
+                                cancelRequest($request_id, $status);
                                 echo '<meta http-equiv="refresh" content="0;url=?act=leave_request">';
                             }
                         } else {
@@ -234,10 +234,10 @@ $image_path = '../assets/img/';
                                     } else {
                                         if ($currentFormattedTime >= $regulation['checkin_time']) {
                                             $message = 'Bạn đã quá giờ làm việc! Chấm công thành công!';
-                                            $status = 'late';
+                                            $status = 'Late';
                                             checkin($employee_id, $currentFormattedDate, $currentFormattedTime, $status);
                                         } else {
-                                            $status = 'present';
+                                            $status = 'Present';
                                             $message = 'Chấm công thành công!';
                                             checkin($employee_id, $currentFormattedDate, $currentFormattedTime, $status);
                                         }
@@ -246,7 +246,7 @@ $image_path = '../assets/img/';
                                     if (getLatestCheckin()) {
                                         if ($currentFormattedTime <= $regulation['checkin_time']) {
                                             $message = 'Bạn đã về sớm! Chấm công thành công!';
-                                            $status = 'late';
+                                            $status = 'Late';
                                             checkout($currentFormattedTime);
                                         } else {
                                             $status = 'present';

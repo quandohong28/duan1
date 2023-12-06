@@ -16,7 +16,8 @@ if (isset($_GET['act'])) {
                     var_dump($_SESSION['user']);
                     header('location: index.php');
                 } else {
-                    $error = 'Đăng nhập thất bại';
+                    $error = 'true';
+                    header('location: login.php?error=' . $error);
                 }
             }
             break;

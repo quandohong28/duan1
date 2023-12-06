@@ -41,15 +41,15 @@ function updateAccount($id, $username, $password)
     return pdo_execute($sql, $username, $password);
 }
 
-// function login($username, $password)
-// {
-//     try {
-//         $sql = "SELECT * FROM login_infomation WHERE username = '$username' AND password = '$password'";
-//         return pdo_query_one($sql);
-//     } catch (Exception $e) {
-//         echo $e->getMessage();
-//     }
-// }
+function login($username, $password)
+{
+    try {
+        $sql = "SELECT * FROM login_infomation WHERE username = '$username' AND password = '$password'";
+        return pdo_query_one($sql);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}
 
 function hashPassword($password)
 {
@@ -61,12 +61,12 @@ function verifyPassword($password, $hash)
     return password_verify($password, $hash);
 }
 
-function login($username, $password)
-{
-    $sql = "SELECT * FROM login_infomation WHERE username = '$username'";
-    $account = pdo_query_one($sql);
-    if ($account && verifyPassword($password, $account['password'])) {
-        return $account;
-    }
-    return false;
-}
+// function login($username, $password)
+// {
+//     $sql = "SELECT * FROM login_infomation WHERE username = '$username'";
+//     $account = pdo_query_one($sql);
+//     if ($account && verifyPassword($password, $account['password'])) {
+//         return $account;
+//     }
+//     return false;
+// }

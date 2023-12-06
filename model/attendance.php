@@ -97,3 +97,13 @@ function calWorkHours($start_time, $end_time)
 
     return $hours;
 }
+
+function checkApproved($employee_id, $month, $year)
+{
+    try {
+        $sql = "SELECT * FROM salaries WHERE employee_id = '$employee_id' AND month = '$month' AND year = '$year'";
+        return pdo_query_one($sql);
+    } catch (\Exception $e) {
+        echo $e->getMessage();
+    }
+}
