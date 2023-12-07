@@ -14,7 +14,14 @@ function getNumberOfEmlpoyeesByTeamId($team_id)
 function getTeamByDepartmentId($department_id)
 {
     try {
-        $sql = "SELECT * FROM teams WHERE department_id = $department_id";
+        $sql = "SELECT
+        teams.*,
+        employees.avatar
+    FROM
+        teams
+    INNER JOIN employees ON employees.id = teams.team_lead_id
+    WHERE
+        teams.department_id = '$department_id'";
         return pdo_query($sql);
     } catch (Exception $e) {
         echo $e->getMessage();

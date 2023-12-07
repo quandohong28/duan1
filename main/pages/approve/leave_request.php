@@ -1,5 +1,5 @@
 <?php if (isset($alert)) : ?>
-    <div class="alert alert-<?= $class?> text-light" role="alert">
+    <div class="alert alert-<?= $class ?> text-light" role="alert">
         <h6 class="alert-heading">Thông báo</h6>
         <p><?= $message ?></p>
     </div>
@@ -21,7 +21,7 @@
                             <select class="form-control">
                                 <option value="0">Tất cả</option>
                                 <?php foreach ($ranks as $rank) : extract($rank) ?>
-                                <option value="<?= $id ?>"><?= $description ?></option>
+                                    <option value="<?= $id ?>"><?= $description ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -30,7 +30,7 @@
                             <select class="form-control">
                                 <option value="0">Tất cả</option>
                                 <?php foreach ($departments as $department) : extract($department) ?>
-                                <option value="<?= $id ?>"><?= $name ?></option>
+                                    <option value="<?= $id ?>"><?= $name ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -39,7 +39,7 @@
                             <select class="form-control">
                                 <option value="0">Tất cả</option>
                                 <?php foreach ($teams as $team) : extract($team) ?>
-                                <option value="<?= $id ?>"><?= $name ?></option>
+                                    <option value="<?= $id ?>"><?= $name ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -85,24 +85,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($requests as $key => $value) :?>
-                            <tr>
-                                <td>
-                                    <input class="select-row-checkboxes" type="checkbox">
-                                </td>
-                                <td><?= $value['id'] ?></td>
-                                <td><?= $value['create_at'] ?></td>
-                                <td><?= $value['start_date'] ?></td>
-                                <td><?= $value['end_date'] ?></td>
-                                <td><?= $value['status'] ?></td>
-                                <td><?= $value['approve_at'] ?></td>
-                                <td>
-                                    <button class="btn btn-sm btn-info" data-bs-toggle="modal"
-                                        data-bs-target="#approveLeaveRequestModal"
-                                        data-bs-value='<?= json_encode($value) ?>'>Chi tiết</button>
-                                </td>
-                            </tr>
-                            <?php endforeach?>
+                            <?php foreach ($requests as $key => $value) : ?>
+                                <tr>
+                                    <td>
+                                        <input class="select-row-checkboxes" type="checkbox">
+                                    </td>
+                                    <td><?= $value['id'] ?></td>
+                                    <td><?= $value['create_at'] ?></td>
+                                    <td><?= $value['start_date'] ?></td>
+                                    <td><?= $value['end_date'] ?></td>
+                                    <td>
+                                        <div class="badge status"><?= $value['status'] ?></div>
+                                    </td>
+                                    <td><?= $value['approve_at'] ?></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#approveLeaveRequestModal" data-bs-value='<?= json_encode($value) ?>'>Chi tiết</button>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
                 </div>
@@ -139,8 +139,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="approveLeaveRequestModal" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
-    aria-hidden="true">
+<div class="modal fade" id="approveLeaveRequestModal" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -157,8 +156,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Lý do</label>
-                            <textarea class="form-control form-control-sm" name="" id="" cols="30" rows="10"
-                                readonly></textarea>
+                            <textarea class="form-control form-control-sm" name="" id="" cols="30" rows="10" readonly></textarea>
                         </div>
                         <input type="hidden" name="request_id">
                     </div>
@@ -200,5 +198,19 @@
 
 
         // Use above variables to manipulate the DOM
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const status = document.querySelectorAll('.status');
+        status.forEach((item) => {
+            if (item.innerHTML === 'Approved') {
+                item.classList.add('bg-success');
+            }
+            else if(item.innerHTML === 'Pending') {
+                item.classList.add('bg-info');
+            } else {
+                item.classList.add('bg-danger');
+            }
+        })
     });
 </script>

@@ -2,7 +2,12 @@
 
 function getAllDepartments()
 {
-    $sql = "SELECT * FROM departments;";
+    $sql = "SELECT
+    departments.*,
+    employees.avatar
+FROM
+    departments
+INNER JOIN employees ON employees.id = departments.manager_id;";
     return pdo_query($sql);
 }
 

@@ -13,7 +13,7 @@
         </ul>
 
         <?php
-        
+
         if (isset($_GET['data'])) {
             switch ($_GET['data']) {
                 case 'approve':
@@ -21,32 +21,59 @@
                     break;
                 case 'attendance':
                     $attendances = getAllAttendance();
-                    if (isset($_GET['approve'])) {
-                        $approve = $_GET['approve'];
-                        $attendance_id = $_GET['attendance_id'];
-                        $attendance = getAttendanceById($attendance_id);
-                        $date = $attendance['date'];
-                        $workHours = calWorkHours($attendance['checkin_time'], $attendance['checkout_time']);
-                        $workDays = 1;
-                        if ($approve == 'Accept') {
+                    // if (isset($_GET['approve'])) {
+                    //     $approve = $_GET['approve'];
+                    //     $attendance_id = $_GET['attendance_id'];
+                    //     $attendance = getAttendanceById($attendance_id);
+                    //     $date = $attendance['date'];
+                    //     $workHours = calWorkHours($attendance['checkin_time'], $attendance['checkout_time']);
+                    //     $workDays = 1;
+                    //     if ($approve == 'Accept') {
+                    //         $alert = [($message = 'Đã phê duyệt thành công!'), ($class = 'success')];
+                    //     } else {
+                    //         $alert = [($message = 'Đã từ chối phê duyệt!'), ($class = 'danger')];
+                    //     }
+                    //     // Kiểm tra một ngày chỉ được phê duyệt một lần
+                    //     if (checkApproved($attendance['employee_id'], date('m', strtotime($date)), date('Y', strtotime($date)))) {
+                    //         $alert = [($message = 'Đã phê duyệt rồi!'), ($class = 'danger')];
+                    //     } else {
+                    //         approveAttendance($attendance_id, $approve);
+                    //     }
+                    //     // Kiểm tra nếu hôm nay đã phê duyệt rồi thì tính lương, chưa thì không tính
+                    //     if (checkApproved($attendance['employee_id'], date('m', strtotime($date)), date('Y', strtotime($date)))) {
+                    //         $alert = [($message = 'Đã phê duyệt rồi!'), ($class = 'danger')];
+                    //     } else {
+                    //         addSalary($attendance['employee_id'], $workHours, $workDays, date('m', strtotime($date)), date('Y', strtotime($date)));
+                    //     }
+                    //     echo "<script>setTimeout(() => {window.location.href = '?act=approve&data=attendance'}, 2000)</script>";
+                    // }
+
+                    // Xử lý phê duyệt
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        $attendance_id = $_POST['attendance_id'];
+                        $reason_reject = $_POST['reason_reject'];
+                        $approver = $_POST['approver'];
+                        if (isset($_POST['approve'])) {
+                            $approve = "Accepted";
                             $alert = [($message = 'Đã phê duyệt thành công!'), ($class = 'success')];
-                        } else {
-                            $alert = [($message = 'Đã từ chối phê duyệt!'), ($class = 'danger')];
-                        }
-                        // Kiểm tra một ngày chỉ được phê duyệt một lần
-                        if (checkApproved($attendance['employee_id'], date('m', strtotime($date)), date('Y', strtotime($date)))) {
-                            $alert = [($message = 'Đã phê duyệt rồi!'), ($class = 'danger')];
-                        } else {
-                            approveAttendance($attendance_id, $approve);
-                        }
-                        // Kiểm tra nếu hôm nay đã phê duyệt rồi thì tính lương, chưa thì không tính
-                        if (checkApproved($attendance['employee_id'], date('m', strtotime($date)), date('Y', strtotime($date)))) {
-                            $alert = [($message = 'Đã phê duyệt rồi!'), ($class = 'danger')];
-                        } else {
+
+                            // Xử lý tính lương
+                            $attendance = getAttendanceById($attendance_id);
+                            $workHours = calWorkHours($attendance['checkin_time'], $attendance['checkout_time']);
+                            $workDays = 1;
+                            $date = $attendance['date'];
                             addSalary($attendance['employee_id'], $workHours, $workDays, date('m', strtotime($date)), date('Y', strtotime($date)));
+                        } elseif (isset($_POST['reject'])) {
+                            $approve = "Rejected";
+                            $alert = [($message = 'Đã từ chối phê duyệt!'), ($class = 'secondary')];
+                        } else {
+                            $alert = [($message = 'Không hợp lệ!'), ($class = 'danger')];
                         }
+                        approveAttendance($attendance_id, $approve, $approver, $reason_reject);
                         echo "<script>setTimeout(() => {window.location.href = '?act=approve&data=attendance'}, 2000)</script>";
                     }
+
+
                     include 'attendance.php';
                     break;
                 case 'leave_request':
@@ -54,7 +81,7 @@
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $request_id = $_POST['request_id'];
                         if (isset($_POST['approve'])) {
-                            $status = "Approved";
+                            $status = "Accepted";
                             $alert = [($message = 'Đã phê duyệt thành công!'), ($class = 'success')];
                         } elseif (isset($_POST['reject'])) {
                             $status = "Rejected";

@@ -8,7 +8,7 @@
                 ?>
                     <div class="timeline-block my-3 py-3" data-bs-toggle="collapse" data-bs-target="#team<?= $department['id'] ?>">
                         <span class="timeline-step">
-                            <img src="../assets/img/user.jpg" alt="" class="rounded-circle" height="80" width="80">
+                            <img src="../assets/img/<?= $department['avatar']?>" alt="" class="rounded-circle" height="80" width="80">
                         </span>
                         <div class="timeline-content px-5 py-4">
                             <p class="text-light small fw-bold badge bg-success"><?= $department['name'] ?></p>
@@ -22,7 +22,7 @@
                                     ?>
                                         <div class="timeline-block my-3 py-3" data-bs-toggle="collapse" data-bs-target="#employee<?= $team['id'] ?>">
                                             <span class="timeline-step">
-                                                <img src="../assets/img/user.jpg" alt="" class="rounded-circle" height="80" width="80">
+                                                <img src="../assets/img/<?= $team['avatar']?>" alt="" class="rounded" height="80" width="80">
                                             </span>
                                             <div class="timeline-content px-5 py-4">
                                                 <p class="text-light small fw-bold badge bg-info"><?= $team['name'] ?></p>
@@ -33,7 +33,7 @@
                                                     <div class="px-5 py-3 ms-5 d-flex align-items-center gap-1">
                                                         <span class="me-3 text-light badge bg-dark">Team Lead</span>
                                                         <div>
-                                                            <img width="30" class="rounded-circle" src="https://picsum.photos/30/30" alt="">
+                                                            <img width="30" class="rounded-circle" src="../assets/img/<?= $team['avatar']?>" alt="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -42,7 +42,7 @@
                                                         <span class="me-3 text-dark shadow badge bg-light">Thành viên</span>
                                                         <?php foreach ($employees as $employee) : ?>
                                                             <div>
-                                                                <img width="30" class="rounded-circle" src="https://picsum.photos/30/30" alt="">
+                                                                <img width="30" class="rounded-circle" src="../assets/img/<?= $employee['avatar']?>" alt="">
                                                             </div>
                                                         <?php endforeach ?>
                                                     </div>

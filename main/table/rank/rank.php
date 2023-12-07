@@ -68,7 +68,7 @@
                                         </div>
                                     </td>
                                     <td><?= $id ?></td>
-                                    <td><?= $name ?></td>
+                                    <td class="ranks"><?= $name ?></td>
                                     <td>
                                         <textarea class="form-control form-control-sm" name="" id="" cols="50" rows="3" readonly><?= $description ?></textarea>
                                     </td>
@@ -124,3 +124,26 @@
 <!-- Modal -->
 <?php include 'addrankmodal.php' ?>
 <?php include 'editrankmodal.php' ?>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const ranks = document.querySelectorAll('.ranks');
+        ranks.forEach(rank => {
+            if(rank.innerHTML == 'Staff') {
+                rank.style.color = 'red';
+            }
+
+            if(rank.innerHTML == 'Manager') {
+                rank.style.color = 'blue';
+            }
+
+            if(rank.innerHTML == 'Director') {
+                rank.style.color = 'green';
+            }
+
+            if(rank.innerHTML == 'CEO') {
+                rank.style.color = 'orange';
+            }
+        })
+    });
+</script>

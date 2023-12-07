@@ -34,7 +34,7 @@ CREATE TABLE `attendance` (
   `checkin_time` time DEFAULT current_timestamp(),
   `checkout_time` time DEFAULT NULL,
   `status` varchar(255) NOT NULL,
-  `approve` varchar(50) NOT NULL DEFAULT 'await'
+  `approve` varchar(50) NOT NULL DEFAULT 'Await'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `attendance` (
 
 INSERT INTO `attendance` (`id`, `employee_id`, `date`, `checkin_time`, `checkout_time`, `status`, `approve`) VALUES
 (124, 1, '2023-11-21', '14:57:01', '14:57:11', 'late', 'accept'),
-(125, 4, '2023-11-29', '13:12:49', '22:05:16', 'late', 'await');
+(125, 4, '2023-11-29', '13:12:49', '22:05:16', 'late', 'Await');
 
 -- --------------------------------------------------------
 

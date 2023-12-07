@@ -4,18 +4,23 @@ function getAllAttendance()
 {
     try {
         $sql = "SELECT
-        e.name as name,
-        a.id as id,
-        a.date as date,
-        a.checkin_time as checkin_time,
-        a.checkout_time as checkout_time,
-        a.status as status,
-        a.approve as approve
-        FROM attendance a
-        INNER JOIN
-        employees e
-        ON
-        a.employee_id = e.id";
+        a.id AS id,
+        a.date AS date,
+        a.checkin_time AS checkin_time,
+        a.checkout_time AS checkout_time,
+        a.status AS status,
+        a.approve AS approve,
+        a.approve_at AS approve_at,
+        e_employee.name AS employee_name,
+        e_approver.name AS approver_name
+    FROM
+        attendance a
+    INNER JOIN employees e_employee ON
+        a.employee_id = e_employee.id
+    LEFT JOIN employees e_approver ON
+        a.approver = e_approver.id;";
+
+
         return pdo_query($sql);
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -66,18 +71,29 @@ function checkout($checkout_time)
 function getAttendanceByEmployeeId($employee_id)
 {
     try {
-        $sql = "SELECT * FROM attendance WHERE employee_id = $employee_id";
+        $sql = "SELECT
+    attendance.*,
+    employees.name AS approver
+FROM
+    attendance
+INNER JOIN employees ON employees.id = attendance.employee_id
+WHERE
+    employee_id = $employee_id";
         return pdo_query($sql);
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
 }
 
-function approveAttendance($attendance_id, $approve)
+function approveAttendance($attendance_id, $approve, $approver, $reason_reject)
 {
     try {
-        $sql = "UPDATE attendance SET approve = '$approve' WHERE id = '$attendance_id'";
-        pdo_execute($sql);
+        $sql = "UPDATE attendance SET
+        approve = '$approve',
+        approver = '$approver',
+        reason_reject = '$reason_reject'
+        WHERE id = '$attendance_id'";
+        return pdo_execute($sql);
     } catch (\Exception $e) {
         echo $e->getMessage();
     }

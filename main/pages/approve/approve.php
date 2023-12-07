@@ -56,25 +56,7 @@
                     </div>
                 </div>
                 <div class="col text-end">
-                    <a href="?act=approve&data=leave_request" class="btn btn-sm btn-outline-dark">Chi tiết</a>
-                </div>
-            </div>
-            <div class="col-md-6 p-3 rounded mb-5 row shadow">
-                <div class="col row">
-                    <div class="col-3 fs-2 text-info">
-                        <i class="fa-regular fa-file-lines"></i>
-                    </div>
-                    <div class="col">
-                        <h6>Khác</h6>
-                        <p class="badge text-start bg-gradient-secondary">Đang chờ phê duyệt: 13</p>
-                        <br>
-                        <p class="badge text-start bg-gradient-success">Đã duyệt: 14</p>
-                        <br>
-                        <p class="badge text-start bg-gradient-danger">Đã huỷ: 0</p>
-                    </div>
-                </div>
-                <div class="col text-end">
-                    <a href="?act=approve&data=other" class="btn btn-sm btn-outline-dark">Chi tiết</a>
+                    <a href="?act=approve&data=personnel_mobilization" class="btn btn-sm btn-outline-dark">Chi tiết</a>
                 </div>
             </div>
         </div>

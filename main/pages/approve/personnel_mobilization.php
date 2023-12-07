@@ -1,6 +1,6 @@
 <section class="min-vh-100 bg-white p-3 rounded">
     <div class="container">
-        <h6>Giao tiếp</h6>
+        <h6>Phê duyệt điều động nhân sự</h6>
         <small>Tính năng đang phát triển</small>
     </div>
 </section>  

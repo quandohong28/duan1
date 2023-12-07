@@ -100,7 +100,9 @@
                             <td class="fw-bold">Giờ ra</td>
                             <td class="fw-bold">Trạng thái</td>
                             <td class="fw-bold">Phê duyệt</td>
+                            <td class="fw-bold">Thời gian duyệt</td>
                             <td class="fw-bold">Người duyệt</td>
+                            <td class="fw-bold">Lý do từ chối</td>
                         </tr>
                     </thead>
                     <tfoot>
@@ -113,7 +115,9 @@
                             <td class="fw-bold">Giờ ra</td>
                             <td class="fw-bold">Trạng thái</td>
                             <td class="fw-bold">Phê duyệt</td>
+                            <td class="fw-bold">Thời gian duyệt</td>
                             <td class="fw-bold">Người duyệt</td>
+                            <td class="fw-bold">Lý do từ chối</td>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -125,8 +129,15 @@
                                 <td><?= $value['date'] ?></td>
                                 <td><?= $value['checkin_time'] ?></td>
                                 <td><?= $value['checkout_time'] ?></td>
-                                <td><?= $value['status'] ?></td>
-                                <td><?= $value['approve'] ?></td>
+                                <td>
+                                    <div class="badge status"><?= $value['status'] ?></div>
+                                </td>
+                                <td>
+                                    <div class="badge approve"><?= $value['approve'] ?></div>
+                                </td>
+                                <td><?= $value['approve_at'] ?></td>
+                                <td><?= $value['approver'] ?></td>
+                                <td><?= $value['reason_reject'] ?></td>
                                 <td></td>
                             </tr>
                         <?php endforeach ?>
@@ -154,4 +165,24 @@
             item.classList.add('text-light');
         })
     })
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const status = document.querySelectorAll('.status');
+        const approve = document.querySelectorAll('.approve');
+        status.forEach((item) => {
+            if (item.innerHTML !== 'Late') {
+                item.classList.add('bg-success');
+            } else {
+                item.classList.add('bg-danger');
+            }
+        })
+
+        approve.forEach((item) => {
+            if (item.innerHTML == 'Rejected') {
+                item.classList.add('bg-danger');
+            }else if(item.innerHTML == 'Accepted') {
+                item.classList.add('bg-success');
+            }
+        })
+    });
 </script>
