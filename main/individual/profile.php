@@ -1,8 +1,15 @@
 <div class="row">
     <div class="col-12">
         <div class="p-3 mb-4 bg-white d-lfex flex-column rounded">
-            <div class="mb-3">
-                <img class="rounded" src="<?= $avatar_path . $employee['employee_avatar'] ?>" width="160">
+            <div class="mb-3 row align-items-end">
+                <div class="col-2">
+                    <img class="rounded" src="<?= $avatar_path . $employee['employee_avatar'] ?>" width="160">
+                </div>
+                <div class="col">
+                    <button class="btn btn-sm">
+                        <i class="fa fa-pen"></i>
+                    </button>
+                </div>
             </div>
             <div>
                 <h6><?= $employee['employee_name'] ?></h6>

@@ -103,11 +103,11 @@
                                     <td><?= $value['checkin_time'] ?></td>
                                     <td><?= $value['checkout_time'] ?></td>
                                     <td>
-                                    <div class="badge status"><?= $value['status'] ?></div>
-                                </td>
-                                <td>
-                                    <div class="badge approve"><?= $value['approve'] ?></div>
-                                </td>
+                                        <div class="badge status"><?= $value['status'] ?></div>
+                                    </td>
+                                    <td>
+                                        <div class="badge approve"><?= $value['approve'] ?></div>
+                                    </td>
                                     <td class="col-2">
                                         <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#approveAttendanceModal" data-bs-value='<?= json_encode($value) ?>'>Chi tiết</button>
                                     </td>
@@ -171,7 +171,7 @@
                             <textarea class="form-control form-control-sm" name="reason_reject" id="" cols="30" rows="10"></textarea>
                         </div>
                         <input type="hidden" name="attendance_id">
-                        <input type="hidden" name="approver" value="<?= $_SESSION['user']['id']?>">
+                        <input type="hidden" name="approver" value="<?= $_SESSION['user']['id'] ?>">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -225,8 +225,10 @@
         approve.forEach((item) => {
             if (item.innerHTML == 'Rejected') {
                 item.classList.add('bg-danger');
-            }else if(item.innerHTML == 'Accepted') {
+            } else if (item.innerHTML == 'Accepted') {
                 item.classList.add('bg-success');
+            } else {
+                item.classList.add('bg-info');
             }
         })
     });

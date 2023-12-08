@@ -103,6 +103,7 @@
                             <td class="fw-bold">Thời gian duyệt</td>
                             <td class="fw-bold">Người duyệt</td>
                             <td class="fw-bold">Lý do từ chối</td>
+                            <td class="fw-bold">Hành động</td>
                         </tr>
                     </thead>
                     <tfoot>
@@ -118,6 +119,7 @@
                             <td class="fw-bold">Thời gian duyệt</td>
                             <td class="fw-bold">Người duyệt</td>
                             <td class="fw-bold">Lý do từ chối</td>
+                            <td class="fw-bold">Hành động</td>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -138,7 +140,9 @@
                                 <td><?= $value['approve_at'] ?></td>
                                 <td><?= $value['approver'] ?></td>
                                 <td><?= $value['reason_reject'] ?></td>
-                                <td></td>
+                                <td>
+                                    <button class="btn btn-sm btn-info explanation">Giải trình</button>
+                                </td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
@@ -180,8 +184,14 @@
         approve.forEach((item) => {
             if (item.innerHTML == 'Rejected') {
                 item.classList.add('bg-danger');
-            }else if(item.innerHTML == 'Accepted') {
+            } else if (item.innerHTML == 'Accepted') {
                 item.classList.add('bg-success');
+                const explanation = item.parentElement.parentElement.querySelector('.explanation');
+                explanation.classList.add('d-none');
+            } else {
+                item.classList.add('bg-info');
+                const explanation = item.parentElement.parentElement.querySelector('.explanation');
+                explanation.classList.add('d-none');
             }
         })
     });
